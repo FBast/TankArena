@@ -23,6 +23,14 @@ namespace AI {
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
+        private void Start() {
+            NavMeshTriangulation triangulation = NavMesh.CalculateTriangulation();
+            foreach (Vector3 vertex in triangulation.vertices) {
+                GameObject primitive = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                primitive.transform.position = vertex;
+            }
+        }
+
         public void Fire() {
             if (!IsShellLoaded) return;
             GameObject instantiate = Instantiate(ShellPrefab, CanonOut.position, CanonOut.rotation);

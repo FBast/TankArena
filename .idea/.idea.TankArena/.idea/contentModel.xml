@@ -13,7 +13,6 @@
             <e p="FontLicense.txt" t="Include" />
           </e>
         </e>
-        <e p="Laser.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="NodeUtilityAi" t="Include">
             <e p="AbstractAIBrain.cs" t="Include" />
