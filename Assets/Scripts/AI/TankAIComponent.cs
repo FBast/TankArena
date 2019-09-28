@@ -1,3 +1,4 @@
+using Entities;
 using NodeUtilityAi;
 using NodeUtilityAi.Framework;
 using UnityEngine;
