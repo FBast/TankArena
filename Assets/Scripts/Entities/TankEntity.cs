@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Components;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Entities {
@@ -9,7 +10,9 @@ namespace Entities {
         public Transform Turret;
         public AudioSource ShotCharging;
         public AudioSource ShotFiring;
-        
+        public ParticleEmissionSetter SmokeSetter;
+        public ParticleEmissionSetter FireSetter;
+
         [Header("Prefabs")]
         public GameObject ShellPrefab;
         public GameObject CanonShotPrefab;
@@ -30,6 +33,8 @@ namespace Entities {
         
         private NavMeshAgent _navMeshAgent;
 
+        private int _totalDamages => StartingHP - CurrentHP;
+        private float _damagePercent => (float) _totalDamages / StartingHP;
         private bool _isAtDestination => _navMeshAgent.remainingDistance < Mathf.Infinity &&
                                           _navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
                                           _navMeshAgent.remainingDistance <= 0;
@@ -56,6 +61,8 @@ namespace Entities {
                 _navMeshAgent.SetDestination(Destination.transform.position);
                 if (_isAtDestination) Destination = null;
             }
+            SmokeSetter.SetEmissionPercent(_damagePercent);
+            FireSetter.SetEmissionPercent(_damagePercent < 0.5 ? 0 : _damagePercent * 2);
         }
 
         public void Fire() {
