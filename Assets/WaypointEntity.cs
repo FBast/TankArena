@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class WaypointEntity : MonoBehaviour {
 
-    public List<TankEntity> TankOnSight;
-    public List<TankEntity> TankOnTheMap;
+    public List<GameObject> TankOnSight;
+    public List<GameObject> TankOnTheMap;
 
     private void Awake() {
-        TankOnTheMap = FindObjectsOfType<TankEntity>().ToList();
+        TankOnTheMap = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
     }
 
     private void Update() {
-        TankOnSight = new List<TankEntity>();
-        foreach (TankEntity tankEntity in TankOnTheMap) {
-            if (!tankEntity) continue;
-            if (Physics.Linecast(transform.position, tankEntity.transform.position)) continue;
-            TankOnSight.Add(tankEntity);
-            Debug.DrawLine(transform.position, tankEntity.transform.position, Color.blue);
+        TankOnSight = new List<GameObject>();
+        foreach (GameObject tankGameObject in TankOnTheMap) {
+            if (!tankGameObject) continue;
+            if (Physics.Linecast(transform.position, tankGameObject.transform.position)) continue;
+            TankOnSight.Add(tankGameObject);
+            Debug.DrawLine(transform.position, tankGameObject.transform.position, Color.blue);
         }
     }
 

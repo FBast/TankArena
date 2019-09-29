@@ -93,10 +93,12 @@
             <e p="SimpleEntryNodes" t="Include">
               <e p="AliveTankNode.cs" t="Include" />
               <e p="CurrentHpCountNode.cs" t="Include" />
-              <e p="DistanceFromTargetNode.cs" t="Include" />
+              <e p="DistanceFromDataNode.cs" t="Include" />
+              <e p="DistanceFromNearestTankNode.cs" t="Include" />
               <e p="IsDestinationSet.cs" t="Include" />
               <e p="IsShellLoadedNode.cs" t="Include" />
               <e p="IsTankInRayNode.cs" t="Include" />
+              <e p="IsWaypointCoverFromTarget.cs" t="Include" />
               <e p="NoTargetNode.cs" t="Include" />
               <e p="StartingHpCountNode.cs" t="Include" />
               <e p="WaypointCover.cs" t="Include" />

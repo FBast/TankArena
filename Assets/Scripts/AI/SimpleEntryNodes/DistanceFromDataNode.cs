@@ -1,10 +1,9 @@
-using Entities;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 using UnityEngine;
 
 namespace AI.SimpleEntryNodes {
-    public class DistanceFromTargetNode : SimpleEntryNode {
+    public class DistanceFromDataNode : SimpleEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
