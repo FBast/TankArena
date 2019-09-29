@@ -83,17 +83,23 @@
           <e p="AI" t="Include">
             <e p="CollectionEntryNodes" t="Include">
               <e p="OtherTanksNode.cs" t="Include" />
+              <e p="WayPointsNodes.cs" t="Include" />
             </e>
             <e p="SimpleActionNodes" t="Include">
               <e p="FireNode.cs" t="Include" />
+              <e p="SetDestinationNode.cs" t="Include" />
+              <e p="SetTargetNode.cs" t="Include" />
             </e>
             <e p="SimpleEntryNodes" t="Include">
+              <e p="AliveTankNode.cs" t="Include" />
               <e p="CurrentHpCountNode.cs" t="Include" />
               <e p="DistanceFromTargetNode.cs" t="Include" />
+              <e p="IsDestinationSet.cs" t="Include" />
               <e p="IsShellLoadedNode.cs" t="Include" />
               <e p="IsTankInRayNode.cs" t="Include" />
               <e p="NoTargetNode.cs" t="Include" />
               <e p="StartingHpCountNode.cs" t="Include" />
+              <e p="WaypointCover.cs" t="Include" />
             </e>
             <e p="TankAIBrain.cs" t="Include" />
             <e p="TankAIComponent.cs" t="Include" />
@@ -105,7 +111,11 @@
             <e p="ShellEntity.cs" t="Include" />
             <e p="TankEntity.cs" t="Include" />
           </e>
+          <e p="Utils" t="Include">
+            <e p="Singleton.cs" t="Include" />
+          </e>
         </e>
+        <e p="WaypointEntity.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

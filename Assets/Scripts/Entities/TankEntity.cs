@@ -2,8 +2,7 @@
 using UnityEngine.AI;
 
 namespace Entities {
-    public class TankEntity : MonoBehaviour 
-    {
+    public class TankEntity : MonoBehaviour {
 
         [Header("References")] 
         public Transform CanonOut;
@@ -26,28 +25,36 @@ namespace Entities {
         [Header("Variables")]
         public int CurrentHP;
         public bool IsShellLoaded = true;
-        public TankEntity Target;
+        public GameObject Target;
+        public GameObject Destination;
         
         private NavMeshAgent _navMeshAgent;
+
+        private bool _isAtDestination => _navMeshAgent.remainingDistance < Mathf.Infinity &&
+                                          _navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
+                                          _navMeshAgent.remainingDistance <= 0;
 
         private void Awake() {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             CurrentHP = StartingHP;
         }
 
-        private void Start() {
-//            NavMeshTriangulation triangulation = NavMesh.CalculateTriangulation();
-//            foreach (Vector3 vertex in triangulation.vertices) {
-//                GameObject primitive = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-//                primitive.transform.position = vertex;
-//            }
-        }
-
         private void Update() {
             Debug.DrawRay(CanonOut.position, CanonOut.forward * 100, Color.red);
-            if (Target != null) {
+            if (Target) {
                 Vector3 newDir = Vector3.RotateTowards(Turret.forward, Target.transform.position - Turret.position, TurretSpeed * Time.deltaTime, 0.0f);
                 Turret.rotation = Quaternion.LookRotation(newDir);
+            }
+            if (Destination) {
+                Vector3[] pathCorners = _navMeshAgent.path.corners;
+                if (pathCorners.Length > 0) {
+                    Debug.DrawLine(transform.position, pathCorners[0], Color.green);
+                    for (int i = 1; i < pathCorners.Length - 1; i++) {
+                        Debug.DrawLine(pathCorners[i - 1], pathCorners[i], Color.green);
+                    }
+                }
+                _navMeshAgent.SetDestination(Destination.transform.position);
+                if (_isAtDestination) Destination = null;
             }
         }
 

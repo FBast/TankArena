@@ -1,15 +1,15 @@
 using NodeUtilityAi;
 using NodeUtilityAi.Framework;
 using NodeUtilityAi.Nodes;
+using UnityEngine;
 
 namespace AI.SimpleActionNodes {
-    public class FireNode : SimpleActionNode {
+    public class SetDestinationNode : SimpleActionNode {
 
         public override void Execute(AbstractAIComponent context, AIData aiData) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            tankAiComponent.TankEntity.Fire();
+            tankAiComponent.TankEntity.Destination = aiData.GetData<GameObject>();
         }
         
     }
-
 }

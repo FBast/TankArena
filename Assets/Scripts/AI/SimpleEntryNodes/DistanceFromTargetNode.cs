@@ -8,8 +8,8 @@ namespace AI.SimpleEntryNodes {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            TankEntity tankEntityTarget = GetData<TankEntity>();
-            return (int) Vector3.Distance(tankAiComponent.gameObject.transform.position, tankEntityTarget.transform.position);
+            GameObject target = GetData<GameObject>();
+            return (int) Vector3.Distance(tankAiComponent.gameObject.transform.position, target.transform.position);
         }
     
     }
