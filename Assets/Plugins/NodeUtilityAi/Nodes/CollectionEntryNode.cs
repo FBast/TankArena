@@ -14,7 +14,12 @@ namespace NodeUtilityAi.Nodes {
         public string DataTag = "Data";
         public int Index;
 
-        public int CollectionCount => CollectionProvider(_context)?.Count ?? 0;
+        public int CollectionCount {
+            get {
+                if (_context == null) return 0;
+                return CollectionProvider(_context)?.Count ?? 0;
+            }
+        }
 
         protected abstract List<Object> CollectionProvider(AbstractAIComponent context);
         
@@ -23,6 +28,7 @@ namespace NodeUtilityAi.Nodes {
                 return this;
             }
             if (port.fieldName == "DataOut") {
+                if (_context == null) return null;
                 List<Object> collection = CollectionProvider(_context);
                 if (collection != null && collection.Count > Index)
                     return GetData();

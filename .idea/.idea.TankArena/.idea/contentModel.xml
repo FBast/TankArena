@@ -81,13 +81,18 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
-            <e p="ActionNodes" t="Include">
+            <e p="CollectionEntryNodes" t="Include">
+              <e p="OtherTanksNode.cs" t="Include" />
+            </e>
+            <e p="SimpleActionNodes" t="Include">
               <e p="FireNode.cs" t="Include" />
             </e>
-            <e p="EntryNodes" t="Include">
+            <e p="SimpleEntryNodes" t="Include">
               <e p="CurrentHpCountNode.cs" t="Include" />
+              <e p="DistanceFromTargetNode.cs" t="Include" />
               <e p="IsShellLoadedNode.cs" t="Include" />
               <e p="IsTankInRayNode.cs" t="Include" />
+              <e p="NoTargetNode.cs" t="Include" />
               <e p="StartingHpCountNode.cs" t="Include" />
             </e>
             <e p="TankAIBrain.cs" t="Include" />

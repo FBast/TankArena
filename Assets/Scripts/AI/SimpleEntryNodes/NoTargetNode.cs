@@ -1,12 +1,12 @@
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 
-namespace AI.EntryNodes {
-    public class StartingHpCountNode : SimpleEntryNode {
+namespace AI.SimpleEntryNodes {
+    public class NoTargetNode : SimpleEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            return tankAiComponent.TankEntity.StartingHP;
+            return tankAiComponent.TankEntity.Target != null ? 1 : 0;
         }
         
     }
