@@ -14,12 +14,7 @@ namespace NodeUtilityAi.Nodes {
         public string DataTag = "Data";
         public int Index;
 
-        public int CollectionCount {
-            get {
-                if (_context == null) return 0;
-                return CollectionProvider(_context)?.Count ?? 0;
-            }
-        }
+        public int CollectionCount => CollectionProvider(_context)?.Count ?? 0;
 
         protected abstract List<Object> CollectionProvider(AbstractAIComponent context);
         
