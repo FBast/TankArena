@@ -10,18 +10,18 @@ using Random = UnityEngine.Random;
 namespace NodeUtilityAi {
     public class AbstractAIComponent : MonoBehaviour {
         
-        public AbstractAIBrain UtilityAiBrain;
+        public List<AbstractAIBrain> UtilityAiBrains;
         public float LastProbabilityResult;
         public List<AIOption> Options;
         public Dictionary<string, Object> Memory = new Dictionary<string, Object>();
         
-        protected AIOption ChooseOption() {
-            if (UtilityAiBrain == null) return null;
-            UtilityAiBrain.GetNodes<EntryNode>().ForEach(node => node.SetContext(this));
-            UtilityAiBrain.GetNodes<ActionNode>().ForEach(node => node.SetContext(this));
+        private AIOption ChooseOption(AbstractAIBrain utilityAiBrain) {
+            if (utilityAiBrain == null) return null;
+            utilityAiBrain.GetNodes<EntryNode>().ForEach(node => node.SetContext(this));
+            utilityAiBrain.GetNodes<ActionNode>().ForEach(node => node.SetContext(this));
             // Fill the Ranked Options
             Options = new List<AIOption>();
-            UtilityAiBrain.GetNodes<OptionNode>().ForEach(node => Options.AddRange(node.GetOptions()));
+            utilityAiBrain.GetNodes<OptionNode>().ForEach(node => Options.AddRange(node.GetOptions()));
             // Remove ImpossibleDecisionValue Ranks
             Options.RemoveAll(option => option.Rank <= 0f);
             if (Options.Count == 0)
@@ -45,6 +45,14 @@ namespace NodeUtilityAi {
             return null;
         }
 
+        public void ThinkAndAct() {
+            foreach (AbstractAIBrain utilityAiBrain in UtilityAiBrains) {
+                AIOption option = ChooseOption(utilityAiBrain);
+                if (option == null) return;
+                option.ExecuteActions(this);
+            }
+        }
+        
         public void SaveToMemory(string dataTag, Object data) {
             if (LoadFromMemory(dataTag) != null)
                 throw new Exception("Impossible to save " + dataTag + ", consider using a " + typeof(MemoryCheckNode)

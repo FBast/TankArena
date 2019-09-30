@@ -16,11 +16,5 @@ namespace AI {
             InvokeRepeating(nameof(ThinkAndAct), 0, 0.1f);
         }
 
-        private void ThinkAndAct() {
-            AIOption option = ChooseOption();
-            if (option == null) return;
-            option.ExecuteActions(this);
-        }
-        
     }
 }
