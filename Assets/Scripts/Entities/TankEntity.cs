@@ -92,10 +92,10 @@ namespace Entities {
             ShotCharging.Play();
         }
 
-        public bool IsTankInRay() {
+        public GameObject TankInRay() {
             RaycastHit hit;
-            if (!Physics.Raycast(CanonOut.position, CanonOut.forward, out hit, Mathf.Infinity)) return false;
-            return hit.transform.GetComponent<TankEntity>() != null;
+            if (!Physics.Raycast(CanonOut.position, CanonOut.forward, out hit, Mathf.Infinity)) return null;
+            return hit.transform.gameObject;
         }
 
     }

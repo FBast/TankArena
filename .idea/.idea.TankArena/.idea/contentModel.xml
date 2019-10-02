@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Dizy\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dizy\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.469938171.00" t="ExcludeRecursive" />
-    <e p="D:\Local Repository\TankArena" t="IncludeRecursive">
+    <e p="C:\Users\frederic.bast\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\frederic.bast\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.-1304077868.00" t="ExcludeRecursive" />
+    <e p="U:\UnityProjects\TankArena" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -93,6 +93,8 @@
             <e p="SimpleEntryNodes" t="Include">
               <e p="AliveTankNode.cs" t="Include" />
               <e p="CurrentHpCountNode.cs" t="Include" />
+              <e p="DataInRayIsTargetNode.cs" t="Include" />
+              <e p="DataIsTarget.cs" t="Include" />
               <e p="DistanceFromDataNode.cs" t="Include" />
               <e p="DistanceFromNearestTankNode.cs" t="Include" />
               <e p="IsDestinationSet.cs" t="Include" />

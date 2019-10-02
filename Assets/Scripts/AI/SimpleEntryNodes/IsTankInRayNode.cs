@@ -6,9 +6,8 @@ namespace AI.SimpleEntryNodes {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            return tankAiComponent.TankEntity.IsTankInRay() ? 1 : 0;
+            return tankAiComponent.TankEntity.TankInRay() ? 1 : 0;
         }
         
     }
-
 }

@@ -1,13 +1,12 @@
-using Entities;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
+using UnityEngine;
 
 namespace AI.SimpleEntryNodes {
-    public class NoTargetNode : SimpleEntryNode {
-
+    public class DataIsTarget : SimpleEntryNode {
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            return tankAiComponent.TankEntity.Target != null ? 1 : 0;
+            return GetData<GameObject>() == tankAiComponent.TankEntity.Target ? 1 : 0;
         }
         
     }
