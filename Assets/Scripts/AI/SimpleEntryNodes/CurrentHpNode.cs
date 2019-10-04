@@ -2,7 +2,7 @@
 using NodeUtilityAi.Nodes;
 
 namespace AI.SimpleEntryNodes {
-    public class CurrentHpCountNode : SimpleEntryNode {
+    public class CurrentHpNode : SimpleEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;

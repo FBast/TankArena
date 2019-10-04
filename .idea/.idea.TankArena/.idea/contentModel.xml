@@ -26,6 +26,7 @@
             <e p="Nodes" t="Include">
               <e p="ActionNode.cs" t="Include" />
               <e p="CollectionEntryNode.cs" t="Include" />
+              <e p="DataEntryNode.cs" t="Include" />
               <e p="EntryNode.cs" t="Include" />
               <e p="MemoryAccessNode.cs" t="Include" />
               <e p="MemoryCheckNode.cs" t="Include" />
@@ -41,6 +42,34 @@
               <e p="UtilityFunctionNode.cs" t="Include" />
               <e p="UtilityInverterNode.cs" t="Include" />
               <e p="ValueFilterNode.cs" t="Include" />
+            </e>
+          </e>
+          <e p="TextMesh Pro" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="LiberationSans - OFL.txt" t="Include" />
+            </e>
+            <e p="Resources" t="Include">
+              <e p="LineBreaking Following Characters.txt" t="Include" />
+              <e p="LineBreaking Leading Characters.txt" t="Include" />
+              <e p="Shaders" t="Include">
+                <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+                <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+                <e p="TMP_Bitmap.shader" t="Include" />
+                <e p="TMP_SDF Overlay.shader" t="Include" />
+                <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+                <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+                <e p="TMP_SDF-Mobile.shader" t="Include" />
+                <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+                <e p="TMP_SDF-Surface.shader" t="Include" />
+                <e p="TMP_SDF.shader" t="Include" />
+                <e p="TMP_Sprite.shader" t="Include" />
+                <e p="TMPro.cginc" t="Include" />
+                <e p="TMPro_Properties.cginc" t="Include" />
+                <e p="TMPro_Surface.cginc" t="Include" />
+              </e>
+            </e>
+            <e p="Sprites" t="Include">
+              <e p="EmojiOne Attribution.txt" t="Include" />
             </e>
           </e>
           <e p="xNode" t="Include">
@@ -82,8 +111,18 @@
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
             <e p="CollectionEntryNodes" t="Include">
+              <e p="BonusNodes.cs" t="Include" />
               <e p="OtherTanksNode.cs" t="Include" />
               <e p="WayPointsNodes.cs" t="Include" />
+            </e>
+            <e p="DataEntryNodes" t="Include">
+              <e p="DataCurrentHpNode.cs" t="Include" />
+              <e p="DataInRayIsTargetNode.cs" t="Include" />
+              <e p="DataIsTarget.cs" t="Include" />
+              <e p="DataMaxHp.cs" t="Include" />
+              <e p="DistanceFromDataNode.cs" t="Include" />
+              <e p="IsWaypointCoverFromTarget.cs" t="Include" />
+              <e p="WaypointCover.cs" t="Include" />
             </e>
             <e p="SimpleActionNodes" t="Include">
               <e p="FireNode.cs" t="Include" />
@@ -92,32 +131,37 @@
             </e>
             <e p="SimpleEntryNodes" t="Include">
               <e p="AliveTankNode.cs" t="Include" />
-              <e p="CurrentHpCountNode.cs" t="Include" />
-              <e p="DataInRayIsTargetNode.cs" t="Include" />
-              <e p="DataIsTarget.cs" t="Include" />
-              <e p="DistanceFromDataNode.cs" t="Include" />
+              <e p="CurrentHpNode.cs" t="Include" />
+              <e p="DistanceFromFarthestBonusNode.cs" t="Include" />
+              <e p="DistanceFromFarthestGameObjectNode.cs" t="Include" />
+              <e p="DistanceFromFarthestTankNode.cs" t="Include" />
+              <e p="DistanceFromFarthestWaypointNode.cs" t="Include" />
               <e p="DistanceFromNearestTankNode.cs" t="Include" />
+              <e p="HasTargetNode.cs" t="Include" />
+              <e p="IsBonusAvailable.cs" t="Include" />
               <e p="IsDestinationSet.cs" t="Include" />
               <e p="IsShellLoadedNode.cs" t="Include" />
               <e p="IsTankInRayNode.cs" t="Include" />
-              <e p="IsWaypointCoverFromTarget.cs" t="Include" />
-              <e p="NoTargetNode.cs" t="Include" />
-              <e p="StartingHpCountNode.cs" t="Include" />
-              <e p="WaypointCover.cs" t="Include" />
+              <e p="MaxHpNode.cs" t="Include" />
             </e>
             <e p="TankAIBrain.cs" t="Include" />
             <e p="TankAIComponent.cs" t="Include" />
           </e>
           <e p="Components" t="Include">
             <e p="DestroyAfterTime.cs" t="Include" />
+            <e p="FreeLookCamera.cs" t="Include" />
             <e p="ParticleEmissionSetter.cs" t="Include" />
           </e>
           <e p="Entities" t="Include">
+            <e p="BonusEntity.cs" t="Include" />
+            <e p="PlayerSettings.cs" t="Include" />
             <e p="ShellEntity.cs" t="Include" />
             <e p="TankEntity.cs" t="Include" />
             <e p="WaypointEntity.cs" t="Include" />
           </e>
+          <e p="GameManager.cs" t="Include" />
           <e p="Utils" t="Include">
+            <e p="Properties.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
           </e>
         </e>

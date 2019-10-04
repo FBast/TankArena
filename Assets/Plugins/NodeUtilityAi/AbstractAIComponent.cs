@@ -9,36 +9,44 @@ using Random = UnityEngine.Random;
 
 namespace NodeUtilityAi {
     public class AbstractAIComponent : MonoBehaviour {
-        
+
+        public bool DebugMode;
+        public bool NoRandom;
         public List<AbstractAIBrain> UtilityAiBrains;
-        public float LastProbabilityResult;
-        public List<AIOption> Options;
         public Dictionary<string, Object> Memory = new Dictionary<string, Object>();
+        
+        private float _lastProbabilityResult;
+        private List<AIOption> _options;
         
         private AIOption ChooseOption(AbstractAIBrain utilityAiBrain) {
             if (utilityAiBrain == null) return null;
             utilityAiBrain.GetNodes<EntryNode>().ForEach(node => node.SetContext(this));
             utilityAiBrain.GetNodes<ActionNode>().ForEach(node => node.SetContext(this));
             // Fill the Ranked Options
-            Options = new List<AIOption>();
-            utilityAiBrain.GetNodes<OptionNode>().ForEach(node => Options.AddRange(node.GetOptions()));
+            _options = new List<AIOption>();
+            utilityAiBrain.GetNodes<OptionNode>().ForEach(node => _options.AddRange(node.GetOptions()));
             // Remove ImpossibleDecisionValue Ranks
-            Options.RemoveAll(option => option.Rank <= 0f);
-            if (Options.Count == 0)
+            _options.RemoveAll(option => option.Rank <= 0f);
+            if (_options.Count == 0)
                 return null;
             // Get max Rank
-            int maxRank = Options.Max(option => option.Rank);
+            int maxRank = _options.Max(option => option.Rank);
             for (int i = maxRank; i > 0; i--) {
-                List<AIOption> options = Options.FindAll(utility => utility.Rank == i);
+                List<AIOption> options = _options.FindAll(utility => utility.Rank == i);
                 if (options.Count == 0 || options.Sum(utility => utility.Utility) <= 0) continue;
                 // Calculating Weight
-                options.ForEach(dualUtility => dualUtility.Weight = dualUtility.Utility / Options.Sum(utility => utility.Utility));
+                options.ForEach(dualUtility => dualUtility.Weight = dualUtility.Utility / _options.Sum(utility => utility.Utility));
+                // Displaying debug
+                // Returning best option for no random
+                if (NoRandom) {
+                    return options.OrderByDescending(option => option.Weight).FirstOrDefault();
+                }
                 // Rolling probability on weighted random
-                LastProbabilityResult = Random.Range(0f, 1f);
+                _lastProbabilityResult = Random.Range(0f, 1f);
                 float weightSum = 0f;
                 foreach (AIOption dualUtility in options) {
                     weightSum += dualUtility.Weight;
-                    if (weightSum >= LastProbabilityResult)
+                    if (weightSum >= _lastProbabilityResult)
                         return dualUtility;
                 }
             }
@@ -48,8 +56,8 @@ namespace NodeUtilityAi {
         public void ThinkAndAct() {
             foreach (AbstractAIBrain utilityAiBrain in UtilityAiBrains) {
                 AIOption option = ChooseOption(utilityAiBrain);
-                if (option == null) return;
-                option.ExecuteActions(this);
+                option?.ExecuteActions(this);
+                if (DebugMode) Debug.Log(name + " for " + utilityAiBrain.name + " choose " + option);
             }
         }
         

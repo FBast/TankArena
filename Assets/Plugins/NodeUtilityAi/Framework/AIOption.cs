@@ -27,7 +27,10 @@ namespace NodeUtilityAi.Framework {
             AiActions = AiActions.OrderBy(action => action.Order).ToList();
             AiActions.ForEach(action => action.Action.Invoke(context, action.AiData));
         }
-        
+
+        public override string ToString() {
+            return Description + " - Utility " + Utility + " - Rank " + Rank + " - Weight " + Weight;
+        }
     }
 
 }

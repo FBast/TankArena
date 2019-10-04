@@ -1,18 +1,27 @@
-﻿using Components;
+﻿using System;
+using Components;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Entities {
     public class TankEntity : MonoBehaviour {
-
+        
+        [Header("Data")]
+        public PlayerSettings PlayerSettings;
+        
         [Header("References")] 
         public Transform CanonOut;
         public Transform Turret;
-        public AudioSource ShotCharging;
         public AudioSource ShotFiring;
         public ParticleEmissionSetter SmokeSetter;
         public ParticleEmissionSetter FireSetter;
-
+        public TextMeshProUGUI TankName;
+        public MeshRenderer TurretMeshRenderer;
+        public MeshRenderer HullMeshRenderer;
+        public MeshRenderer RightTrackMeshRender;
+        public MeshRenderer LeftTrackMeshRender;
+        
         [Header("Prefabs")]
         public GameObject ShellPrefab;
         public GameObject CanonShotPrefab;
@@ -22,7 +31,7 @@ namespace Entities {
         public int CanonDamage;
         public int CanonPower;
         public int TurretSpeed;
-        public int StartingHP;
+        public int MaxHP;
         public int ReloadTime;
         
         [Header("Variables")]
@@ -33,15 +42,20 @@ namespace Entities {
         
         private NavMeshAgent _navMeshAgent;
 
-        private int _totalDamages => StartingHP - CurrentHP;
-        private float _damagePercent => (float) _totalDamages / StartingHP;
+        private int _totalDamages => MaxHP - CurrentHP;
+        private float _damagePercent => (float) _totalDamages / MaxHP;
         private bool _isAtDestination => _navMeshAgent.remainingDistance < Mathf.Infinity &&
                                           _navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
                                           _navMeshAgent.remainingDistance <= 0;
 
         private void Awake() {
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            CurrentHP = StartingHP;
+            TankName.text = PlayerSettings.TankName;
+            TurretMeshRenderer.material.color = PlayerSettings.TurretColor;
+            HullMeshRenderer.material.color = PlayerSettings.HullColor;
+            RightTrackMeshRender.material.color = PlayerSettings.TracksColor;
+            LeftTrackMeshRender.material.color = PlayerSettings.TracksColor;
+            CurrentHP = MaxHP;
         }
 
         private void Update() {
@@ -49,6 +63,7 @@ namespace Entities {
             if (Target) {
                 Vector3 newDir = Vector3.RotateTowards(Turret.forward, Target.transform.position - Turret.position, TurretSpeed * Time.deltaTime, 0.0f);
                 Turret.rotation = Quaternion.LookRotation(newDir);
+                Turret.eulerAngles = new Vector3(0, Turret.eulerAngles.y, 0);
             }
             if (Destination) {
                 Vector3[] pathCorners = _navMeshAgent.path.corners;
@@ -89,14 +104,20 @@ namespace Entities {
 
         private void Reload() {
             IsShellLoaded = true;
-            ShotCharging.Play();
+        }
+        
+        public void Heal(int healing) {
+            CurrentHP += healing;
+            if (CurrentHP > MaxHP) CurrentHP = MaxHP;
         }
 
         public GameObject TankInRay() {
             RaycastHit hit;
-            if (!Physics.Raycast(CanonOut.position, CanonOut.forward, out hit, Mathf.Infinity)) return null;
-            return hit.transform.gameObject;
+            if (Physics.Raycast(CanonOut.position, CanonOut.forward, out hit, Mathf.Infinity)) {
+                if (hit.transform.GetComponent<TankEntity>()) return hit.transform.gameObject;
+            }
+            return null;
         }
-
+        
     }
 }

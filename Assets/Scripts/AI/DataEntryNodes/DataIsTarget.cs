@@ -1,12 +1,12 @@
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
+using UnityEngine;
 
-namespace AI.SimpleEntryNodes {
-    public class StartingHpCountNode : SimpleEntryNode {
-
+namespace AI.DataEntryNodes {
+    public class DataIsTarget : DataEntryNode {
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            return tankAiComponent.TankEntity.StartingHP;
+            return GetData<GameObject>() == tankAiComponent.TankEntity.Target ? 1 : 0;
         }
         
     }

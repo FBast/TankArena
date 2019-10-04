@@ -1,25 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Entities;
 using UnityEngine;
 
-public class WaypointEntity : MonoBehaviour {
+namespace Entities {
+    public class WaypointEntity : MonoBehaviour {
 
-    public List<GameObject> TankOnSight;
-    public List<GameObject> TankOnTheMap;
+        public List<GameObject> TankOnSight;
 
-    private void Awake() {
-        TankOnTheMap = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
-    }
-
-    private void Update() {
-        TankOnSight = new List<GameObject>();
-        foreach (GameObject tankGameObject in TankOnTheMap) {
-            if (!tankGameObject) continue;
-            if (Physics.Linecast(transform.position, tankGameObject.transform.position)) continue;
-            TankOnSight.Add(tankGameObject);
-            Debug.DrawLine(transform.position, tankGameObject.transform.position, Color.blue);
+        private void Update() {
+            TankOnSight = new List<GameObject>();
+            foreach (TankEntity tankEntity in FindObjectsOfType<TankEntity>()) {
+                if (Physics.Linecast(transform.position, tankEntity.transform.position)) continue;
+                TankOnSight.Add(tankEntity.gameObject);
+                Debug.DrawLine(transform.position, tankEntity.transform.position, Color.blue);
+            }
         }
-    }
 
+    }
 }

@@ -1,4 +1,3 @@
-using Entities;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 
@@ -11,5 +10,4 @@ namespace AI.SimpleEntryNodes {
         }
         
     }
-
 }

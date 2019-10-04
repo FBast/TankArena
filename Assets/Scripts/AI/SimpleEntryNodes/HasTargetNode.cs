@@ -1,9 +1,8 @@
-using Entities;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 
 namespace AI.SimpleEntryNodes {
-    public class NoTargetNode : SimpleEntryNode {
+    public class HasTargetNode : SimpleEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;

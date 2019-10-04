@@ -11,7 +11,7 @@ namespace AI.CollectionEntryNodes {
         protected override List<Object> CollectionProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
             List<TankEntity> tanks = FindObjectsOfType<TankEntity>().ToList();
-            if (tanks.Contains(tankAiComponent.TankEntity)) tanks.Remove(tankAiComponent.TankEntity);
+            tanks.Remove(tankAiComponent.TankEntity);
             return new List<Object>(tanks.Select(entity => entity.gameObject));
         }
         
