@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public Transform WaypointContent;
     
     private void Start() {
+        Cursor.visible = false;
 //        NavMeshTriangulation navMeshTriangulation = NavMesh.CalculateTriangulation();
 //        for (int i = 0; i < navMeshTriangulation.vertices.Length; i++) {
 //            Instantiate(WaypointPrefab, navMeshTriangulation.vertices[i], Quaternion.identity, WaypointContent);
