@@ -20,6 +20,8 @@
             <e p="Framework" t="Include">
               <e p="AIAction.cs" t="Include" />
               <e p="AIData.cs" t="Include" />
+              <e p="AIDebug.cs" t="Include" />
+              <e p="AIDebugChoice.cs" t="Include" />
               <e p="AIOption.cs" t="Include" />
               <e p="TaggedData.cs" t="Include" />
             </e>

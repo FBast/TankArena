@@ -15,7 +15,14 @@ namespace Components {
         public string PitchRotationAxis;
         public string RollRotatationAxis;
         public int RotationSpeed;
-        
+
+        [Header("Extras")] 
+        public bool HideCursor;
+
+        private void Update() {
+            Cursor.visible = !HideCursor;
+        }
+
         private void FixedUpdate() {
             float totalMovementSpeed = Time.fixedDeltaTime * MovementSpeed;
             transform.Translate(Input.GetAxis(LeftRightMovementAxis) * totalMovementSpeed, Input.GetAxis(UpDownMovementAxis) * totalMovementSpeed, Input.GetAxis(ForwardBackwardMovementAxis) * totalMovementSpeed);
