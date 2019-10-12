@@ -10,7 +10,7 @@ namespace AI.SimpleEntryNodes {
         
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            List<BonusEntity> bonusEntities = FindObjectsOfType<BonusEntity>().ToList();
+            List<BonusEntity> bonusEntities = GameManager.Instance.BonusEntities;
             float distanceFromFarthestBonus = Mathf.NegativeInfinity;
             if (bonusEntities.Count == 0) return (int) distanceFromFarthestBonus;
             distanceFromFarthestBonus = bonusEntities

@@ -86,6 +86,7 @@ namespace Entities {
             ShotFiring.Play();
             GameObject instantiate = Instantiate(ShellPrefab, CanonOut.position, CanonOut.rotation);
             instantiate.GetComponent<Rigidbody>().AddForce(CanonOut.transform.forward * CanonPower, ForceMode.Impulse);
+            instantiate.GetComponent<ShellEntity>().TankEntityOwner = this;
             instantiate.GetComponent<ShellEntity>().Damage = CanonDamage;
             IsShellLoaded = false;
             Invoke(nameof(Reload), ReloadTime);

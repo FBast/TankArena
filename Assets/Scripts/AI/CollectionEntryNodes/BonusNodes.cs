@@ -9,8 +9,7 @@ namespace AI.CollectionEntryNodes {
     public class BonusNodes : CollectionEntryNode {
 
         protected override List<Object> CollectionProvider(AbstractAIComponent context) {
-            List<BonusEntity> bonus = FindObjectsOfType<BonusEntity>().ToList();
-            return new List<Object>(bonus.Select(entity => entity.gameObject));
+            return new List<Object>(GameManager.Instance.BonusEntities.Select(entity => entity.gameObject));
         }
         
     }

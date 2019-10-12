@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NodeUtilityAi.Framework;
 using NodeUtilityAi.Nodes;
-using Plugins.NodeUtilityAi.Framework;
-using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -12,91 +11,88 @@ using Random = UnityEngine.Random;
 namespace NodeUtilityAi {
     public class AbstractAIComponent : MonoBehaviour {
 
-        [Header("Debug")] 
-        public GameObject DebugCanvasPrefab;
-        public bool DebugMode;
-
-        [Header("Brains")]
+        public bool RealTimeRefresh;
+        [Range(0.1f, 1f)] public float TimeBetweenRefresh = 0.5f;
         public bool AlwaysPickBestChoice;
         public List<AbstractAIBrain> UtilityAiBrains;
+
+        public readonly Dictionary<AbstractAIBrain, List<AIOption>> Options = new Dictionary<AbstractAIBrain, List<AIOption>>();
+        public Dictionary<AbstractAIBrain, AIOption> SelectedOptions = new Dictionary<AbstractAIBrain, AIOption>();
         
         private readonly Dictionary<string, Object> _memory = new Dictionary<string, Object>();
         private float _lastProbabilityResult;
-        private readonly Dictionary<AbstractAIBrain, List<AIOption>> _options = new Dictionary<AbstractAIBrain, List<AIOption>>();
-        private static AIDebug _aiDebug;
+        private bool _isThinking;
+        private float _timeSinceLastRefresh;
 
         private void Update() {
-#if UNITY_EDITOR
-            if (_aiDebug == null) _aiDebug = Instantiate(DebugCanvasPrefab).GetComponent<AIDebug>();
-            if (Selection.Contains(gameObject) && Selection.transforms.Length == 1) {
-                DisplayDebug(_options);
-            }
-#endif
+            _timeSinceLastRefresh += Time.deltaTime;
+            if (_isThinking || _timeSinceLastRefresh <= TimeBetweenRefresh && !RealTimeRefresh) return;
+            StartCoroutine(ThinkAndAct());
+            _timeSinceLastRefresh = 0;
         }
 
-        private AIOption ChooseOption(AbstractAIBrain utilityAiBrain) {
-            if (utilityAiBrain == null) return null;
+        IEnumerator ThinkAndAct() {
+            _isThinking = true;
+            foreach (AbstractAIBrain utilityAiBrain in UtilityAiBrains) {
+                CalculateOptions(utilityAiBrain);
+                yield return null;
+                AIOption aiOption = ChooseOption(utilityAiBrain);
+                if (aiOption == null) continue;
+                if (SelectedOptions.ContainsKey(utilityAiBrain)) {
+                    SelectedOptions[utilityAiBrain] = aiOption;
+                } else {
+                    SelectedOptions.Add(utilityAiBrain, aiOption);
+                }
+                aiOption.ExecuteActions(this);
+                yield return null;
+            }
+            _isThinking = false;
+        }
+
+        private void CalculateOptions(AbstractAIBrain utilityAiBrain) {
+            if (utilityAiBrain == null) return;
             // Setup Contexts
             utilityAiBrain.GetNodes<EntryNode>().ForEach(node => node.SetContext(this));
             utilityAiBrain.GetNodes<ActionNode>().ForEach(node => node.SetContext(this));
             // Add the brain to the option dictionary
-            if (_options.ContainsKey(utilityAiBrain)) {
-                _options[utilityAiBrain].Clear();
+            if (Options.ContainsKey(utilityAiBrain)) {
+                Options[utilityAiBrain].Clear();
             }
             else {
-                _options.Add(utilityAiBrain, new List<AIOption>());
+                Options.Add(utilityAiBrain, new List<AIOption>());
             }
-            utilityAiBrain.GetNodes<OptionNode>().ForEach(node => _options[utilityAiBrain]
+            utilityAiBrain.GetNodes<OptionNode>().ForEach(node => Options[utilityAiBrain]
                 .AddRange(node.GetOptions()));
-            // Remove ImpossibleDecisionValue Ranks
-            _options[utilityAiBrain].RemoveAll(option => option.Rank <= 0f);
-            if (_options.Count == 0)
-                return null;
-            // Get max Rank
-            int maxRank = _options[utilityAiBrain].Max(option => option.Rank);
-            for (int i = maxRank; i > 0; i--) {
-                List<AIOption> options = _options[utilityAiBrain].FindAll(utility => utility.Rank == i);
-                if (options.Count == 0 || options.Sum(utility => utility.Utility) <= 0) continue;
-                // Calculating Weight
-                options.ForEach(dualUtility => dualUtility.Weight = dualUtility.Utility / _options[utilityAiBrain]
-                                                                        .Sum(utility => utility.Utility));
-                options = options.OrderByDescending(option => option.Weight).ToList();
-                // Returning best option for no random
-                if (AlwaysPickBestChoice) {
-                    return options.FirstOrDefault();
-                }
-                // Rolling probability on weighted random
-                _lastProbabilityResult = Random.Range(0f, 1f);
-                float weightSum = 0f;
-                foreach (AIOption dualUtility in options) {
-                    weightSum += dualUtility.Weight;
-                    if (weightSum >= _lastProbabilityResult)
-                        return dualUtility;
-                }
+            // Return if no option found
+            if (Options[utilityAiBrain].Count == 0) return;
+            // Calculate Probability
+            foreach (AIOption aiOption in Options[utilityAiBrain]) {
+                aiOption.Probability = aiOption.Utility / Options[utilityAiBrain]
+                                           .Where(option => option.Weight == aiOption.Weight)
+                                           .Sum(option => option.Utility);
+            }
+            // Order by Weight then Utility
+            Options[utilityAiBrain] = Options[utilityAiBrain].OrderByDescending(option => option.Weight).ThenByDescending(option => option.Utility).ToList();
+        }
+
+        private AIOption ChooseOption(AbstractAIBrain abstractAiBrain) {
+            // Returning best option for no random
+            if (AlwaysPickBestChoice) {
+                return Options[abstractAiBrain].FirstOrDefault();
+            }
+            // Rolling probability on weighted random
+            _lastProbabilityResult = Random.Range(0f, 1f);
+            float probabilitySum = 0f;
+            int maxWeight = Options[abstractAiBrain].Max(option => option.Weight);
+            if (maxWeight == 0) return null;
+            foreach (AIOption dualUtility in Options[abstractAiBrain].FindAll(option => option.Weight == maxWeight)) {
+                probabilitySum += dualUtility.Probability;
+                if (probabilitySum >= _lastProbabilityResult)
+                    return dualUtility;
             }
             return null;
         }
 
-        public void DisplayDebug(Dictionary<AbstractAIBrain, List<AIOption>> options) {
-            // Return if selection does not contain this or selection is multiple
-            if (!Selection.Contains(gameObject) || Selection.transforms.Length != 1) return;
-            if (!DebugMode) return;
-            _aiDebug.ClearChoices();
-            foreach (KeyValuePair<AbstractAIBrain,List<AIOption>> valuePair in options) {
-                foreach (AIOption option in valuePair.Value) {
-                    _aiDebug.AddChoice(valuePair.Key, option);
-                }
-            }
-        }
-
-        public void ThinkAndAct() {
-            // Create canvas if null
-            foreach (AbstractAIBrain utilityAiBrain in UtilityAiBrains) {
-                AIOption option = ChooseOption(utilityAiBrain);
-                option?.ExecuteActions(this);
-            }
-        }
-        
         public void SaveToMemory(string dataTag, Object data) {
             if (LoadFromMemory(dataTag) != null)
                 throw new Exception("Impossible to save " + dataTag + ", consider using a " + typeof(MemoryCheckNode)

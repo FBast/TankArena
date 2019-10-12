@@ -8,6 +8,7 @@ namespace Entities {
         [HideInInspector] public int Damage;
 
         private void OnTriggerEnter(Collider other) {
+            if (other.GetComponent<ShellEntity>()) return;
             TankEntity tankEntity = other.GetComponent<TankEntity>();
             if (tankEntity == TankEntityOwner) return;
             if (tankEntity) other.GetComponent<TankEntity>().Damage(Damage);

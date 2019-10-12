@@ -8,7 +8,7 @@ namespace Entities {
 
         private void Update() {
             TankOnSight = new List<GameObject>();
-            foreach (TankEntity tankEntity in FindObjectsOfType<TankEntity>()) {
+            foreach (TankEntity tankEntity in GameManager.Instance.TankEntities) {
                 if (Physics.Linecast(transform.position, tankEntity.transform.position)) continue;
                 TankOnSight.Add(tankEntity.gameObject);
                 Debug.DrawLine(transform.position, tankEntity.transform.position, Color.blue);

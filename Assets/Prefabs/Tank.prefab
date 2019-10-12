@@ -14872,9 +14872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3147ecddd5e464db033509a9a7e4c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugCanvasPrefab: {fileID: 84127382357070197, guid: 1f0aef33ab6f9e64ba7f94e50b2ccf8d,
-    type: 3}
-  DebugMode: 1
+  RealTimeRefresh: 0
+  TimeBetweenRefresh: 0.5
   AlwaysPickBestChoice: 1
   UtilityAiBrains:
   - {fileID: 11400000, guid: 97f6dc24fb9bc484d815545fcc6460c2, type: 2}
@@ -15111,13 +15110,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 255155266725483810}
-    characterCount: 0
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
-    wordCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -15141,6 +15140,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2466928126323561731}
     m_Modifications:
+    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15184,10 +15187,6 @@ PrefabInstance:
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
-      propertyPath: m_Name
-      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}

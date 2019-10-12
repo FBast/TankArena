@@ -9,7 +9,7 @@ namespace AI.CollectionEntryNodes {
     public class WaypointsNodes : CollectionEntryNode {
 
         protected override List<Object> CollectionProvider(AbstractAIComponent context) {
-            List<WaypointEntity> waypoints = FindObjectsOfType<WaypointEntity>().ToList();
+            List<WaypointEntity> waypoints = GameManager.Instance.WaypointEntities.ToList();
             return new List<Object>(waypoints.Select(entity => entity.gameObject));
         }
         

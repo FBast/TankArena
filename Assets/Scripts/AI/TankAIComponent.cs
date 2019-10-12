@@ -1,6 +1,5 @@
 using Entities;
 using NodeUtilityAi;
-using NodeUtilityAi.Framework;
 using UnityEngine;
 
 namespace AI {
@@ -11,9 +10,8 @@ namespace AI {
         [HideInInspector] public TankEntity TankEntity;
         // End of custom references
 
-        private void Start() {
+        private void Awake() {
             TankEntity = GetComponent<TankEntity>();
-            InvokeRepeating(nameof(ThinkAndAct), 0, 0.1f);
         }
 
     }

@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 766959169144266406, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 766959169144266457, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
@@ -303,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 766959169144266406, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 766959169144266457, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
@@ -1296,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 766959169144266406, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 766959169144266457, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
@@ -2166,21 +2166,26 @@ PrefabInstance:
     - target: {fileID: 255155266725483810, guid: 756d3a6506f2f8241b4e8badde68567a,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 255155266725483810, guid: 756d3a6506f2f8241b4e8badde68567a,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 255155266725483810, guid: 756d3a6506f2f8241b4e8badde68567a,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 255155266725483810, guid: 756d3a6506f2f8241b4e8badde68567a,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 255155266725483810, guid: 756d3a6506f2f8241b4e8badde68567a,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6334775136059622303, guid: 756d3a6506f2f8241b4e8badde68567a,
@@ -3017,7 +3022,7 @@ PrefabInstance:
     - target: {fileID: 766959169144266406, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 766959169144266457, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
@@ -3102,7 +3107,7 @@ PrefabInstance:
     - target: {fileID: 766959169144266406, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 766959169144266457, guid: b7dea6330fc52124fbc7cc5c2a47a412,
         type: 3}
