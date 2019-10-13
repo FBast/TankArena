@@ -68,18 +68,25 @@ namespace Plugins.NodeUtilityAi.Editor {
                 int i = 0;
                 EditorGUI.LabelField(new Rect(3, 3, position.width - 6, rowHeight), "Brain of " + _currentGameObject.name, labelGuiStyle);
                 foreach (KeyValuePair<AbstractAIBrain,List<AIOption>> valuePair in _options) {
-                    float maxWeight = valuePair.Value.Max(option => option.Weight);
-                    float minWeight = valuePair.Value.Min(option => option.Weight);
+                    float weightMax = valuePair.Value.Max(option => option.Weight);
+                    float weightMin = valuePair.Value.Min(option => option.Weight);
                     EditorGUI.LabelField(new Rect(3 + i * (columnWidth + 6), 3 + rowHeight, columnWidth, rowHeight), valuePair.Key.name, labelGuiStyle);
                     for (int j = 0; j < valuePair.Value.Count; j++) {
                         EditorGUI.ProgressBar(new Rect(3 + i * (columnWidth + 6), 3 + (j + 2) * rowHeight, columnWidth, rowHeight), 
                             valuePair.Value[j].Probability, valuePair.Value[j].Description + " with Weight " + valuePair.Value[j].Weight + " and Utility " + valuePair.Value[j].Utility);
+                        Color weightColor;
                         if (valuePair.Value[j] == _selectedOptions[valuePair.Key]) {
-                            EditorGUI.DrawRect(new Rect(3 + i * (columnWidth + 6), 3 + (j + 2) * rowHeight, columnWidth, rowHeight), new Color(0, 0, 0, 0.25f));
+                            weightColor = new Color(0, 0, 0, 0.5f);
+                        } else if (valuePair.Value[j].Weight == 0) {
+                            weightColor = new Color(1, 1, 1, 0.5f);
+                        } else if (Math.Abs(weightMax - weightMin) <= 0) {
+                            weightColor = new Color(0, 1, 0, 0.25f);
                         } else {
-                            float colorTime = valuePair.Value[j].Weight / (maxWeight - minWeight);
-                            EditorGUI.DrawRect(new Rect(3 + i * (columnWidth + 6), 3 + (j + 2) * rowHeight, columnWidth, rowHeight), _weightGradiant.Evaluate(colorTime));
+                            float weightAbs = valuePair.Value[j].Weight * (weightMax - weightMin) / weightMax;
+                            float colorTime = weightAbs / (weightMax - weightMin);
+                            weightColor = _weightGradiant.Evaluate(colorTime);
                         }
+                        EditorGUI.DrawRect(new Rect(3 + i * (columnWidth + 6), 3 + (j + 2) * rowHeight, columnWidth, rowHeight), weightColor);
                     }
                     i++;
                 }

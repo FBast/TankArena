@@ -8,6 +8,7 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="BonusSpawnerEntity.cs" t="Include" />
         <e p="Fonts" t="Include">
           <e p="Bowlby_One" t="Include">
             <e p="FontLicense.txt" t="Include" />
@@ -119,13 +120,13 @@
               <e p="WayPointsNodes.cs" t="Include" />
             </e>
             <e p="DataEntryNodes" t="Include">
+              <e p="DataCover.cs" t="Include" />
               <e p="DataCurrentHpNode.cs" t="Include" />
               <e p="DataInRayIsTargetNode.cs" t="Include" />
               <e p="DataIsTarget.cs" t="Include" />
               <e p="DataMaxHp.cs" t="Include" />
               <e p="DistanceFromDataNode.cs" t="Include" />
-              <e p="IsWaypointCoverFromTarget.cs" t="Include" />
-              <e p="WaypointCover.cs" t="Include" />
+              <e p="IsDataCoverFromTarget.cs" t="Include" />
             </e>
             <e p="SimpleActionNodes" t="Include">
               <e p="FireNode.cs" t="Include" />
@@ -164,10 +165,12 @@
           </e>
           <e p="GameManager.cs" t="Include" />
           <e p="Utils" t="Include">
+            <e p="ExtensionMethods.cs" t="Include" />
             <e p="Properties.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
           </e>
         </e>
+        <e p="SphereOverlapTest.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

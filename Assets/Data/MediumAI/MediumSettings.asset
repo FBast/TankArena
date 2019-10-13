@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1e59cc3b0c7467e8a9284f412777f1e, type: 3}
-  m_Name: FredSettings
+  m_Name: MediumSettings
   m_EditorClassIdentifier: 
   PlayerName: Fred
-  TankName: Tonton
-  TurretColor: {r: 1, g: 0, b: 0, a: 0}
-  HullColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0}
-  TracksColor: {r: 1, g: 0, b: 0, a: 0}
+  TankName: Medium
+  TurretColor: {r: 1, g: 0.99862754, b: 0, a: 1}
+  HullColor: {r: 1, g: 0.99862754, b: 0, a: 1}
+  TracksColor: {r: 1, g: 0.99862754, b: 0, a: 1}

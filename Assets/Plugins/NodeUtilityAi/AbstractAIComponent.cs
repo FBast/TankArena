@@ -10,9 +10,8 @@ using Random = UnityEngine.Random;
 
 namespace NodeUtilityAi {
     public class AbstractAIComponent : MonoBehaviour {
-
-        public bool RealTimeRefresh;
-        [Range(0.1f, 1f)] public float TimeBetweenRefresh = 0.5f;
+        
+        [Range(0.1f, 5f)] public float TimeBetweenRefresh = 0.5f;
         public bool AlwaysPickBestChoice;
         public List<AbstractAIBrain> UtilityAiBrains;
 
@@ -26,7 +25,7 @@ namespace NodeUtilityAi {
 
         private void Update() {
             _timeSinceLastRefresh += Time.deltaTime;
-            if (_isThinking || _timeSinceLastRefresh <= TimeBetweenRefresh && !RealTimeRefresh) return;
+            if (_isThinking || _timeSinceLastRefresh <= TimeBetweenRefresh) return;
             StartCoroutine(ThinkAndAct());
             _timeSinceLastRefresh = 0;
         }
@@ -76,6 +75,9 @@ namespace NodeUtilityAi {
         }
 
         private AIOption ChooseOption(AbstractAIBrain abstractAiBrain) {
+            // Calcul maxWeight and return null if equal to zero
+            int maxWeight = Options[abstractAiBrain].Max(option => option.Weight);
+            if (maxWeight == 0) return null;
             // Returning best option for no random
             if (AlwaysPickBestChoice) {
                 return Options[abstractAiBrain].FirstOrDefault();
@@ -83,8 +85,6 @@ namespace NodeUtilityAi {
             // Rolling probability on weighted random
             _lastProbabilityResult = Random.Range(0f, 1f);
             float probabilitySum = 0f;
-            int maxWeight = Options[abstractAiBrain].Max(option => option.Weight);
-            if (maxWeight == 0) return null;
             foreach (AIOption dualUtility in Options[abstractAiBrain].FindAll(option => option.Weight == maxWeight)) {
                 probabilitySum += dualUtility.Probability;
                 if (probabilitySum >= _lastProbabilityResult)

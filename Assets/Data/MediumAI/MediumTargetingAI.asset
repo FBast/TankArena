@@ -283,7 +283,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.51
+  UtilityY: 0.5466667
 --- !u!114 &-1003193488296419402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd72d567b36181e4c8200953598994c4, type: 3}
-  m_Name: TargetingAI
+  m_Name: MediumTargetingAI
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4435751761172415806}
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -40, y: -168}
+  position: {x: -88, y: -280}
   ports:
     keys:
     - Data
@@ -824,7 +824,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.8
+  UtilityY: 0.6
 --- !u!114 &6529744489219897804
 MonoBehaviour:
   m_ObjectHideFlags: 0

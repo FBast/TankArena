@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Components;
 using TMPro;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace Entities {
         public GameObject CanonShotPrefab;
         public GameObject TankExplosionPrefab;
 
-        [Header("Parameters")] 
+        [Header("Parameters")]
         public int CanonDamage;
         public int CanonPower;
         public int TurretSpeed;
@@ -39,7 +40,8 @@ namespace Entities {
         public bool IsShellLoaded = true;
         public GameObject Target;
         public GameObject Destination;
-        
+
+        private readonly int _waypointRadius = 15;
         private NavMeshAgent _navMeshAgent;
 
         private int _totalDamages => MaxHP - CurrentHP;
@@ -50,6 +52,7 @@ namespace Entities {
 
         private void Awake() {
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            if (!PlayerSettings) return;
             TankName.text = PlayerSettings.TankName;
             TurretMeshRenderer.material.color = PlayerSettings.TurretColor;
             HullMeshRenderer.material.color = PlayerSettings.HullColor;
@@ -57,7 +60,12 @@ namespace Entities {
             LeftTrackMeshRender.material.color = PlayerSettings.TracksColor;
             CurrentHP = MaxHP;
         }
-
+        
+        private void OnDrawGizmos() {
+            Gizmos.color = new Color(0, 1, 0, 0.2f);
+            Gizmos.DrawSphere(transform.position, _waypointRadius);
+        }
+        
         private void Update() {
             Debug.DrawRay(CanonOut.position, CanonOut.forward * 100, Color.red);
             if (Target) {
@@ -99,10 +107,6 @@ namespace Entities {
             Destroy(gameObject);
         }
 
-        public void MoveTo(Vector3 position) {
-            _navMeshAgent.SetDestination(position);
-        }
-
         private void Reload() {
             IsShellLoaded = true;
         }
@@ -112,6 +116,11 @@ namespace Entities {
             if (CurrentHP > MaxHP) CurrentHP = MaxHP;
         }
 
+        public List<WaypointEntity> SeekWaypointInRadius() {
+            return GameManager.Instance.WaypointEntities
+                .Where(entity => Vector3.Distance(transform.position, entity.transform.position) < _waypointRadius).ToList();
+        } 
+        
         public GameObject TankInRay() {
             RaycastHit hit;
             if (Physics.Raycast(CanonOut.position, CanonOut.forward, out hit, Mathf.Infinity)) {

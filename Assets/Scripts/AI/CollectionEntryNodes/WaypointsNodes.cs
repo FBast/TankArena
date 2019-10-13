@@ -9,8 +9,9 @@ namespace AI.CollectionEntryNodes {
     public class WaypointsNodes : CollectionEntryNode {
 
         protected override List<Object> CollectionProvider(AbstractAIComponent context) {
-            List<WaypointEntity> waypoints = GameManager.Instance.WaypointEntities.ToList();
-            return new List<Object>(waypoints.Select(entity => entity.gameObject));
+            TankAIComponent tankAiComponent = (TankAIComponent) context;
+            return new List<Object>(tankAiComponent.TankEntity.SeekWaypointInRadius()
+                .Select(entity => entity.gameObject));
         }
         
     }

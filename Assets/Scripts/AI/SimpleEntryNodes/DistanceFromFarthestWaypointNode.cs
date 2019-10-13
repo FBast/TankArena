@@ -10,7 +10,7 @@ namespace AI.SimpleEntryNodes {
         
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            List<WaypointEntity> waypointEntities = GameManager.Instance.WaypointEntities;
+            List<WaypointEntity> waypointEntities = tankAiComponent.TankEntity.SeekWaypointInRadius();
             float distanceFromFarthestWaypoint = Mathf.NegativeInfinity;
             if (waypointEntities.Count == 0) return (int) distanceFromFarthestWaypoint;
             distanceFromFarthestWaypoint = waypointEntities

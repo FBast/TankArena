@@ -14837,7 +14837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce5066b616060d4ea89ce77fdac03f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSettings: {fileID: 11400000, guid: a555818f7a40a334291ffb233ee953fd, type: 2}
+  PlayerSettings: {fileID: 0}
   CanonOut: {fileID: 7884843264735527146}
   Turret: {fileID: 2466928126323513155}
   ShotFiring: {fileID: 8933866900474004020}
@@ -14856,7 +14856,7 @@ MonoBehaviour:
   TurretSpeed: 10
   MaxHP: 5
   ReloadTime: 5
-  CurrentHP: 10
+  CurrentHP: 5
   IsShellLoaded: 1
   Target: {fileID: 0}
   Destination: {fileID: 0}
@@ -14872,12 +14872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3147ecddd5e464db033509a9a7e4c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RealTimeRefresh: 0
-  TimeBetweenRefresh: 0.5
+  TimeBetweenRefresh: 1
   AlwaysPickBestChoice: 1
-  UtilityAiBrains:
-  - {fileID: 11400000, guid: 97f6dc24fb9bc484d815545fcc6460c2, type: 2}
-  - {fileID: 11400000, guid: 87a5e66399e019448a00543288016063, type: 2}
+  UtilityAiBrains: []
   TankEntity: {fileID: 0}
 --- !u!1 &8387850528791954439
 GameObject:
