@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: Is Shell Loaded
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: -664}
+  position: {x: -696, y: -616}
   ports:
     keys:
     - Value
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: Has Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: -440}
+  position: {x: -696, y: -488}
   ports:
     keys:
     - Value
@@ -598,19 +598,9 @@ MonoBehaviour:
   position: {x: -1288, y: -168}
   ports:
     keys:
-    - DataIn
     - LinkedOption
     - DataOut
     values:
-    - _fieldName: DataIn
-      _node: {fileID: 1585590846828763168}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: LinkedOption
       _node: {fileID: 1585590846828763168}
       _typeQualifiedName: NodeUtilityAi.Nodes.CollectionEntryNode, Assembly-CSharp-firstpass,
@@ -644,9 +634,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DataIn:
-    DataTag: 
-    Data: {fileID: 0}
   LinkedOption: {fileID: 0}
   DataOut:
     DataTag: 
@@ -933,15 +920,6 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Value
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: Value
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: Value
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: Value
         node: {fileID: -431299842432448598}
         reroutePoints: []
       - fieldName: Value
@@ -968,9 +946,6 @@ MonoBehaviour:
       _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: LinkedOption
-        node: {fileID: 0}
-        reroutePoints: []
       - fieldName: LinkedOption
         node: {fileID: 4435751761172415806}
         reroutePoints: []
