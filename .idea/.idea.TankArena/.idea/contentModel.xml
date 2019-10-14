@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\frederic.bast\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\frederic.bast\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.-1304077868.00" t="ExcludeRecursive" />
-    <e p="U:\UnityProjects\TankArena" t="IncludeRecursive">
+    <e p="C:\Users\Dizy\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Dizy\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.469938171.00" t="ExcludeRecursive" />
+    <e p="D:\Local Repository\TankArena" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -115,39 +115,40 @@
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
             <e p="CollectionEntryNodes" t="Include">
-              <e p="BonusNodes.cs" t="Include" />
-              <e p="OtherTanksNode.cs" t="Include" />
-              <e p="WayPointsNodes.cs" t="Include" />
+              <e p="Bonus.cs" t="Include" />
+              <e p="OtherTanks.cs" t="Include" />
+              <e p="Waypoints.cs" t="Include" />
             </e>
             <e p="DataEntryNodes" t="Include">
               <e p="DataCover.cs" t="Include" />
-              <e p="DataCurrentHpNode.cs" t="Include" />
-              <e p="DataInRayIsTargetNode.cs" t="Include" />
+              <e p="DataCoverCountFromAgressors.cs" t="Include" />
+              <e p="DataCurrentHp.cs" t="Include" />
+              <e p="DataInRayIsTarget.cs" t="Include" />
               <e p="DataIsTarget.cs" t="Include" />
               <e p="DataMaxHp.cs" t="Include" />
-              <e p="DistanceFromDataNode.cs" t="Include" />
-              <e p="IsDataCoverFromAggressors.cs" t="Include" />
+              <e p="DistanceFromData.cs" t="Include" />
               <e p="IsDataCoverFromTarget.cs" t="Include" />
             </e>
             <e p="SimpleActionNodes" t="Include">
-              <e p="FireNode.cs" t="Include" />
-              <e p="SetDestinationNode.cs" t="Include" />
-              <e p="SetTargetNode.cs" t="Include" />
+              <e p="Fire.cs" t="Include" />
+              <e p="SetDestination.cs" t="Include" />
+              <e p="SetTarget.cs" t="Include" />
             </e>
             <e p="SimpleEntryNodes" t="Include">
-              <e p="AliveTankNode.cs" t="Include" />
-              <e p="CurrentHpNode.cs" t="Include" />
-              <e p="DistanceFromFarthestBonusNode.cs" t="Include" />
-              <e p="DistanceFromFarthestGameObjectNode.cs" t="Include" />
-              <e p="DistanceFromFarthestTankNode.cs" t="Include" />
-              <e p="DistanceFromFarthestWaypointNode.cs" t="Include" />
-              <e p="DistanceFromNearestTankNode.cs" t="Include" />
-              <e p="HasTargetNode.cs" t="Include" />
+              <e p="AgressorsCount.cs" t="Include" />
+              <e p="AliveTank.cs" t="Include" />
+              <e p="CurrentHp.cs" t="Include" />
+              <e p="DistanceFromFarthestBonus.cs" t="Include" />
+              <e p="DistanceFromFarthestGameObject.cs" t="Include" />
+              <e p="DistanceFromFarthestTank.cs" t="Include" />
+              <e p="DistanceFromFarthestWaypoint.cs" t="Include" />
+              <e p="DistanceFromNearestTank.cs" t="Include" />
+              <e p="HasTarget.cs" t="Include" />
               <e p="IsBonusAvailable.cs" t="Include" />
               <e p="IsDestinationSet.cs" t="Include" />
-              <e p="IsShellLoadedNode.cs" t="Include" />
-              <e p="IsTankInRayNode.cs" t="Include" />
-              <e p="MaxHpNode.cs" t="Include" />
+              <e p="IsShellLoaded.cs" t="Include" />
+              <e p="IsTankInRay.cs" t="Include" />
+              <e p="MaxHp.cs" t="Include" />
             </e>
             <e p="TankAIBrain.cs" t="Include" />
             <e p="TankAIComponent.cs" t="Include" />

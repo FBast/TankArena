@@ -1,5 +1,4 @@
-﻿using Entities;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BonusSpawnerEntity : MonoBehaviour {
     
