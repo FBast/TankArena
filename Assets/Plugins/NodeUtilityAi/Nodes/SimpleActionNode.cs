@@ -6,4 +6,5 @@ namespace NodeUtilityAi.Nodes {
         [Input(ShowBackingValue.Never)] public TaggedData Data;
         
     }
+
 }
