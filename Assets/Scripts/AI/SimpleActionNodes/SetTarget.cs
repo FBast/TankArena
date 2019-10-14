@@ -4,7 +4,7 @@ using NodeUtilityAi.Nodes;
 using UnityEngine;
 
 namespace AI.SimpleActionNodes {
-    public class SetTarget : SimpleActionNode {
+    public class SetTarget : DataActionNode {
 
         public override void Execute(AbstractAIComponent context, AIData aiData) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;

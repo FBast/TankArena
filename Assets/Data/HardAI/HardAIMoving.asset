@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9156862912775820062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54092ec54edc4ffb86bf4b01a56204e1, type: 3}
-  m_Name: Set Destination
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -168, y: 616}
-  ports:
-    keys:
-    - Data
-    - LinkedOption
-    values:
-    - _fieldName: Data
-      _node: {fileID: -9156862912775820062}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: DataOut
-        node: {fileID: -8028501355549436478}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: LinkedOption
-      _node: {fileID: -9156862912775820062}
-      _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: Actions
-        node: {fileID: 5690315875895242784}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  LinkedOption: {fileID: 0}
-  Order: 0
-  Data:
-    DataTag: 
-    Data: {fileID: 0}
 --- !u!114 &-8028501355549436478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,19 +16,9 @@ MonoBehaviour:
   position: {x: -1240, y: -216}
   ports:
     keys:
-    - DataIn
     - LinkedOption
     - DataOut
     values:
-    - _fieldName: DataIn
-      _node: {fileID: -8028501355549436478}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: LinkedOption
       _node: {fileID: -8028501355549436478}
       _typeQualifiedName: NodeUtilityAi.Nodes.CollectionEntryNode, Assembly-CSharp-firstpass,
@@ -101,15 +43,12 @@ MonoBehaviour:
         node: {fileID: -5174186175588886469}
         reroutePoints: []
       - fieldName: Data
-        node: {fileID: -9156862912775820062}
+        node: {fileID: 1726790253496150111}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DataIn:
-    DataTag: 
-    Data: {fileID: 0}
   LinkedOption: {fileID: 0}
   DataOut:
     DataTag: 
@@ -330,7 +269,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0
+  UtilityY: 0.25
 --- !u!114 &-6185036124515093602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +349,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: LinkedOption
-        node: {fileID: -929757807898435319}
+        node: {fileID: -102061633589493166}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -527,9 +466,6 @@ MonoBehaviour:
       _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: DataOut
-        node: {fileID: 0}
-        reroutePoints: []
       - fieldName: DataOut
         node: {fileID: -8028501355549436478}
         reroutePoints: []
@@ -674,6 +610,54 @@ MonoBehaviour:
       _dynamic: 0
   UtilityIn: 0
   UtilityOut: 0
+--- !u!114 &-4537961665407969514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54092ec54edc4ffb86bf4b01a56204e1, type: 3}
+  m_Name: Set Destination
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -168, y: -1288}
+  ports:
+    keys:
+    - Data
+    - LinkedOption
+    values:
+    - _fieldName: Data
+      _node: {fileID: -4537961665407969514}
+      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: DataOut
+        node: {fileID: 3938213205943967868}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: LinkedOption
+      _node: {fileID: -4537961665407969514}
+      _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: Actions
+        node: {fileID: -2471950524212353368}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  LinkedOption: {fileID: 0}
+  Order: 0
+  Data:
+    DataTag: 
+    Data: {fileID: 0}
 --- !u!114 &-3821168206784083687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,10 +765,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: LinkedOption
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: LinkedOption
-        node: {fileID: 955016375237520784}
+        node: {fileID: -4537961665407969514}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -844,54 +825,6 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   Value: 0
-  Data:
-    DataTag: 
-    Data: {fileID: 0}
---- !u!114 &-929757807898435319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54092ec54edc4ffb86bf4b01a56204e1, type: 3}
-  m_Name: Set Destination
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -168, y: -312}
-  ports:
-    keys:
-    - Data
-    - LinkedOption
-    values:
-    - _fieldName: Data
-      _node: {fileID: -929757807898435319}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: DataOut
-        node: {fileID: 5276734303690849383}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: LinkedOption
-      _node: {fileID: -929757807898435319}
-      _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: Actions
-        node: {fileID: -6185036124515093602}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  LinkedOption: {fileID: 0}
-  Order: 0
   Data:
     DataTag: 
     Data: {fileID: 0}
@@ -1020,6 +953,54 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   Value: 0
+--- !u!114 &-102061633589493166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54092ec54edc4ffb86bf4b01a56204e1, type: 3}
+  m_Name: Set Destination
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -152, y: -280}
+  ports:
+    keys:
+    - Data
+    - LinkedOption
+    values:
+    - _fieldName: Data
+      _node: {fileID: -102061633589493166}
+      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: DataOut
+        node: {fileID: 5276734303690849383}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: LinkedOption
+      _node: {fileID: -102061633589493166}
+      _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: Actions
+        node: {fileID: -6185036124515093602}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  LinkedOption: {fileID: 0}
+  Order: 0
+  Data:
+    DataTag: 
+    Data: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,9 +1039,6 @@ MonoBehaviour:
   - {fileID: 3938213205943967868}
   - {fileID: 5276734303690849383}
   - {fileID: -8028501355549436478}
-  - {fileID: -9156862912775820062}
-  - {fileID: -929757807898435319}
-  - {fileID: 955016375237520784}
   - {fileID: -4877047426153418460}
   - {fileID: -666610060746541781}
   - {fileID: -5454583808840098247}
@@ -1071,6 +1049,9 @@ MonoBehaviour:
   - {fileID: 3084038963465333744}
   - {fileID: 7018864132442701750}
   - {fileID: 0}
+  - {fileID: 1726790253496150111}
+  - {fileID: -102061633589493166}
+  - {fileID: -4537961665407969514}
 --- !u!114 &299701472732908585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1146,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   UtilityY: 0.44545043
---- !u!114 &955016375237520784
+--- !u!114 &1726790253496150111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1178,34 +1159,31 @@ MonoBehaviour:
   m_Name: Set Destination
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -136, y: -1320}
+  position: {x: -120, y: 696}
   ports:
     keys:
     - Data
     - LinkedOption
     values:
     - _fieldName: Data
-      _node: {fileID: 955016375237520784}
+      _node: {fileID: 1726790253496150111}
       _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: DataOut
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: DataOut
-        node: {fileID: 3938213205943967868}
+        node: {fileID: -8028501355549436478}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: LinkedOption
-      _node: {fileID: 955016375237520784}
+      _node: {fileID: 1726790253496150111}
       _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: Actions
-        node: {fileID: -2471950524212353368}
+        node: {fileID: 5690315875895242784}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -1460,9 +1438,6 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: DataOut
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: DataOut
         node: {fileID: -8028501355549436478}
         reroutePoints: []
       _direction: 0
@@ -1593,19 +1568,9 @@ MonoBehaviour:
   position: {x: -1240, y: -2024}
   ports:
     keys:
-    - DataIn
     - LinkedOption
     - DataOut
     values:
-    - _fieldName: DataIn
-      _node: {fileID: 3938213205943967868}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: LinkedOption
       _node: {fileID: 3938213205943967868}
       _typeQualifiedName: NodeUtilityAi.Nodes.CollectionEntryNode, Assembly-CSharp-firstpass,
@@ -1627,15 +1592,12 @@ MonoBehaviour:
         node: {fileID: -944480655444717982}
         reroutePoints: []
       - fieldName: Data
-        node: {fileID: 955016375237520784}
+        node: {fileID: -4537961665407969514}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DataIn:
-    DataTag: 
-    Data: {fileID: 0}
   LinkedOption: {fileID: 0}
   DataOut:
     DataTag: 
@@ -1766,7 +1728,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.060606062
+  UtilityY: 0.121212125
 --- !u!114 &5276734303690849383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,19 +1745,9 @@ MonoBehaviour:
   position: {x: -1240, y: -1176}
   ports:
     keys:
-    - DataIn
     - LinkedOption
     - DataOut
     values:
-    - _fieldName: DataIn
-      _node: {fileID: 5276734303690849383}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: LinkedOption
       _node: {fileID: 5276734303690849383}
       _typeQualifiedName: NodeUtilityAi.Nodes.CollectionEntryNode, Assembly-CSharp-firstpass,
@@ -1823,15 +1775,12 @@ MonoBehaviour:
         node: {fileID: 8746113399601208252}
         reroutePoints: []
       - fieldName: Data
-        node: {fileID: -929757807898435319}
+        node: {fileID: -102061633589493166}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DataIn:
-    DataTag: 
-    Data: {fileID: 0}
   LinkedOption: {fileID: 0}
   DataOut:
     DataTag: 
@@ -1961,10 +1910,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: LinkedOption
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: LinkedOption
-        node: {fileID: -9156862912775820062}
+        node: {fileID: 1726790253496150111}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

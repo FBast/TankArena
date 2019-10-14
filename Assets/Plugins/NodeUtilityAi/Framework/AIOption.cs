@@ -15,7 +15,7 @@ namespace NodeUtilityAi.Framework {
 
         public AIOption(List<ActionNode> actionNodes, Tuple<float, int> utility, string description) {
             // Processing Simple Actions
-            actionNodes.ForEach(node => AiActions.Add(new AIAction(node.Execute, node.GetData(), node.Order)));
+            actionNodes.ForEach(node => AiActions.Add(new AIAction(node)));
             // Processing Utility
             Utility = utility.Item1;
             Weight = utility.Item2;

@@ -30,6 +30,7 @@
             <e p="Nodes" t="Include">
               <e p="ActionNode.cs" t="Include" />
               <e p="CollectionEntryNode.cs" t="Include" />
+              <e p="DataActionNode.cs" t="Include" />
               <e p="DataEntryNode.cs" t="Include" />
               <e p="EntryNode.cs" t="Include" />
               <e p="MemoryAccessNode.cs" t="Include" />

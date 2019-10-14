@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9012466221069628924, guid: e04ea9aac47852b4f925e487cd2cff6d,
+        type: 3}
+      propertyPath: BonusName
+      value: BonusD
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e04ea9aac47852b4f925e487cd2cff6d, type: 3}
 --- !u!4 &76615421 stripped
@@ -949,6 +954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012466221069628924, guid: e04ea9aac47852b4f925e487cd2cff6d,
+        type: 3}
+      propertyPath: BonusName
+      value: BonusC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e04ea9aac47852b4f925e487cd2cff6d, type: 3}
@@ -3003,6 +3013,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9012466221069628924, guid: e04ea9aac47852b4f925e487cd2cff6d,
+        type: 3}
+      propertyPath: BonusName
+      value: BonusE
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e04ea9aac47852b4f925e487cd2cff6d, type: 3}
 --- !u!4 &1844578387 stripped
@@ -3077,6 +3092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012466221069628924, guid: e04ea9aac47852b4f925e487cd2cff6d,
+        type: 3}
+      propertyPath: BonusName
+      value: BonusB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e04ea9aac47852b4f925e487cd2cff6d, type: 3}
@@ -3425,6 +3445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012466221069628924, guid: e04ea9aac47852b4f925e487cd2cff6d,
+        type: 3}
+      propertyPath: BonusName
+      value: BonusA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e04ea9aac47852b4f925e487cd2cff6d, type: 3}

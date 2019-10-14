@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 public class BonusSpawnerEntity : MonoBehaviour {
-    
+
+    public string BonusName;
     public GameObject BonusPrefab;
     public int SpawnRate;
     public int SpawnNumber;
@@ -17,6 +18,7 @@ public class BonusSpawnerEntity : MonoBehaviour {
             Vector3 spawnPosition = transform.position;
             spawnPosition.y = BonusPrefab.transform.position.y;
             _spawnedBonus = Instantiate(BonusPrefab, spawnPosition, Quaternion.identity, GameManager.Instance.BonusContent);
+            _spawnedBonus.name = BonusName;
             GameManager.Instance.AddBonus(_spawnedBonus);
             _timeSinceBonusUsed = 0;
             _spawnedNumber++;
