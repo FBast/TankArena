@@ -44,6 +44,9 @@ namespace Entities {
         private readonly int _waypointRadius = 15;
         private NavMeshAgent _navMeshAgent;
 
+        public List<GameObject> Aggressors => GameManager.Instance.TankEntities
+            .Where(go => go.GetComponent<TankEntity>().Target == gameObject).ToList();
+        
         private int _totalDamages => MaxHP - CurrentHP;
         private float _damagePercent => (float) _totalDamages / MaxHP;
         private bool _isAtDestination => _navMeshAgent.remainingDistance < Mathf.Infinity &&
@@ -116,9 +119,9 @@ namespace Entities {
             if (CurrentHP > MaxHP) CurrentHP = MaxHP;
         }
 
-        public List<WaypointEntity> SeekWaypointInRadius() {
+        public List<GameObject> SeekWaypointInRadius() {
             return GameManager.Instance.WaypointEntities
-                .Where(entity => Vector3.Distance(transform.position, entity.transform.position) < _waypointRadius).ToList();
+                .Where(go => Vector3.Distance(transform.position, go.transform.position) < _waypointRadius).ToList();
         } 
         
         public GameObject TankInRay() {

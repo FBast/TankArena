@@ -18,7 +18,7 @@ public class BonusSpawnerEntity : MonoBehaviour {
             Vector3 spawnPosition = transform.position;
             spawnPosition.y = BonusPrefab.transform.position.y;
             _spawnedBonus = Instantiate(BonusPrefab, spawnPosition, Quaternion.identity, GameManager.Instance.BonusContent);
-            GameManager.Instance.AddBonus(_spawnedBonus.GetComponent<BonusEntity>());
+            GameManager.Instance.AddBonus(_spawnedBonus);
             _timeSinceBonusUsed = 0;
             _spawnedNumber++;
         }

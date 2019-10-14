@@ -18,20 +18,20 @@ public class GameManager : Singleton<GameManager> {
     public int GridZGap;
     public LayerMask CoverLayer;
 
-    public List<TankEntity> TankEntities => _tankEntities.Where(entity => entity != null).ToList();
-    public List<WaypointEntity> WaypointEntities => _waypointEntities.Where(entity => entity != null).ToList();
-    public List<BonusEntity> BonusEntities => _bonusEntities.Where(entity => entity != null).ToList();
-    public List<GameObject> GameObjects => _gameObjects.Where(o => o != null).ToList();
+    public List<GameObject> TankEntities => _tankEntities.Where(go => go != null).ToList();
+    public List<GameObject> WaypointEntities => _waypointEntities.Where(go => go != null).ToList();
+    public List<GameObject> BonusEntities => _bonusEntities.Where(go => go != null).ToList();
+    public List<GameObject> GameObjects => _gameObjects.Where(go => go != null).ToList();
 
-    private List<TankEntity> _tankEntities = new List<TankEntity>();
-    private List<WaypointEntity> _waypointEntities = new List<WaypointEntity>();
-    private List<BonusEntity> _bonusEntities = new List<BonusEntity>();
+    private List<GameObject> _tankEntities = new List<GameObject>();
+    private List<GameObject> _waypointEntities = new List<GameObject>();
+    private List<GameObject> _bonusEntities = new List<GameObject>();
     private List<GameObject> _gameObjects = new List<GameObject>();
 
     private void Start() {
-        _tankEntities = FindObjectsOfType<TankEntity>().ToList();
-        _waypointEntities = FindObjectsOfType<WaypointEntity>().ToList();
-        _bonusEntities = FindObjectsOfType<BonusEntity>().ToList();
+        _tankEntities = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
+        _waypointEntities = FindObjectsOfType<WaypointEntity>().Select(entity => entity.gameObject).ToList();
+        _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
         _gameObjects = FindObjectsOfType<GameObject>().ToList();
         GenerateWaypointGrid();
     }
@@ -48,13 +48,13 @@ public class GameManager : Singleton<GameManager> {
                 if (!position.IsPositionOnNavMesh()) continue;
                 GameObject instantiate = Instantiate(WaypointPrefab, position, Quaternion.identity, WaypointContent);
                 instantiate.name = (int) instantiate.transform.position.x + ", " + (int) instantiate.transform.position.z;
-                _waypointEntities.Add(instantiate.GetComponent<WaypointEntity>());
+                _waypointEntities.Add(instantiate);
             }
         }
     }
     
-    public void AddBonus(BonusEntity bonusEntity) {
-        _bonusEntities.Add(bonusEntity);
+    public void AddBonus(GameObject bonusGameObject) {
+        _bonusEntities.Add(bonusGameObject);
     }
     
 }
