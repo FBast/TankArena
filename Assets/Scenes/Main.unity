@@ -672,7 +672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &586737761
 Transform:
   m_ObjectHideFlags: 0
@@ -2560,7 +2560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1485078101
 Transform:
   m_ObjectHideFlags: 0
@@ -2883,22 +2883,22 @@ PrefabInstance:
     - target: {fileID: 7153810893361173115, guid: 7b2a61d599a839e41a9dee217d6be2a7,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7153810893361173115, guid: 7b2a61d599a839e41a9dee217d6be2a7,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7153810893361173115, guid: 7b2a61d599a839e41a9dee217d6be2a7,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7153810893361173115, guid: 7b2a61d599a839e41a9dee217d6be2a7,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b2a61d599a839e41a9dee217d6be2a7, type: 3}

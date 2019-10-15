@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Set Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -88, y: 568}
+  position: {x: -24, y: 664}
   ports:
     keys:
     - LinkedOption
@@ -191,6 +191,53 @@ MonoBehaviour:
   Data:
     DataTag: 
     Data: {fileID: 0}
+--- !u!114 &-3393850683580644267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a54f052f86848fa8e78a23c581e6edb, type: 3}
+  m_Name: Data Distance
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -712, y: 136}
+  ports:
+    keys:
+    - Data
+    - Value
+    values:
+    - _fieldName: Data
+      _node: {fileID: -3393850683580644267}
+      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: DataOut
+        node: {fileID: 1585590846828763168}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Value
+      _node: {fileID: -3393850683580644267}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: X
+        node: {fileID: -2926545287486993830}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Value: 0
+  Data:
+    DataTag: 
+    Data: {fileID: 0}
 --- !u!114 &-3236302355394788701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +317,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Value
-        node: {fileID: -1003193488296419402}
+        node: {fileID: -3393850683580644267}
         reroutePoints: []
       _direction: 0
       _connectionType: 1
@@ -315,54 +362,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.7676768
---- !u!114 &-1003193488296419402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a54f052f86848fa8e78a23c581e6edb, type: 3}
-  m_Name: Distance From Data
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -712, y: 136}
-  ports:
-    keys:
-    - Data
-    - Value
-    values:
-    - _fieldName: Data
-      _node: {fileID: -1003193488296419402}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: DataOut
-        node: {fileID: 1585590846828763168}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Value
-      _node: {fileID: -1003193488296419402}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: X
-        node: {fileID: -2926545287486993830}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  Value: 0
-  Data:
-    DataTag: 
-    Data: {fileID: 0}
+  UtilityY: 0.48051947
 --- !u!114 &-431299842432448598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: Multiplier
+      - fieldName: Bonus
         node: {fileID: 8205783135855297639}
         reroutePoints: []
       _direction: 1
@@ -459,7 +459,6 @@ MonoBehaviour:
   - {fileID: 6244897312151335945}
   - {fileID: -263709393839487971}
   - {fileID: 1570701925617197274}
-  - {fileID: -1003193488296419402}
   - {fileID: 1585590846828763168}
   - {fileID: -8700507663786430366}
   - {fileID: 6529744489219897804}
@@ -467,8 +466,10 @@ MonoBehaviour:
   - {fileID: -431299842432448598}
   - {fileID: -3236302355394788701}
   - {fileID: -7420719097611563291}
-  - {fileID: 0}
   - {fileID: -8325911310086805612}
+  - {fileID: 8825261721724851528}
+  - {fileID: 0}
+  - {fileID: -3393850683580644267}
 --- !u!114 &680909097015725868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +532,10 @@ MonoBehaviour:
       _node: {fileID: 680909097015725868}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Value
+        node: {fileID: 8825261721724851528}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -645,10 +649,13 @@ MonoBehaviour:
         node: {fileID: -8700507663786430366}
         reroutePoints: []
       - fieldName: Data
-        node: {fileID: -1003193488296419402}
+        node: {fileID: 6529744489219897804}
         reroutePoints: []
       - fieldName: Data
-        node: {fileID: 6529744489219897804}
+        node: {fileID: 8825261721724851528}
+        reroutePoints: []
+      - fieldName: Data
+        node: {fileID: -3393850683580644267}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -892,9 +899,6 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Value
-        node: {fileID: -431299842432448598}
-        reroutePoints: []
-      - fieldName: Value
         node: {fileID: -3236302355394788701}
         reroutePoints: []
       - fieldName: Value
@@ -908,7 +912,10 @@ MonoBehaviour:
       _node: {fileID: 8205783135855297639}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Value
+        node: {fileID: -431299842432448598}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -932,3 +939,50 @@ MonoBehaviour:
   Multiplier: 1
   Bonus: 0
   Actions: {fileID: 0}
+--- !u!114 &8825261721724851528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2712b1f9c941d1bccc6a9937edb849, type: 3}
+  m_Name: Data Is Agressor
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -712, y: 504}
+  ports:
+    keys:
+    - Data
+    - Value
+    values:
+    - _fieldName: Data
+      _node: {fileID: 8825261721724851528}
+      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: DataOut
+        node: {fileID: 1585590846828763168}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Value
+      _node: {fileID: 8825261721724851528}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Bonus
+        node: {fileID: 680909097015725868}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Value: 0
+  Data:
+    DataTag: 
+    Data: {fileID: 0}

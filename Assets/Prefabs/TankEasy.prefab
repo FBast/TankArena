@@ -179,6 +179,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 31bec7803a335424880bd0f13d1ea09f,
         type: 2}
+    - target: {fileID: 6334775136059622303, guid: 756d3a6506f2f8241b4e8badde68567a,
+        type: 3}
+      propertyPath: TimeBetweenRefresh
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4648419112405177933, guid: 756d3a6506f2f8241b4e8badde68567a,
         type: 3}
       propertyPath: PlayerSettings

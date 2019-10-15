@@ -3,13 +3,13 @@ using NodeUtilityAi.Nodes;
 using UnityEngine;
 
 namespace AI.DataEntryNodes {
-    public class DistanceFromData : DataEntryNode {
+    public class DataIsAgressor : DataEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            GameObject target = GetData<GameObject>();
-            return (int) Vector3.Distance(tankAiComponent.gameObject.transform.position, target.transform.position);
+            GameObject data = GetData<GameObject>();
+            return tankAiComponent.TankEntity.Aggressors.Contains(data) ? 1 : 0;
         }
-    
+        
     }
 }

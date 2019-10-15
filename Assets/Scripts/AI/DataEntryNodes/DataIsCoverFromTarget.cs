@@ -5,7 +5,7 @@ using UnityEngine;
 using Utils;
 
 namespace AI.DataEntryNodes {
-    public class IsDataCoverFromTarget : DataEntryNode {
+    public class DataIsCoverFromTarget : DataEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;

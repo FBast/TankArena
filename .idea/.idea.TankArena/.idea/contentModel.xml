@@ -124,11 +124,12 @@
               <e p="DataCover.cs" t="Include" />
               <e p="DataCoverCountFromAgressors.cs" t="Include" />
               <e p="DataCurrentHp.cs" t="Include" />
+              <e p="DataDistance.cs" t="Include" />
               <e p="DataInRayIsTarget.cs" t="Include" />
+              <e p="DataIsAgressor.cs" t="Include" />
+              <e p="DataIsCoverFromTarget.cs" t="Include" />
               <e p="DataIsTarget.cs" t="Include" />
               <e p="DataMaxHp.cs" t="Include" />
-              <e p="DistanceFromData.cs" t="Include" />
-              <e p="IsDataCoverFromTarget.cs" t="Include" />
             </e>
             <e p="SimpleActionNodes" t="Include">
               <e p="Fire.cs" t="Include" />
@@ -143,6 +144,7 @@
               <e p="DistanceFromFarthestGameObject.cs" t="Include" />
               <e p="DistanceFromFarthestTank.cs" t="Include" />
               <e p="DistanceFromFarthestWaypoint.cs" t="Include" />
+              <e p="DistanceFromNearestBonus.cs" t="Include" />
               <e p="DistanceFromNearestTank.cs" t="Include" />
               <e p="HasTarget.cs" t="Include" />
               <e p="IsBonusAvailable.cs" t="Include" />

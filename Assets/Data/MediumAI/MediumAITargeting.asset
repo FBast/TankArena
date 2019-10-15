@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: Distance From Farthest Game Object
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -712, y: 40}
+  position: {x: -712, y: 72}
   ports:
     keys:
     - Value
@@ -238,7 +238,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Value
-        node: {fileID: -1003193488296419402}
+        node: {fileID: 4207755959589411504}
         reroutePoints: []
       _direction: 0
       _connectionType: 1
@@ -283,57 +283,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.5466667
---- !u!114 &-1003193488296419402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a54f052f86848fa8e78a23c581e6edb, type: 3}
-  m_Name: Distance From Data
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -712, y: 136}
-  ports:
-    keys:
-    - Data
-    - Value
-    values:
-    - _fieldName: Data
-      _node: {fileID: -1003193488296419402}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: DataOut
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: DataOut
-        node: {fileID: 1585590846828763168}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Value
-      _node: {fileID: -1003193488296419402}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: X
-        node: {fileID: -2926545287486993830}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  Value: 0
-  Data:
-    DataTag: 
-    Data: {fileID: 0}
+  UtilityY: 0.46835443
 --- !u!114 &-431299842432448598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +380,6 @@ MonoBehaviour:
   - {fileID: 6244897312151335945}
   - {fileID: -263709393839487971}
   - {fileID: 1570701925617197274}
-  - {fileID: -1003193488296419402}
   - {fileID: 1585590846828763168}
   - {fileID: -8700507663786430366}
   - {fileID: 6529744489219897804}
@@ -438,8 +387,9 @@ MonoBehaviour:
   - {fileID: -431299842432448598}
   - {fileID: -3236302355394788701}
   - {fileID: -7420719097611563291}
-  - {fileID: 0}
   - {fileID: 796808147263980689}
+  - {fileID: 0}
+  - {fileID: 4207755959589411504}
 --- !u!114 &680909097015725868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,9 +463,6 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: LinkedOption
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: LinkedOption
         node: {fileID: -8700507663786430366}
         reroutePoints: []
       _direction: 0
@@ -574,7 +521,7 @@ MonoBehaviour:
   m_Name: Data Max Hp
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -712, y: 264}
+  position: {x: -712, y: 280}
   ports:
     keys:
     - Data
@@ -585,9 +532,6 @@ MonoBehaviour:
       _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: DataOut
-        node: {fileID: 0}
-        reroutePoints: []
       - fieldName: DataOut
         node: {fileID: 1585590846828763168}
         reroutePoints: []
@@ -651,13 +595,13 @@ MonoBehaviour:
         node: {fileID: 1570701925617197274}
         reroutePoints: []
       - fieldName: Data
-        node: {fileID: -1003193488296419402}
-        reroutePoints: []
-      - fieldName: Data
         node: {fileID: 6529744489219897804}
         reroutePoints: []
       - fieldName: Data
         node: {fileID: -8700507663786430366}
+        reroutePoints: []
+      - fieldName: Data
+        node: {fileID: 4207755959589411504}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -714,6 +658,53 @@ MonoBehaviour:
       _dynamic: 0
   UtilityIn: 0
   UtilityOut: 0
+--- !u!114 &4207755959589411504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a54f052f86848fa8e78a23c581e6edb, type: 3}
+  m_Name: Data Distance
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -712, y: 136}
+  ports:
+    keys:
+    - Data
+    - Value
+    values:
+    - _fieldName: Data
+      _node: {fileID: 4207755959589411504}
+      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: DataOut
+        node: {fileID: 1585590846828763168}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Value
+      _node: {fileID: 4207755959589411504}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: X
+        node: {fileID: -2926545287486993830}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Value: 0
+  Data:
+    DataTag: 
+    Data: {fileID: 0}
 --- !u!114 &6244897312151335945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,7 +798,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.6
+  UtilityY: 0.2
 --- !u!114 &6529744489219897804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +812,7 @@ MonoBehaviour:
   m_Name: Data Current Hp
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -712, y: 376}
+  position: {x: -712, y: 360}
   ports:
     keys:
     - Data
@@ -832,9 +823,6 @@ MonoBehaviour:
       _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: DataOut
-        node: {fileID: 0}
-        reroutePoints: []
       - fieldName: DataOut
         node: {fileID: 1585590846828763168}
         reroutePoints: []
