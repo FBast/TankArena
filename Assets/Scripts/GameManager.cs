@@ -1,18 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Entities;
+using UI;
 using UnityEngine;
 using Utils;
 
 public class GameManager : Singleton<GameManager> {
 
+    [Header("Prefabs")] 
+    public GameObject TankPrefab;
+    
+    [Header("Data")]
+    public List<TankSetting> TankSettings;
+    
     [Header("References")] 
     public GameObject WaypointPrefab;
     public Transform WaypointContent;
     public Transform BonusContent;
     public Transform GridStart;
     public Transform GridEnd;
+    public List<Transform> TankMeleePositions;
+    public List<Transform> TankDuelPositions;
 
+    [Header("External References")] 
+    public TankLifeUI TankLifeUi;
+    
     [Header("Parameters")] 
     public int GridXGap;
     public int GridZGap;
@@ -34,6 +47,7 @@ public class GameManager : Singleton<GameManager> {
         _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
         _gameObjects = FindObjectsOfType<GameObject>().ToList();
         GenerateWaypointGrid();
+        GenerateTanks();
     }
 
     public void GenerateWaypointGrid() {
@@ -55,6 +69,18 @@ public class GameManager : Singleton<GameManager> {
     
     public void AddBonus(GameObject bonusGameObject) {
         _bonusEntities.Add(bonusGameObject);
+    }
+
+    public void GenerateTanks() {
+        if (TankSettings.Count > TankMeleePositions.Count)
+            throw new Exception("Need more positions for tanks");
+        for (int i = 0; i < TankSettings.Count; i++) {
+            Transform tankPosition = TankMeleePositions[i];
+            GameObject instantiate = Instantiate(TankPrefab, tankPosition.position, Quaternion.identity);
+            instantiate.GetComponent<TankEntity>().InitTank(TankSettings[i]);
+            _tankEntities.Add(instantiate);
+        }
+        TankLifeUi.UpdateUI(_tankEntities);
     }
     
 }

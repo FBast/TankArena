@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AI;
 using Components;
 using TMPro;
 using UnityEngine;
@@ -7,17 +9,13 @@ using UnityEngine.AI;
 
 namespace Entities {
     public class TankEntity : MonoBehaviour {
-        
-        [Header("Data")]
-        public PlayerSettings PlayerSettings;
-        
+
         [Header("References")] 
         public Transform CanonOut;
         public Transform Turret;
         public AudioSource ShotFiring;
         public ParticleEmissionSetter SmokeSetter;
         public ParticleEmissionSetter FireSetter;
-        public TextMeshProUGUI TankName;
         public MeshRenderer TurretMeshRenderer;
         public MeshRenderer HullMeshRenderer;
         public MeshRenderer RightTrackMeshRender;
@@ -41,8 +39,12 @@ namespace Entities {
         public GameObject Target;
         public GameObject Destination;
 
+        public Action<float> OnLifeChanged;
+        [HideInInspector] public TankSetting TankSetting;
+        
         private readonly int _waypointRadius = 15;
         private NavMeshAgent _navMeshAgent;
+        private TankAIComponent _tankAiComponent;
 
         public List<GameObject> Aggressors => GameManager.Instance.TankEntities
             .Where(go => go.GetComponent<TankEntity>().Target == gameObject).ToList();
@@ -55,12 +57,18 @@ namespace Entities {
 
         private void Awake() {
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            if (!PlayerSettings) return;
-            TankName.text = PlayerSettings.TankName;
-            TurretMeshRenderer.material.color = PlayerSettings.TurretColor;
-            HullMeshRenderer.material.color = PlayerSettings.HullColor;
-            RightTrackMeshRender.material.color = PlayerSettings.TracksColor;
-            LeftTrackMeshRender.material.color = PlayerSettings.TracksColor;
+            _tankAiComponent = GetComponent<TankAIComponent>();
+        }
+
+        public void InitTank(TankSetting tankSetting) {
+            if (!tankSetting)
+                throw new Exception("Each tank need a tank setting to be set");
+            TankSetting = tankSetting;
+            TurretMeshRenderer.material.color = tankSetting.TurretColor;
+            HullMeshRenderer.material.color = tankSetting.HullColor;
+            RightTrackMeshRender.material.color = tankSetting.TracksColor;
+            LeftTrackMeshRender.material.color = tankSetting.TracksColor;
+            _tankAiComponent.UtilityAiBrains = tankSetting.Brains;
             CurrentHP = MaxHP;
         }
         
@@ -105,6 +113,7 @@ namespace Entities {
 
         public void Damage(int damage) {
             CurrentHP -= damage;
+            OnLifeChanged.Invoke((float) CurrentHP / MaxHP);
             if (CurrentHP > 0) return;
             Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
             Destroy(gameObject);
@@ -116,6 +125,7 @@ namespace Entities {
         
         public void Heal(int healing) {
             CurrentHP += healing;
+            OnLifeChanged.Invoke((float) CurrentHP / MaxHP);
             if (CurrentHP > MaxHP) CurrentHP = MaxHP;
         }
 

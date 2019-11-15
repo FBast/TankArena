@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Dizy\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dizy\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.469938171.00" t="ExcludeRecursive" />
-    <e p="D:\Local Repository\TankArena" t="IncludeRecursive">
+    <e p="C:\Users\frederic.bast\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\frederic.bast\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.-1304077868.00" t="ExcludeRecursive" />
+    <e p="U:\UnityProjects\TankArena" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="BonusSpawnerEntity.cs" t="Include" />
         <e p="Fonts" t="Include">
           <e p="Bowlby_One" t="Include">
             <e p="FontLicense.txt" t="Include" />
@@ -160,22 +159,28 @@
             <e p="DestroyAfterTime.cs" t="Include" />
             <e p="FreeLookCamera.cs" t="Include" />
             <e p="ParticleEmissionSetter.cs" t="Include" />
+            <e p="Spinning.cs" t="Include" />
           </e>
           <e p="Entities" t="Include">
             <e p="BonusEntity.cs" t="Include" />
-            <e p="PlayerSettings.cs" t="Include" />
+            <e p="BonusSpawnerEntity.cs" t="Include" />
             <e p="ShellEntity.cs" t="Include" />
             <e p="TankEntity.cs" t="Include" />
+            <e p="TankSetting.cs" t="Include" />
             <e p="WaypointEntity.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="DuelUI.cs" t="Include" />
+            <e p="TankLifeUI.cs" t="Include" />
+          </e>
           <e p="Utils" t="Include">
+            <e p="DataHandler.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
             <e p="Properties.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
           </e>
         </e>
-        <e p="SphereOverlapTest.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
