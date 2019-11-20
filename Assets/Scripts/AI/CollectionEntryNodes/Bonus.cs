@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entities;
+using Managers;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 using UnityEngine;

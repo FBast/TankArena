@@ -2,7 +2,7 @@ using System;
 using FullSerializer;
 
 namespace Utils {
-    public static class StringSerializationAPI {
+    public static class JsonSerializationApi {
         private static readonly fsSerializer _serializer = new fsSerializer();
 
         public static string Serialize(Type type, object value) {

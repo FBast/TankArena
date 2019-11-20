@@ -9,6 +9,25 @@ namespace Utils {
             public static string MouseX = "MouseX";
             public static string MouseY = "MouseY";
         }
-    
+
+        public struct Scenes {
+            public static string Shared = "Shared";
+            public static string Menu = "Menu";
+            public static string Game = "Game";
+        }
+
+        public struct Parameters {
+            public static string GameType = "GameType";
+            public static string TankSettings = "TankSettings";
+            public static string TankNumber = "TankNumber";
+        }
+
+        public struct GameTypes {
+            public static string Duel = "Duel";
+            public static string TeamFight = "TF";
+            public static string FreeForAll = "FFA";
+            public static string Tournament = "Tournament";
+        }
+        
     }
 }

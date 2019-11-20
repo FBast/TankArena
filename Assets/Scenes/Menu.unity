@@ -4573,7 +4573,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1514897122}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1620131081}
+        m_MethodName: LaunchGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1514897122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4996,9 +5007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumberOfTankText: {fileID: 696353591}
-  FirstPlayerDropdown: {fileID: 0}
-  SecondPlayerDropdown: {fileID: 0}
-  Settings: []
+  FirstPlayerDropdown: {fileID: 1902753339}
+  SecondPlayerDropdown: {fileID: 1130436524}
 --- !u!222 &1620131082
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AI;
 using Components;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -40,7 +41,7 @@ namespace Entities {
         public GameObject Destination;
 
         public Action<float> OnLifeChanged;
-        [HideInInspector] public TankData tankData;
+        [HideInInspector] public TankSetting tankSetting;
         
         private readonly int _waypointRadius = 15;
         private NavMeshAgent _navMeshAgent;
@@ -60,15 +61,15 @@ namespace Entities {
             _tankAiComponent = GetComponent<TankAIComponent>();
         }
 
-        public void InitTank(TankData tankData) {
-            if (!tankData)
+        public void InitTank(TankSetting tankSetting) {
+            if (!tankSetting)
                 throw new Exception("Each tank need a tank setting to be set");
-            this.tankData = tankData;
-            TurretMeshRenderer.material.color = tankData.TurretColor;
-            HullMeshRenderer.material.color = tankData.HullColor;
-            RightTrackMeshRender.material.color = tankData.TracksColor;
-            LeftTrackMeshRender.material.color = tankData.TracksColor;
-            _tankAiComponent.UtilityAiBrains = tankData.Brains;
+            this.tankSetting = tankSetting;
+            TurretMeshRenderer.material.color = tankSetting.TurretColor;
+            HullMeshRenderer.material.color = tankSetting.HullColor;
+            RightTrackMeshRender.material.color = tankSetting.TracksColor;
+            LeftTrackMeshRender.material.color = tankSetting.TracksColor;
+            _tankAiComponent.UtilityAiBrains = tankSetting.Brains;
             CurrentHP = MaxHP;
         }
         

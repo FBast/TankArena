@@ -6,7 +6,7 @@ using Utils;
 
 namespace Entities {
     [CreateAssetMenu(fileName = "NewTankSetting", menuName = "TankSetting")]
-    public class TankData : ScriptableObject {
+    public class TankSetting : ScriptableObject {
 
         public string PlayerName;
         public string TankName;

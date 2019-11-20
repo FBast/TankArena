@@ -1,33 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Utils;
 
 namespace Managers {
 	public class SceneManager : Singleton<SceneManager> {
 
 		private void Start() {
-			LoadScene(Properties.Scenes.Menu);
+			LoadScene("Menu");
 		}
 
 		private Dictionary<string, object> _parameters;
 		
 		public void UnloadScene(string scene) {
 			if (!UnityEngine.SceneManagement.SceneManager.GetSceneByName(scene).isLoaded) return;
-			ConsoleProDebug.LogToFilter("Unloading " + scene + "...", "Management");
 			StartCoroutine(UnloadSceneAsync(scene));
 		}
 		
 		public void LoadScene(string scene) {
 			if (UnityEngine.SceneManagement.SceneManager.GetSceneByName(scene).isLoaded) return;
-			ConsoleProDebug.LogToFilter("Loading " + scene + "...", "Management");
 			StartCoroutine(LoadSceneAsync(scene));
 		}
 
 		public void ReloadScene(string scene) {
-			ConsoleProDebug.LogToFilter("Reloading " + scene + "...", "Management");
 			StartCoroutine(ReloadSceneAsync(scene));
 		}
 
@@ -42,7 +37,6 @@ namespace Managers {
 			while (!asyncLoad.isDone) {
 				yield return null;
 			}
-			ConsoleProDebug.LogToFilter(scene + " unloaded !", "Management");
 		}
 
 		private IEnumerator LoadSceneAsync(string scene) {
@@ -51,7 +45,6 @@ namespace Managers {
 			while (!asyncLoad.isDone) {
 				yield return null;
 			}
-			ConsoleProDebug.LogToFilter(scene + " loaded !", "Management");
 		}
 		
 		public object GetParam(string paramKey) {

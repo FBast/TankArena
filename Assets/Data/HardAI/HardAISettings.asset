@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HardAISettings
   m_EditorClassIdentifier: 
   PlayerName: Fred
-  TankName: Medium
+  TankName: Hard
   TurretColor: {r: 1, g: 0, b: 0, a: 1}
   HullColor: {r: 1, g: 0, b: 0, a: 1}
   TracksColor: {r: 1, g: 0, b: 0, a: 1}

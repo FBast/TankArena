@@ -14,18 +14,18 @@ namespace UI {
         public GameObject TitleText;
         public GameObject LifeBarImage;
 
-        private Dictionary<TankData, Transform> _tankSettingTransform = new Dictionary<TankData, Transform>();
+        private Dictionary<TankSetting, Transform> _tankSettingTransform = new Dictionary<TankSetting, Transform>();
         
         public void UpdateUI(List<GameObject> tanks) {
             foreach (TankEntity tankEntity in tanks.Select(o => o.GetComponent<TankEntity>())) {
                 Transform tankPanelTransform;
-                if (_tankSettingTransform.ContainsKey(tankEntity.tankData)) {
-                    tankPanelTransform = _tankSettingTransform[tankEntity.tankData];
+                if (_tankSettingTransform.ContainsKey(tankEntity.tankSetting)) {
+                    tankPanelTransform = _tankSettingTransform[tankEntity.tankSetting];
                 }
                 else {
                     tankPanelTransform = Instantiate(TankPanel, transform).transform;
-                    _tankSettingTransform.Add(tankEntity.tankData, tankPanelTransform);
-                    Instantiate(TitleText, tankPanelTransform).GetComponent<TextMeshProUGUI>().text = tankEntity.tankData.TankName;
+                    _tankSettingTransform.Add(tankEntity.tankSetting, tankPanelTransform);
+                    Instantiate(TitleText, tankPanelTransform).GetComponent<TextMeshProUGUI>().text = tankEntity.tankSetting.TankName;
                 }
                 GameObject lifeBarImage = Instantiate(LifeBarImage, tankPanelTransform);
                 tankEntity.OnLifeChanged += delegate(float i) { lifeBarImage.GetComponent<Image>().fillAmount = i; };
