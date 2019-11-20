@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1e59cc3b0c7467e8a9284f412777f1e, type: 3}
-  m_Name: EasyAISettings
+  m_Name: HardAISettings
   m_EditorClassIdentifier: 
   PlayerName: Fred
-  TankName: Easy
-  TurretColor: {r: 0, g: 1, b: 0, a: 1}
-  HullColor: {r: 0, g: 1, b: 0, a: 1}
-  TracksColor: {r: 0, g: 1, b: 0, a: 1}
-  Brains:
-  - {fileID: 11400000, guid: 80b6ce09715245741bf92cbf26abe657, type: 2}
-  - {fileID: 11400000, guid: 31bec7803a335424880bd0f13d1ea09f, type: 2}
+  TankName: Medium
+  TurretColor: {r: 1, g: 0, b: 0, a: 1}
+  HullColor: {r: 1, g: 0, b: 0, a: 1}
+  TracksColor: {r: 1, g: 0, b: 0, a: 1}
