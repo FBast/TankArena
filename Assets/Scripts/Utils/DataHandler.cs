@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entities;
 using NodeUtilityAi;
+using OdinSerializer;
 using UnityEngine;
 using XNode;
 
@@ -34,13 +35,15 @@ namespace Utils {
                 switch (Path.GetExtension(file)) {
                     case ".set": {
                         using (StreamReader sr = new StreamReader(file)) {
-                            tankSetting = (TankSetting) JsonSerializationApi.Deserialize(typeof(TankSetting), sr.ReadToEnd());
+                            tankSetting = (TankSetting) FullSerializerApi.Deserialize(typeof(TankSetting), sr.ReadToEnd());
                         }
                         break;
                     }
                     case ".bra": {
                         using (StreamReader sr = new StreamReader(file)) {
-                            AbstractAIBrain abstractAiBrain = (AbstractAIBrain) JsonSerializationApi.Deserialize(typeof(AbstractAIBrain), sr.ReadToEnd());
+                            byte[] bytes = File.ReadAllBytes(file);
+                            AbstractAIBrain abstractAiBrain = SerializationUtility.DeserializeValue<AbstractAIBrain>(bytes, DataFormat.JSON);
+//                            AbstractAIBrain abstractAiBrain = (AbstractAIBrain) FullSerializerApi.Deserialize(typeof(AbstractAIBrain), sr.ReadToEnd());
                             foreach (Node node in abstractAiBrain.nodes.Where(node => node != null)) {
                                 node.UpdateStaticPorts();
                             }
@@ -59,14 +62,17 @@ namespace Utils {
             if (Directory.Exists(tankDirectory)) Directory.Delete(tankDirectory, true);
             Directory.CreateDirectory(tankDirectory);
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(tankDirectory, tankSetting.name + ".set"))) {
-                await outputFile.WriteAsync(JsonSerializationApi.Serialize(typeof(TankSetting), tankSetting));
+                await outputFile.WriteAsync(FullSerializerApi.Serialize(typeof(TankSetting), tankSetting));
 //                await outputFile.WriteAsync(JsonUtility.ToJson(tankSetting));
             }
             foreach (AbstractAIBrain abstractAiBrain in tankSetting.Brains) {
-                using (StreamWriter outputFile = new StreamWriter(Path.Combine(tankDirectory, abstractAiBrain.name + ".bra"))) {
-                    await outputFile.WriteAsync(JsonSerializationApi.Serialize(typeof(AbstractAIBrain), abstractAiBrain));
+                byte[] bytes = SerializationUtility.SerializeValue(tankSetting, DataFormat.JSON);
+//                UnitySerializationUtility.SerializeUnityObject(tankSetting, );
+                File.WriteAllBytes(Path.Combine(tankDirectory, abstractAiBrain.name + ".bra"), bytes);
+//                using (StreamWriter outputFile = new StreamWriter(Path.Combine(tankDirectory, abstractAiBrain.name + ".bra"))) {
+//                    await outputFile.WriteAsync(FullSerializerApi.Serialize(typeof(AbstractAIBrain), abstractAiBrain));
 //                    await outputFile.WriteAsync(JsonUtility.ToJson(abstractAiBrain));
-                }
+//                }
             }
             Debug.Log("Tank settings saved in " + tankDirectory);
         }

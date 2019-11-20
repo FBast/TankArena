@@ -14,6 +14,228 @@
             <e p="FontLicense.txt" t="Include" />
           </e>
         </e>
+        <e p="OdinSerializer" t="Include">
+          <e p="Config" t="Include">
+            <e p="AssemblyBuildInfo.cs" t="Include" />
+            <e p="GlobalSerializationConfig.cs" t="Include" />
+          </e>
+          <e p="Core" t="Include">
+            <e p="DataReaderWriters" t="Include">
+              <e p="BaseDataReader.cs" t="Include" />
+              <e p="BaseDataReaderWriter.cs" t="Include" />
+              <e p="BaseDataWriter.cs" t="Include" />
+              <e p="Binary" t="Include">
+                <e p="BinaryDataReader.cs" t="Include" />
+                <e p="BinaryDataWriter.cs" t="Include" />
+                <e p="BinaryEntryType.cs" t="Include" />
+              </e>
+              <e p="IDataReader.cs" t="Include" />
+              <e p="IDataWriter.cs" t="Include" />
+              <e p="Json" t="Include">
+                <e p="JsonConfig.cs" t="Include" />
+                <e p="JsonDataReader.cs" t="Include" />
+                <e p="JsonDataWriter.cs" t="Include" />
+                <e p="JsonTextReader.cs" t="Include" />
+              </e>
+              <e p="SerializationNodes" t="Include">
+                <e p="SerializationNode.cs" t="Include" />
+                <e p="SerializationNodeDataReader.cs" t="Include" />
+                <e p="SerializationNodeDataReaderWriterConfig.cs" t="Include" />
+                <e p="SerializationNodeDataWriter.cs" t="Include" />
+              </e>
+            </e>
+            <e p="FormatterLocators" t="Include">
+              <e p="ArrayFormatterLocator.cs" t="Include" />
+              <e p="DelegateFormatterLocator.cs" t="Include" />
+              <e p="FormatterLocator.cs" t="Include" />
+              <e p="GenericCollectionFormatterLocator.cs" t="Include" />
+              <e p="IFormatterLocator.cs" t="Include" />
+              <e p="ISerializableFormatterLocator.cs" t="Include" />
+              <e p="SelfFormatterLocator.cs" t="Include" />
+              <e p="TypeFormatterLocator.cs" t="Include" />
+            </e>
+            <e p="Formatters" t="Include">
+              <e p="ArrayFormatter.cs" t="Include" />
+              <e p="ArrayListFormatter.cs" t="Include" />
+              <e p="BaseFormatter.cs" t="Include" />
+              <e p="DateTimeFormatter.cs" t="Include" />
+              <e p="DateTimeOffsetFormatter.cs" t="Include" />
+              <e p="DelegateFormatter.cs" t="Include" />
+              <e p="DerivedDictionaryFormatter.cs" t="Include" />
+              <e p="DictionaryFormatter.cs" t="Include" />
+              <e p="DoubleLookupDictionaryFormatter.cs" t="Include" />
+              <e p="EasyBaseFormatter.cs" t="Include" />
+              <e p="EmittedFormatterAttribute.cs" t="Include" />
+              <e p="EmptyTypeFormatter.cs" t="Include" />
+              <e p="FormatterEmitter.cs" t="Include" />
+              <e p="GenericCollectionFormatter.cs" t="Include" />
+              <e p="HashSetFormatter.cs" t="Include" />
+              <e p="IFormatter.cs" t="Include" />
+              <e p="KeyValuePairFormatter.cs" t="Include" />
+              <e p="ListFormatter.cs" t="Include" />
+              <e p="MethodInfoFormatter.cs" t="Include" />
+              <e p="MinimalBaseFormatter.cs" t="Include" />
+              <e p="MultiDimensionalArrayFormatter.cs" t="Include" />
+              <e p="NullableFormatter.cs" t="Include" />
+              <e p="PrimitiveArrayFormatter.cs" t="Include" />
+              <e p="QueueFormatter.cs" t="Include" />
+              <e p="ReflectionFormatter.cs" t="Include" />
+              <e p="ReflectionOrEmittedBaseFormatter.cs" t="Include" />
+              <e p="SelfFormatterFormatter.cs" t="Include" />
+              <e p="SerializableFormatter.cs" t="Include" />
+              <e p="StackFormatter.cs" t="Include" />
+              <e p="TimeSpanFormatter.cs" t="Include" />
+              <e p="TypeFormatter.cs" t="Include" />
+              <e p="VersionFormatter.cs" t="Include" />
+            </e>
+            <e p="Misc" t="Include">
+              <e p="AllowDeserializeInvalidDataAttribute.cs" t="Include" />
+              <e p="AlwaysFormatsSelfAttribute.cs" t="Include" />
+              <e p="ArchitectureInfo.cs" t="Include" />
+              <e p="Buffer.cs" t="Include" />
+              <e p="CachedMemoryStream.cs" t="Include" />
+              <e p="CustomFormatterAttribute.cs" t="Include" />
+              <e p="CustomGenericFormatterAttribute.cs" t="Include" />
+              <e p="CustomLogger.cs" t="Include" />
+              <e p="CustomSerializationPolicy.cs" t="Include" />
+              <e p="DataFormat.cs" t="Include" />
+              <e p="DefaultLoggers.cs" t="Include" />
+              <e p="DefaultSerializationBinder.cs" t="Include" />
+              <e p="DeserializationContext.cs" t="Include" />
+              <e p="EmittedAssemblyAttribute.cs" t="Include" />
+              <e p="EntryType.cs" t="Include" />
+              <e p="ErrorHandlingPolicy.cs" t="Include" />
+              <e p="ExcludeDataFromInspectorAttribute.cs" t="Include" />
+              <e p="FormatterLocationStep.cs" t="Include" />
+              <e p="FormatterUtilities.cs" t="Include" />
+              <e p="IAskIfCanFormatTypes.cs" t="Include" />
+              <e p="IExternalGuidReferenceResolver.cs" t="Include" />
+              <e p="IExternalIndexReferenceResolver.cs" t="Include" />
+              <e p="IExternalStringReferenceResolver.cs" t="Include" />
+              <e p="ILogger.cs" t="Include" />
+              <e p="ISelfFormatter.cs" t="Include" />
+              <e p="ISerializationPolicy.cs" t="Include" />
+              <e p="LoggingPolicy.cs" t="Include" />
+              <e p="NodeInfo.cs" t="Include" />
+              <e p="OdinSerializeAttribute.cs" t="Include" />
+              <e p="PrefabModification.cs" t="Include" />
+              <e p="PrefabModificationType.cs" t="Include" />
+              <e p="PreviouslySerializedAsAttribute.cs" t="Include" />
+              <e p="ProperBitConverter.cs" t="Include" />
+              <e p="RegisterFormatterAttribute.cs" t="Include" />
+              <e p="RegisterFormatterLocatorAttribute.cs" t="Include" />
+              <e p="SerializationAbortException.cs" t="Include" />
+              <e p="SerializationConfig.cs" t="Include" />
+              <e p="SerializationContext.cs" t="Include" />
+              <e p="SerializationPolicies.cs" t="Include" />
+              <e p="SerializationUtility.cs" t="Include" />
+              <e p="TwoWaySerializationBinder.cs" t="Include" />
+            </e>
+            <e p="Serializers" t="Include">
+              <e p="BooleanSerializer.cs" t="Include" />
+              <e p="ByteSerializer.cs" t="Include" />
+              <e p="CharSerializer.cs" t="Include" />
+              <e p="ComplexTypeSerializer.cs" t="Include" />
+              <e p="DecimalSerializer.cs" t="Include" />
+              <e p="DoubleSerializer.cs" t="Include" />
+              <e p="EnumSerializer.cs" t="Include" />
+              <e p="GuidSerializer.cs" t="Include" />
+              <e p="Int16Serializer.cs" t="Include" />
+              <e p="Int32Serializer.cs" t="Include" />
+              <e p="Int64Serializer.cs" t="Include" />
+              <e p="IntPtrSerializer.cs" t="Include" />
+              <e p="SByteSerializer.cs" t="Include" />
+              <e p="Serializer.cs" t="Include" />
+              <e p="SingleSerializer.cs" t="Include" />
+              <e p="StringSerializer.cs" t="Include" />
+              <e p="UInt16Serializer.cs" t="Include" />
+              <e p="UInt32Serializer.cs" t="Include" />
+              <e p="UInt64Serializer.cs" t="Include" />
+              <e p="UIntPtrSerializer.cs" t="Include" />
+            </e>
+          </e>
+          <e p="OdinSerializer.asmdef" t="Include" />
+          <e p="Unity Integration" t="Include">
+            <e p="AOTSupportScanner.cs" t="Include" />
+            <e p="AOTSupportUtilities.cs" t="Include" />
+            <e p="DictionaryKeySupport" t="Include">
+              <e p="BaseDictionaryKeyPathProvider.cs" t="Include" />
+              <e p="DictionaryKeyUtility.cs" t="Include" />
+              <e p="IDictionaryKeyPathProvider.cs" t="Include" />
+              <e p="RegisterDictionaryKeyPathProviderAttribute.cs" t="Include" />
+              <e p="Vector2DictionaryKeyPathProvider.cs" t="Include" />
+              <e p="Vector3DictionaryKeyPathProvider.cs" t="Include" />
+              <e p="Vector4DictionaryKeyPathProvider.cs" t="Include" />
+            </e>
+            <e p="Formatters" t="Include">
+              <e p="AnimationCurveFormatter.cs" t="Include" />
+              <e p="BoundsFormatter.cs" t="Include" />
+              <e p="Color32Formatter.cs" t="Include" />
+              <e p="ColorBlockFormatter.cs" t="Include" />
+              <e p="ColorFormatter.cs" t="Include" />
+              <e p="CoroutineFormatter.cs" t="Include" />
+              <e p="GradientAlphaKeyFormatter.cs" t="Include" />
+              <e p="GradientColorKeyFormatter.cs" t="Include" />
+              <e p="GradientFormatter.cs" t="Include" />
+              <e p="KeyframeFormatter.cs" t="Include" />
+              <e p="LayerMaskFormatter.cs" t="Include" />
+              <e p="QuaternionFormatter.cs" t="Include" />
+              <e p="RectFormatter.cs" t="Include" />
+              <e p="UnityEventFormatter.cs" t="Include" />
+              <e p="Vector2Formatter.cs" t="Include" />
+              <e p="Vector3Formatter.cs" t="Include" />
+              <e p="Vector4Formatter.cs" t="Include" />
+            </e>
+            <e p="OdinPrefabSerializationEditorUtility.cs" t="Include" />
+            <e p="SerializedUnityObjects" t="Include">
+              <e p="IOverridesSerializationFormat.cs" t="Include" />
+              <e p="IOverridesSerializationPolicy.cs" t="Include" />
+              <e p="ISupportsPrefabSerialization.cs" t="Include" />
+              <e p="SerializationData.cs" t="Include" />
+              <e p="SerializedBehaviour.cs" t="Include" />
+              <e p="SerializedComponent.cs" t="Include" />
+              <e p="SerializedMonoBehaviour.cs" t="Include" />
+              <e p="SerializedScriptableObject.cs" t="Include" />
+              <e p="SerializedStateMachineBehaviour.cs" t="Include" />
+              <e p="SerializedUnityObject.cs" t="Include" />
+            </e>
+            <e p="UnityReferenceResolver.cs" t="Include" />
+            <e p="UnitySerializationInitializer.cs" t="Include" />
+            <e p="UnitySerializationUtility.cs" t="Include" />
+          </e>
+          <e p="Utilities" t="Include">
+            <e p="Extensions" t="Include">
+              <e p="FieldInfoExtensions.cs" t="Include" />
+              <e p="GarbageFreeIterators.cs" t="Include" />
+              <e p="LinqExtensions.cs" t="Include" />
+              <e p="MemberInfoExtensions.cs" t="Include" />
+              <e p="MethodInfoExtensions.cs" t="Include" />
+              <e p="Operator.cs" t="Include" />
+              <e p="PathUtilities.cs" t="Include" />
+              <e p="PropertyInfoExtensions.cs" t="Include" />
+              <e p="StringExtensions.cs" t="Include" />
+              <e p="TypeExtensions.cs" t="Include" />
+              <e p="UnityExtensions.cs" t="Include" />
+            </e>
+            <e p="Misc" t="Include">
+              <e p="AssemblyImportSettingsUtilities.cs" t="Include" />
+              <e p="Cache.cs" t="Include" />
+              <e p="DoubleLookupDictionary.cs" t="Include" />
+              <e p="EmitUtilities.cs" t="Include" />
+              <e p="FastTypeComparer.cs" t="Include" />
+              <e p="Flags.cs" t="Include" />
+              <e p="ICacheNotificationReceiver.cs" t="Include" />
+              <e p="ImmutableList.cs" t="Include" />
+              <e p="MemberAliasFieldInfo.cs" t="Include" />
+              <e p="MemberAliasMethodInfo.cs" t="Include" />
+              <e p="MemberAliasPropertyInfo.cs" t="Include" />
+              <e p="ReferenceEqualityComparer.cs" t="Include" />
+              <e p="UnityVersion.cs" t="Include" />
+              <e p="UnsafeUtilities.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Version.txt" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="FullSerializer" t="Include">
             <e p="Aot" t="Include">
@@ -254,13 +476,15 @@
           <e p="Utils" t="Include">
             <e p="DataHandler.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
-            <e p="JsonSerializationApi.cs" t="Include" />
+            <e p="FullSerializerApi.cs" t="Include" />
+            <e p="OdinSerializerApi.cs" t="Include" />
             <e p="Properties.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
           </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
+      <e p="OdinSerializer.csproj" t="IncludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="TankArena.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />

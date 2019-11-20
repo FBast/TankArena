@@ -638,8 +638,8 @@ MonoBehaviour:
   - {fileID: 7759946980810581069}
   - {fileID: 1815393420626779663}
   - {fileID: 5425319310465079574}
-  - {fileID: 0}
   - {fileID: -8387438512823558750}
+  - {fileID: 0}
 --- !u!114 &1815393420626779663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,7 +1045,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.5769231
+  UtilityY: 0
 --- !u!114 &5276734303690849383
 MonoBehaviour:
   m_ObjectHideFlags: 0
