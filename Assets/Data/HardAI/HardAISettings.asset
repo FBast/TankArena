@@ -17,3 +17,6 @@ MonoBehaviour:
   TurretColor: {r: 1, g: 0, b: 0, a: 1}
   HullColor: {r: 1, g: 0, b: 0, a: 1}
   TracksColor: {r: 1, g: 0, b: 0, a: 1}
+  Brains:
+  - {fileID: 11400000, guid: 4eb51848bd1215b42a777750cd4e8081, type: 2}
+  - {fileID: 11400000, guid: 858ca534925cd24458cbebc08cdc2a10, type: 2}
