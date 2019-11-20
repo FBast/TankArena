@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager> {
     public GameObject TankPrefab;
     
     [Header("Data")]
-    public List<TankSetting> TankSettings;
+    public List<TankData> TankSettings;
     
     [Header("References")] 
     public GameObject WaypointPrefab;

@@ -40,7 +40,7 @@ namespace Entities {
         public GameObject Destination;
 
         public Action<float> OnLifeChanged;
-        [HideInInspector] public TankSetting TankSetting;
+        [HideInInspector] public TankData tankData;
         
         private readonly int _waypointRadius = 15;
         private NavMeshAgent _navMeshAgent;
@@ -60,15 +60,15 @@ namespace Entities {
             _tankAiComponent = GetComponent<TankAIComponent>();
         }
 
-        public void InitTank(TankSetting tankSetting) {
-            if (!tankSetting)
+        public void InitTank(TankData tankData) {
+            if (!tankData)
                 throw new Exception("Each tank need a tank setting to be set");
-            TankSetting = tankSetting;
-            TurretMeshRenderer.material.color = tankSetting.TurretColor;
-            HullMeshRenderer.material.color = tankSetting.HullColor;
-            RightTrackMeshRender.material.color = tankSetting.TracksColor;
-            LeftTrackMeshRender.material.color = tankSetting.TracksColor;
-            _tankAiComponent.UtilityAiBrains = tankSetting.Brains;
+            this.tankData = tankData;
+            TurretMeshRenderer.material.color = tankData.TurretColor;
+            HullMeshRenderer.material.color = tankData.HullColor;
+            RightTrackMeshRender.material.color = tankData.TracksColor;
+            LeftTrackMeshRender.material.color = tankData.TracksColor;
+            _tankAiComponent.UtilityAiBrains = tankData.Brains;
             CurrentHP = MaxHP;
         }
         

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using Entities;
@@ -15,7 +14,7 @@ namespace UI {
         public Dropdown FirstPlayerDropdown;
         public Dropdown SecondPlayerDropdown;
 
-        public List<TankSetting> Settings = new List<TankSetting>();
+        public List<TankData> Settings = new List<TankData>();
         
         private void Start() {
             foreach (string directory in Directory.GetDirectories(Application.streamingAssetsPath)) {
