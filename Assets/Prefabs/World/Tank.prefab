@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 2226871862149800489}
   - component: {fileID: 2226871862149897097}
   - component: {fileID: 3504507628025106244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 2466928126323483379}
   - component: {fileID: 2466928126322278125}
   - component: {fileID: 2466928126321315093}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankTracksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4960,7 +4960,7 @@ GameObject:
   - component: {fileID: 2466928126323469983}
   - component: {fileID: 2466928126304132569}
   - component: {fileID: 2466928126304121245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9668,7 +9668,7 @@ GameObject:
   - component: {fileID: 2466928126323584789}
   - component: {fileID: 2466928126322269785}
   - component: {fileID: 2466928126321105855}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankTracksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9747,7 +9747,7 @@ GameObject:
   - component: {fileID: 2466928126323458367}
   - component: {fileID: 2466928126322275485}
   - component: {fileID: 2466928126321312739}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9823,7 +9823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2466928126323462619}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankRenderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9859,7 +9859,7 @@ GameObject:
   - component: {fileID: 2466928126323513155}
   - component: {fileID: 2466928126322247669}
   - component: {fileID: 2466928126321157221}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9938,7 +9938,7 @@ GameObject:
   - component: {fileID: 2466928126323532191}
   - component: {fileID: 2466928126304135453}
   - component: {fileID: 2466928126305342905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14673,6 +14673,7 @@ Transform:
   - {fileID: 2466928126323469983}
   - {fileID: 2226871862135646057}
   - {fileID: 7453167107977794583}
+  - {fileID: 1314712669814727122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14841,11 +14842,11 @@ MonoBehaviour:
   ShotFiring: {fileID: 8933866900474004020}
   SmokeSetter: {fileID: 3504507628025106244}
   FireSetter: {fileID: 1543933092887704861}
-  TankName: {fileID: 0}
   TurretMeshRenderer: {fileID: 2466928126321157221}
   HullMeshRenderer: {fileID: 2466928126321312739}
   RightTrackMeshRender: {fileID: 2466928126321105855}
   LeftTrackMeshRender: {fileID: 2466928126321315093}
+  FactionDisk: {fileID: 5254474895372124269}
   ShellPrefab: {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 3}
   CanonShotPrefab: {fileID: 195792, guid: 284bae83e39190c459a86d91f74bc6e1, type: 3}
   TankExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
@@ -14854,6 +14855,7 @@ MonoBehaviour:
   TurretSpeed: 10
   MaxHP: 5
   ReloadTime: 5
+  TeamNumber: 0
   CurrentHP: 5
   IsShellLoaded: 1
   Target: {fileID: 0}
@@ -14874,6 +14876,84 @@ MonoBehaviour:
   AlwaysPickBestChoice: 1
   UtilityAiBrains: []
   TankEntity: {fileID: 0}
+--- !u!1 &8777168391692821030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1314712669814727122}
+  - component: {fileID: 3270526201899289560}
+  - component: {fileID: 5254474895372124269}
+  m_Layer: 9
+  m_Name: FactionDisk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1314712669814727122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777168391692821030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 0.01, z: 3}
+  m_Children: []
+  m_Father: {fileID: 2466928126323561731}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3270526201899289560
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777168391692821030}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5254474895372124269
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777168391692821030}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &7457652907464243235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14881,6 +14961,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2466928126323561731}
     m_Modifications:
+    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14925,18 +15013,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
-      propertyPath: m_Name
-      value: Fire
+    - target: {fileID: 1911683160194432, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706519164850726, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652784949999524, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
---- !u!4 &7453167107977794583 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7457652907464243235}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1543933092887704861 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8220126196799245630, guid: 89956e675b749204c8e10395ce2b5fb9,
@@ -14949,3 +15043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceab1d055ed3141439925bd2aab4ce14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7453167107977794583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7457652907464243235}
+  m_PrefabAsset: {fileID: 0}

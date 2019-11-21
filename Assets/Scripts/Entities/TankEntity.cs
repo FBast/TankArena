@@ -21,6 +21,7 @@ namespace Entities {
         public MeshRenderer HullMeshRenderer;
         public MeshRenderer RightTrackMeshRender;
         public MeshRenderer LeftTrackMeshRender;
+        public MeshRenderer FactionDisk;
         
         [Header("Prefabs")]
         public GameObject ShellPrefab;
@@ -41,9 +42,6 @@ namespace Entities {
         public GameObject Target;
         public GameObject Destination;
 
-        public Action<float> OnLifeChanged;
-        [HideInInspector] public TankSetting tankSetting;
-        
         private readonly int _waypointRadius = 15;
         private NavMeshAgent _navMeshAgent;
         private TankAIComponent _tankAiComponent;
@@ -62,17 +60,17 @@ namespace Entities {
             _tankAiComponent = GetComponent<TankAIComponent>();
         }
 
-        public void InitTank(TankSetting setting, int teamNumber) {
+        public void InitTank(TankSetting setting, int teamNumber, Color factionColor) {
             if (!setting)
                 throw new Exception("Each tank need a tank setting to be set");
             TeamNumber = teamNumber;
-            tankSetting = setting;
             TurretMeshRenderer.material.color = setting.TurretColor;
             HullMeshRenderer.material.color = setting.HullColor;
             RightTrackMeshRender.material.color = setting.TracksColor;
             LeftTrackMeshRender.material.color = setting.TracksColor;
             _tankAiComponent.UtilityAiBrains = setting.Brains;
             CurrentHP = MaxHP;
+            FactionDisk.material.color = factionColor;
         }
         
         private void OnDrawGizmos() {
@@ -116,7 +114,6 @@ namespace Entities {
 
         public void Damage(int damage) {
             CurrentHP -= damage;
-            OnLifeChanged.Invoke((float) CurrentHP / MaxHP);
             if (CurrentHP > 0) return;
             Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
             Destroy(gameObject);
@@ -128,7 +125,6 @@ namespace Entities {
         
         public void Heal(int healing) {
             CurrentHP += healing;
-            OnLifeChanged.Invoke((float) CurrentHP / MaxHP);
             if (CurrentHP > MaxHP) CurrentHP = MaxHP;
         }
 

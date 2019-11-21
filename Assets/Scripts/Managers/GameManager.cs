@@ -42,7 +42,6 @@ namespace Managers {
         private List<TankSetting> _teamCSettings;
         private List<TankSetting> _teamDSettings;
         private List<TankSetting> _ffaSettings;
-        private int _tankNumber;
 
         private void Start() {
             _teamASettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamASettings);
@@ -50,13 +49,12 @@ namespace Managers {
             _teamCSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamCSettings);
             _teamDSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamDSettings);
             _ffaSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.FFASettings);
-            _tankNumber = (int) SceneManager.Instance.GetParam(Properties.Parameters.TankNumber);
             _tankEntities = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
             _waypointEntities = FindObjectsOfType<WaypointEntity>().Select(entity => entity.gameObject).ToList();
             _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
             _gameObjects = FindObjectsOfType<GameObject>().ToList();
             GenerateWaypointGrid();
-            GenerateTanksForDuel();
+            GenerateTanksForTeamFight();
         }
 
         public void GenerateWaypointGrid() {
@@ -80,30 +78,19 @@ namespace Managers {
             _bonusEntities.Add(bonusGameObject);
         }
 
-        private void GenerateTanksForDuel() {
-            GenerateTanks(_teamASettings, TeamAPositions, 1);
-            GenerateTanks(_teamBSettings, TeamBPositions, 2);
-        }
-
         private void GenerateTanksForTeamFight() {
-            GenerateTanks(_teamASettings, TeamAPositions, 1);
-            GenerateTanks(_teamBSettings, TeamBPositions, 2);
-            GenerateTanks(_teamCSettings, TeamCPositions, 3);
-            GenerateTanks(_teamDSettings, TeamDPositions, 4);
+            GenerateTanks(_teamASettings, TeamAPositions, 1, Color.red);
+            GenerateTanks(_teamBSettings, TeamBPositions, 2, Color.green);
+            GenerateTanks(_teamCSettings, TeamCPositions, 3, Color.blue);
+            GenerateTanks(_teamDSettings, TeamDPositions, 4, Color.yellow);
         }
 
-        private void GenerateTanks(List<TankSetting> tankSettings, List<Transform> positions, int teamNumber) {
-            if (_teamASettings.Count * _tankNumber > positions.Count)
+        private void GenerateTanks(List<TankSetting> tankSettings, List<Transform> positions, int teamNumber, Color factionColor) {
+            if (_teamASettings.Count > positions.Count)
                 throw new Exception("Need more positions for tanks");
-            List<TankSetting> allTankSettings = new List<TankSetting>();
-            foreach (TankSetting tankSetting in tankSettings) {
-                for (int i = 0; i < _tankNumber; i++) {
-                    allTankSettings.Add(tankSetting);
-                }
-            }
-            for (int i = 0; i < allTankSettings.Count; i++) {
+            for (int i = 0; i < tankSettings.Count; i++) {
                 GameObject instantiate = Instantiate(TankPrefab, positions[i].position, Quaternion.identity);
-                instantiate.GetComponent<TankEntity>().InitTank(allTankSettings[i], teamNumber);
+                instantiate.GetComponent<TankEntity>().InitTank(tankSettings[i], teamNumber, factionColor);
                 _tankEntities.Add(instantiate);
             }
         }

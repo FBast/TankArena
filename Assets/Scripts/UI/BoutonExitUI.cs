@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
-public class BoutonExit : MonoBehaviour {
+namespace UI {
+    public class BoutonExitUI : MonoBehaviour {
 
-    public void Exit() {
-        Application.Quit();
-    }
+        public void Exit() {
+            Application.Quit();
+        }
     
+    }
 }

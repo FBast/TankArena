@@ -23,11 +23,9 @@ namespace Utils {
             public static string TeamCSettings = "TeamCSettings";
             public static string TeamDSettings = "TeamDSettings";
             public static string FFASettings = "FFASettings";
-            public static string TankNumber = "TankNumber";
         }
 
         public struct GameTypes {
-            public static string Duel = "Duel";
             public static string TeamFight = "TF";
             public static string FreeForAll = "FFA";
             public static string Tournament = "Tournament";
