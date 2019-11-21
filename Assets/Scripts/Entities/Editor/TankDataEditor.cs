@@ -5,11 +5,11 @@ namespace Entities.Editor {
     [CustomEditor(typeof(TankSetting))]
     public class TankDataEditor : UnityEditor.Editor {
         
-        public override async void OnInspectorGUI() {
+        public override void OnInspectorGUI() {
             DrawDefaultInspector();
             TankSetting tankSetting = (TankSetting) target;
             if(GUILayout.Button("Save")) {
-                await tankSetting.Save();
+                tankSetting.Save();
             }
         }
     }

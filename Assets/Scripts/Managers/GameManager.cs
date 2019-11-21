@@ -29,6 +29,9 @@ namespace Managers {
         public int GridZGap;
         public LayerMask CoverLayer;
 
+        [Header("Data")]
+        public List<TankSetting> TankSettings;
+        
         public List<GameObject> TankEntities => _tankEntities.Where(go => go != null).ToList();
         public List<GameObject> WaypointEntities => _waypointEntities.Where(go => go != null).ToList();
         public List<GameObject> BonusEntities => _bonusEntities.Where(go => go != null).ToList();
@@ -38,11 +41,9 @@ namespace Managers {
         private List<GameObject> _waypointEntities = new List<GameObject>();
         private List<GameObject> _bonusEntities = new List<GameObject>();
         private List<GameObject> _gameObjects = new List<GameObject>();
-
-        private List<TankSetting> _tankSettings;
         
         private void Start() {
-            _tankSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TankSettings);
+            TankSettings.AddRange((List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TankSettings));
             _tankEntities = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
             _waypointEntities = FindObjectsOfType<WaypointEntity>().Select(entity => entity.gameObject).ToList();
             _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
@@ -73,12 +74,12 @@ namespace Managers {
         }
 
         public void GenerateTanks() {
-            if (_tankSettings.Count > TankMeleePositions.Count)
+            if (TankSettings.Count > TankMeleePositions.Count)
                 throw new Exception("Need more positions for tanks");
-            for (int i = 0; i < _tankSettings.Count; i++) {
+            for (int i = 0; i < TankSettings.Count; i++) {
                 Transform tankPosition = TankMeleePositions[i];
                 GameObject instantiate = Instantiate(TankPrefab, tankPosition.position, Quaternion.identity);
-                instantiate.GetComponent<TankEntity>().InitTank(_tankSettings[i]);
+                instantiate.GetComponent<TankEntity>().InitTank(TankSettings[i]);
                 _tankEntities.Add(instantiate);
             }
             TankLifeUi.UpdateUI(_tankEntities);

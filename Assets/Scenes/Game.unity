@@ -1409,10 +1409,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TankPrefab: {fileID: 2466928126323326545, guid: 756d3a6506f2f8241b4e8badde68567a,
     type: 3}
-  TankSettings:
-  - {fileID: 11400000, guid: 31b731e2466cdb14c990d0528b7e3007, type: 2}
-  - {fileID: 11400000, guid: a555818f7a40a334291ffb233ee953fd, type: 2}
-  - {fileID: 11400000, guid: 24ff307c3ac308041abdf006890908f1, type: 2}
   WaypointPrefab: {fileID: 766959169144266406, guid: b7dea6330fc52124fbc7cc5c2a47a412,
     type: 3}
   WaypointContent: {fileID: 424310685}
@@ -1433,6 +1429,7 @@ MonoBehaviour:
   CoverLayer:
     serializedVersion: 2
     m_Bits: 1335
+  TankSettings: []
 --- !u!4 &1304999366
 Transform:
   m_ObjectHideFlags: 0
