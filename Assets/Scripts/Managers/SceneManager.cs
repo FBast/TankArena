@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utils;
 
 namespace Managers {
 	public class SceneManager : Singleton<SceneManager> {
 
+		public List<TankSetting> TankSettings = new List<TankSetting>();
+		
 		private void Start() {
 			LoadScene("Menu");
 		}

@@ -223,6 +223,38 @@ MonoBehaviour:
   Data:
     DataTag: 
     Data: {fileID: 0}
+--- !u!114 &-3505074003400454901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddddb22586f4ce7ab14e32a803f3a98, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 8, y: -280}
+  ports:
+    keys:
+    - LinkedOption
+    values:
+    - _fieldName: LinkedOption
+      _node: {fileID: -3505074003400454901}
+      _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: Actions
+        node: {fileID: 8205783135855297639}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  LinkedOption: {fileID: 0}
+  Order: 0
 --- !u!114 &-3316888199566332679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +426,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.9431818
+  UtilityY: 0.02522775
 --- !u!114 &-431299842432448598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,14 +476,14 @@ MonoBehaviour:
   - {fileID: 680909097015725868}
   - {fileID: 2830500752546835809}
   - {fileID: 1585590846828763168}
-  - {fileID: 4435751761172415806}
   - {fileID: -8700507663786430366}
   - {fileID: -5343816142024252526}
   - {fileID: -431299842432448598}
   - {fileID: -3236302355394788701}
   - {fileID: -7420719097611563291}
-  - {fileID: 0}
   - {fileID: -3316888199566332679}
+  - {fileID: 0}
+  - {fileID: -3505074003400454901}
 --- !u!114 &680909097015725868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,38 +664,6 @@ MonoBehaviour:
       _dynamic: 0
   UtilityIn: 0
   UtilityOut: 0
---- !u!114 &4435751761172415806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ddddb22586f4ce7ab14e32a803f3a98, type: 3}
-  m_Name: Fire
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -88, y: -280}
-  ports:
-    keys:
-    - LinkedOption
-    values:
-    - _fieldName: LinkedOption
-      _node: {fileID: 4435751761172415806}
-      _typeQualifiedName: NodeUtilityAi.Nodes.ActionNode, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: Actions
-        node: {fileID: 8205783135855297639}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  LinkedOption: {fileID: 0}
-  Order: 0
 --- !u!114 &8205783135855297639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,7 +737,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: LinkedOption
-        node: {fileID: 4435751761172415806}
+        node: {fileID: -3505074003400454901}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

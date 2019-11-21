@@ -18,7 +18,11 @@ namespace Utils {
 
         public struct Parameters {
             public static string GameType = "GameType";
-            public static string TankSettings = "TankSettings";
+            public static string TeamASettings = "TeamASettings";
+            public static string TeamBSettings = "TeamBSettings";
+            public static string TeamCSettings = "TeamCSettings";
+            public static string TeamDSettings = "TeamDSettings";
+            public static string FFASettings = "FFASettings";
             public static string TankNumber = "TankNumber";
         }
 

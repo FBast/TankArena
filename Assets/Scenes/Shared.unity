@@ -163,3 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3520a0fae9cb2594d93ac59083853572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TankSettings:
+  - {fileID: 11400000, guid: 30f12546a09d30c46b5a6dcab811d390, type: 2}
+  - {fileID: 11400000, guid: f66655551c92bdd45bd689da185f6300, type: 2}
+  - {fileID: 11400000, guid: 35b8436a2260e194896efc9420282fed, type: 2}

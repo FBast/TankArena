@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entities;
-using UI;
 using UnityEngine;
 using Utils;
 
@@ -18,20 +17,17 @@ namespace Managers {
         public Transform BonusContent;
         public Transform GridStart;
         public Transform GridEnd;
-        public List<Transform> TankMeleePositions;
-        public List<Transform> TankDuelPositions;
+        public List<Transform> TeamAPositions;
+        public List<Transform> TeamBPositions;
+        public List<Transform> TeamCPositions;
+        public List<Transform> TeamDPositions;
+        public List<Transform> FfaPositions;
 
-        [Header("External References")] 
-        public TankLifeUI TankLifeUi;
-    
         [Header("Parameters")] 
         public int GridXGap;
         public int GridZGap;
         public LayerMask CoverLayer;
 
-        [Header("Data")]
-        public List<TankSetting> TankSettings;
-        
         public List<GameObject> TankEntities => _tankEntities.Where(go => go != null).ToList();
         public List<GameObject> WaypointEntities => _waypointEntities.Where(go => go != null).ToList();
         public List<GameObject> BonusEntities => _bonusEntities.Where(go => go != null).ToList();
@@ -41,15 +37,26 @@ namespace Managers {
         private List<GameObject> _waypointEntities = new List<GameObject>();
         private List<GameObject> _bonusEntities = new List<GameObject>();
         private List<GameObject> _gameObjects = new List<GameObject>();
-        
+        private List<TankSetting> _teamASettings;
+        private List<TankSetting> _teamBSettings;
+        private List<TankSetting> _teamCSettings;
+        private List<TankSetting> _teamDSettings;
+        private List<TankSetting> _ffaSettings;
+        private int _tankNumber;
+
         private void Start() {
-            TankSettings.AddRange((List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TankSettings));
+            _teamASettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamASettings);
+            _teamBSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamBSettings);
+            _teamCSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamCSettings);
+            _teamDSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamDSettings);
+            _ffaSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.FFASettings);
+            _tankNumber = (int) SceneManager.Instance.GetParam(Properties.Parameters.TankNumber);
             _tankEntities = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
             _waypointEntities = FindObjectsOfType<WaypointEntity>().Select(entity => entity.gameObject).ToList();
             _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
             _gameObjects = FindObjectsOfType<GameObject>().ToList();
             GenerateWaypointGrid();
-            GenerateTanks();
+            GenerateTanksForDuel();
         }
 
         public void GenerateWaypointGrid() {
@@ -73,17 +80,33 @@ namespace Managers {
             _bonusEntities.Add(bonusGameObject);
         }
 
-        public void GenerateTanks() {
-            if (TankSettings.Count > TankMeleePositions.Count)
+        private void GenerateTanksForDuel() {
+            GenerateTanks(_teamASettings, TeamAPositions, 1);
+            GenerateTanks(_teamBSettings, TeamBPositions, 2);
+        }
+
+        private void GenerateTanksForTeamFight() {
+            GenerateTanks(_teamASettings, TeamAPositions, 1);
+            GenerateTanks(_teamBSettings, TeamBPositions, 2);
+            GenerateTanks(_teamCSettings, TeamCPositions, 3);
+            GenerateTanks(_teamDSettings, TeamDPositions, 4);
+        }
+
+        private void GenerateTanks(List<TankSetting> tankSettings, List<Transform> positions, int teamNumber) {
+            if (_teamASettings.Count * _tankNumber > positions.Count)
                 throw new Exception("Need more positions for tanks");
-            for (int i = 0; i < TankSettings.Count; i++) {
-                Transform tankPosition = TankMeleePositions[i];
-                GameObject instantiate = Instantiate(TankPrefab, tankPosition.position, Quaternion.identity);
-                instantiate.GetComponent<TankEntity>().InitTank(TankSettings[i]);
+            List<TankSetting> allTankSettings = new List<TankSetting>();
+            foreach (TankSetting tankSetting in tankSettings) {
+                for (int i = 0; i < _tankNumber; i++) {
+                    allTankSettings.Add(tankSetting);
+                }
+            }
+            for (int i = 0; i < allTankSettings.Count; i++) {
+                GameObject instantiate = Instantiate(TankPrefab, positions[i].position, Quaternion.identity);
+                instantiate.GetComponent<TankEntity>().InitTank(allTankSettings[i], teamNumber);
                 _tankEntities.Add(instantiate);
             }
-            TankLifeUi.UpdateUI(_tankEntities);
         }
-    
+
     }
 }

@@ -33,8 +33,9 @@ namespace Entities {
         public int TurretSpeed;
         public int MaxHP;
         public int ReloadTime;
-        
-        [Header("Variables")]
+
+        [Header("Variables")] 
+        public int TeamNumber;
         public int CurrentHP;
         public bool IsShellLoaded = true;
         public GameObject Target;
@@ -61,15 +62,16 @@ namespace Entities {
             _tankAiComponent = GetComponent<TankAIComponent>();
         }
 
-        public void InitTank(TankSetting tankSetting) {
-            if (!tankSetting)
+        public void InitTank(TankSetting setting, int teamNumber) {
+            if (!setting)
                 throw new Exception("Each tank need a tank setting to be set");
-            this.tankSetting = tankSetting;
-            TurretMeshRenderer.material.color = tankSetting.TurretColor;
-            HullMeshRenderer.material.color = tankSetting.HullColor;
-            RightTrackMeshRender.material.color = tankSetting.TracksColor;
-            LeftTrackMeshRender.material.color = tankSetting.TracksColor;
-            _tankAiComponent.UtilityAiBrains = tankSetting.Brains;
+            TeamNumber = teamNumber;
+            tankSetting = setting;
+            TurretMeshRenderer.material.color = setting.TurretColor;
+            HullMeshRenderer.material.color = setting.HullColor;
+            RightTrackMeshRender.material.color = setting.TracksColor;
+            LeftTrackMeshRender.material.color = setting.TracksColor;
+            _tankAiComponent.UtilityAiBrains = setting.Brains;
             CurrentHP = MaxHP;
         }
         

@@ -4,11 +4,12 @@ using System.Linq;
 using Entities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utils;
 using SceneManager = Managers.SceneManager;
 
 namespace UI {
-    public class DuelUI : MonoBehaviour {
+    public class TeamFightUI : MonoBehaviour {
 
         [Header("References")] 
         public TextMeshProUGUI NumberOfTankText;
@@ -21,7 +22,8 @@ namespace UI {
         private int _tankNumber;
         
         private void Start() {
-            _settings = DataHandler.GetTankData();
+//            _settings = DataHandler.GetTankData();
+            _settings = SceneManager.Instance.TankSettings;
             FirstPlayerDropdown.ClearOptions();
             FirstPlayerDropdown.AddOptions(_settings.Select(setting => setting.TankName + " of " + setting.PlayerName).ToList());
             FirstPlayerDropdown.onValueChanged.AddListener(SetFirstPlayer);
@@ -47,8 +49,11 @@ namespace UI {
         }
 
         public void LaunchGame() {
-            SceneManager.Instance.SetParam(Properties.Parameters.TankSettings, new List<TankSetting> {
-                _firstPlayerTankSetting, _secondPlayerTankSetting
+            SceneManager.Instance.SetParam(Properties.Parameters.TeamASettings, new List<TankSetting> {
+                _firstPlayerTankSetting
+            });
+            SceneManager.Instance.SetParam(Properties.Parameters.TeamBSettings, new List<TankSetting> {
+                _secondPlayerTankSetting
             });
             SceneManager.Instance.SetParam(Properties.Parameters.TankNumber, _tankNumber);
             SceneManager.Instance.UnloadScene(Properties.Scenes.Menu);
