@@ -12,7 +12,7 @@ namespace Entities {
             TankEntity tankEntity = other.GetComponent<TankEntity>();
             if (tankEntity == TankEntityOwner) return;
             if (tankEntity) other.GetComponent<TankEntity>().Damage(Damage);
-            Instantiate(ExplosionPrefab, transform.position,Quaternion.Inverse(ExplosionPrefab.transform.rotation));
+            Instantiate(ExplosionPrefab, transform.position, Quaternion.Inverse(ExplosionPrefab.transform.rotation));
             Destroy(gameObject);
         }
 

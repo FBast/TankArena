@@ -7,6 +7,7 @@ using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using Utils;
 
 namespace Entities {
     public class TankEntity : MonoBehaviour {
@@ -22,27 +23,26 @@ namespace Entities {
         public MeshRenderer RightTrackMeshRender;
         public MeshRenderer LeftTrackMeshRender;
         public MeshRenderer FactionDisk;
+        public GameObject TurretCamera;
         
         [Header("Prefabs")]
         public GameObject ShellPrefab;
         public GameObject CanonShotPrefab;
         public GameObject TankExplosionPrefab;
+        public GameObject BustedTankPrefab;
 
-        [Header("Parameters")]
-        public int CanonDamage;
-        public int CanonPower;
-        public int TurretSpeed;
-        public int MaxHP;
-        public int ReloadTime;
-
-        [Header("Variables")] 
-        public int TeamNumber;
-        public int CurrentHP;
+        public int CanonDamage { get; private set; }
+        public int CanonPower { get; private set; }
+        public int TurretSpeed { get; private set; }
+        public int MaxHP { get; private set; }
+        public int ReloadTime { get; private set; }
+        public int TeamNumber { get; private set; }
+        public int CurrentHP { get; private set; }
         public bool IsShellLoaded = true;
         public GameObject Target;
         public GameObject Destination;
 
-        private readonly int _waypointRadius = 15;
+        private int _waypointRadius;
         private NavMeshAgent _navMeshAgent;
         private TankAIComponent _tankAiComponent;
 
@@ -58,9 +58,16 @@ namespace Entities {
         private void Awake() {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _tankAiComponent = GetComponent<TankAIComponent>();
+            _waypointRadius = PlayerPrefs.GetInt(Properties.PlayerPrefs.WaypointSeekRadius, Properties.PlayerPrefsDefault.WaypointSeekRadius);
+            MaxHP = PlayerPrefs.GetInt(Properties.PlayerPrefs.HealthPoints, Properties.PlayerPrefsDefault.HealthPoints);
+            CurrentHP = MaxHP;
+            CanonDamage = PlayerPrefs.GetInt(Properties.PlayerPrefs.CanonDamage, Properties.PlayerPrefsDefault.CanonDamage);
+            CanonPower = PlayerPrefs.GetInt(Properties.PlayerPrefs.CanonPower, Properties.PlayerPrefsDefault.CanonPower);
+            TurretSpeed = PlayerPrefs.GetInt(Properties.PlayerPrefs.TurretSpeed, Properties.PlayerPrefsDefault.TurretSpeed);
+            ReloadTime = PlayerPrefs.GetInt(Properties.PlayerPrefs.ReloadTime, Properties.PlayerPrefsDefault.ReloadTime);
         }
 
-        public void InitTank(TankSetting setting, int teamNumber, Color factionColor) {
+        public void Init(TankSetting setting, int teamNumber, Color factionColor) {
             if (!setting)
                 throw new Exception("Each tank need a tank setting to be set");
             TeamNumber = teamNumber;
@@ -69,7 +76,6 @@ namespace Entities {
             RightTrackMeshRender.material.color = setting.TracksColor;
             LeftTrackMeshRender.material.color = setting.TracksColor;
             _tankAiComponent.UtilityAiBrains = setting.Brains;
-            CurrentHP = MaxHP;
             FactionDisk.material.color = factionColor;
         }
         
@@ -115,10 +121,17 @@ namespace Entities {
         public void Damage(int damage) {
             CurrentHP -= damage;
             if (CurrentHP > 0) return;
-            Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
-            Destroy(gameObject);
+            Die();
         }
 
+        private void Die() {
+            Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
+            if (PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, 
+                Properties.PlayerPrefsDefault.ExplosionCreateBustedTank))
+                Instantiate(BustedTankPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+        
         private void Reload() {
             IsShellLoaded = true;
         }
@@ -140,6 +153,6 @@ namespace Entities {
             }
             return null;
         }
-        
+
     }
 }

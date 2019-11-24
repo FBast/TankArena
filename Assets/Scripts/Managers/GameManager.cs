@@ -10,8 +10,9 @@ namespace Managers {
 
         [Header("Prefabs")] 
         public GameObject TankPrefab;
-    
+
         [Header("References")] 
+        public GameObject SpinningCamera;
         public GameObject WaypointPrefab;
         public Transform WaypointContent;
         public Transform BonusContent;
@@ -21,7 +22,6 @@ namespace Managers {
         public List<Transform> TeamBPositions;
         public List<Transform> TeamCPositions;
         public List<Transform> TeamDPositions;
-        public List<Transform> FfaPositions;
 
         [Header("Parameters")] 
         public int GridXGap;
@@ -41,20 +41,43 @@ namespace Managers {
         private List<TankSetting> _teamBSettings;
         private List<TankSetting> _teamCSettings;
         private List<TankSetting> _teamDSettings;
-        private List<TankSetting> _ffaSettings;
-
+        private GameObject _tankCamera;
+        private int _tankCameraIndex;
+        
         private void Start() {
             _teamASettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamASettings);
             _teamBSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamBSettings);
             _teamCSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamCSettings);
             _teamDSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.TeamDSettings);
-            _ffaSettings = (List<TankSetting>) SceneManager.Instance.GetParam(Properties.Parameters.FFASettings);
             _tankEntities = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
             _waypointEntities = FindObjectsOfType<WaypointEntity>().Select(entity => entity.gameObject).ToList();
             _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
             _gameObjects = FindObjectsOfType<GameObject>().ToList();
             GenerateWaypointGrid();
             GenerateTanksForTeamFight();
+        }
+
+        private void Update() {
+            if (Input.GetButtonDown("Fire1")) {
+                _tankCameraIndex++;
+                if (_tankCameraIndex >= TankEntities.Count) _tankCameraIndex = 0;
+                CameraSwitch(TankEntities[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
+            }
+            if (Input.GetButtonDown("Fire2")) {
+                _tankCameraIndex--;
+                if (_tankCameraIndex < 0) _tankCameraIndex = TankEntities.Count - 1;
+                CameraSwitch(TankEntities[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
+            }
+            if (Input.GetButtonDown("Fire3")) {
+                _tankCamera.SetActive(false);
+            }
+        }
+
+        private void CameraSwitch(GameObject newCamera) {
+            if (_tankCamera)
+                _tankCamera.SetActive(false);
+            _tankCamera = newCamera;
+            newCamera.SetActive(true);
         }
 
         public void GenerateWaypointGrid() {
@@ -90,7 +113,7 @@ namespace Managers {
                 throw new Exception("Need more positions for tanks");
             for (int i = 0; i < tankSettings.Count; i++) {
                 GameObject instantiate = Instantiate(TankPrefab, positions[i].position, Quaternion.identity);
-                instantiate.GetComponent<TankEntity>().InitTank(tankSettings[i], teamNumber, factionColor);
+                instantiate.GetComponent<TankEntity>().Init(tankSettings[i], teamNumber, factionColor);
                 _tankEntities.Add(instantiate);
             }
         }

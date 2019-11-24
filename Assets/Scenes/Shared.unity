@@ -105,21 +105,21 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 1
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 35
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 36d19df55aa98d5458ba50b4089a7b3f, type: 2}
 --- !u!1 &746430902
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 746430903}
   - component: {fileID: 746430904}
   m_Layer: 0
-  m_Name: Management
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,3 +165,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TankSettings:
   - {fileID: 11400000, guid: 30f12546a09d30c46b5a6dcab811d390, type: 2}
+  - {fileID: 11400000, guid: 35b8436a2260e194896efc9420282fed, type: 2}
+  - {fileID: 11400000, guid: f66655551c92bdd45bd689da185f6300, type: 2}

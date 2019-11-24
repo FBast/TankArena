@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Utils;
 
 namespace Managers {
 	public class SceneManager : Singleton<SceneManager> {
