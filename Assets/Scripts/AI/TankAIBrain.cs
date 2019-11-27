@@ -2,5 +2,8 @@
 using NodeUtilityAi;
 using UnityEngine;
 
-[Serializable, CreateAssetMenu(fileName = "TankAIBrain", menuName = "TankAIBrain")]
-public class TankAIBrain : AbstractAIBrain {}
+namespace AI
+{
+    [Serializable, CreateAssetMenu(fileName = "TankAIBrain", menuName = "TankAIBrain")]
+    public class TankAIBrain : AbstractAIBrain {}
+}

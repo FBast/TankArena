@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AI;
 using Components;
+using Data;
 using Managers;
 using TMPro;
 using UnityEngine;

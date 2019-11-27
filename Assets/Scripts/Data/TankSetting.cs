@@ -4,7 +4,7 @@ using NodeUtilityAi;
 using UnityEngine;
 using Utils;
 
-namespace Entities {
+namespace Data {
     [CreateAssetMenu(fileName = "NewTankSetting", menuName = "TankSetting")]
     public class TankSetting : ScriptableObject {
 

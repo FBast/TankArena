@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Data;
 using Entities;
+using Framework;
+using SOReferences.MatchReference;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +13,9 @@ using SceneManager = Managers.SceneManager;
 namespace UI {
     public class TeamFightUI : MonoBehaviour {
 
+        [Header("SO References")] 
+        public MatchReference CurrentMatchReference;
+        
         [Header("Team A References")] 
         public Toggle TeamACompositeToggle;
         public List<TMP_Dropdown> TeamADropdowns;
@@ -59,22 +65,32 @@ namespace UI {
         }
 
         public void LaunchGame() {
-            SceneManager.Instance.SetParam(Properties.Parameters.TeamASettings, 
-                (from playerDropdown in TeamADropdowns 
-                where playerDropdown.value != 0 
-                select _tankSettings[playerDropdown.value - 1]).ToList());
-            SceneManager.Instance.SetParam(Properties.Parameters.TeamBSettings, 
-                (from playerDropdown in TeamBDropdowns 
+            Match match = new Match();
+            match.Teams.Add(new Team
+            {
+                TankSettings = (from playerDropdown in TeamADropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList());
-            SceneManager.Instance.SetParam(Properties.Parameters.TeamCSettings, 
-                (from playerDropdown in TeamCDropdowns 
+                    select _tankSettings[playerDropdown.value - 1]).ToList()
+            });
+            match.Teams.Add(new Team
+            {
+                TankSettings = (from playerDropdown in TeamBDropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList());
-            SceneManager.Instance.SetParam(Properties.Parameters.TeamDSettings, 
-                (from playerDropdown in TeamDDropdowns 
+                    select _tankSettings[playerDropdown.value - 1]).ToList()
+            });
+            match.Teams.Add(new Team
+            {
+                TankSettings = (from playerDropdown in TeamCDropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList());
+                    select _tankSettings[playerDropdown.value - 1]).ToList()
+            });
+            match.Teams.Add(new Team
+            {
+                TankSettings = (from playerDropdown in TeamDDropdowns 
+                    where playerDropdown.value != 0 
+                    select _tankSettings[playerDropdown.value - 1]).ToList()
+            });
+            CurrentMatchReference.Value = match;
             SceneManager.Instance.UnloadScene(Properties.Scenes.Menu);
             SceneManager.Instance.LoadScene(Properties.Scenes.Game);
         }

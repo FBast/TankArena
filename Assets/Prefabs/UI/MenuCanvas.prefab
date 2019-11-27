@@ -24714,6 +24714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799877836376b024f90215b6ff490be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentMatchReference:
+    UseConstant: 0
+    Variable: {fileID: 11400000, guid: 5405124dea616db4eb2bce7fa8bcc5e6, type: 2}
   TeamACompositeToggle: {fileID: 6158903802305666270}
   TeamADropdowns:
   - {fileID: 8651730411236523088}

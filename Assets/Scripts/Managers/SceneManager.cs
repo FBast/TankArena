@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Data;
 using Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utils;
 
 namespace Managers {
 	public class SceneManager : Singleton<SceneManager> {

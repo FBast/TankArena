@@ -18,10 +18,6 @@ namespace Utils {
 
         public struct Parameters {
             public static string GameType = "GameType";
-            public static string TeamASettings = "TeamASettings";
-            public static string TeamBSettings = "TeamBSettings";
-            public static string TeamCSettings = "TeamCSettings";
-            public static string TeamDSettings = "TeamDSettings";
         }
 
         public struct GameTypes {
