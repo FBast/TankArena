@@ -242,12 +242,14 @@
             <e p="Editor" t="Include">
               <e p="TankDataEditor.cs" t="Include" />
             </e>
+            <e p="GridEntity.cs" t="Include" />
             <e p="ShellEntity.cs" t="Include" />
             <e p="TankEntity.cs" t="Include" />
             <e p="WaypointEntity.cs" t="Include" />
           </e>
           <e p="Framework" t="Include">
             <e p="Match.cs" t="Include" />
+            <e p="MatchStat.cs" t="Include" />
             <e p="Team.cs" t="Include" />
             <e p="Tournament.cs" t="Include" />
           </e>

@@ -26,11 +26,11 @@ namespace AI.CollectionEntryNodes {
             switch (Faction) {
                 case FactionType.Ally:
                     tanks.RemoveAll(go =>
-                        go.GetComponent<TankEntity>().TeamNumber != tankAiComponent.TankEntity.TeamNumber);
+                        go.GetComponent<TankEntity>().Team != tankAiComponent.TankEntity.Team);
                     break;
                 case FactionType.Enemy:
                     tanks.RemoveAll(go =>
-                        go.GetComponent<TankEntity>().TeamNumber == tankAiComponent.TankEntity.TeamNumber);
+                        go.GetComponent<TankEntity>().Team == tankAiComponent.TankEntity.Team);
                     break;
                 case FactionType.All:
                     break;

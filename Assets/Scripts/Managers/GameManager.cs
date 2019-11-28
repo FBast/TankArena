@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Data;
 using Entities;
+using Framework;
+using SOReferences.GameObjectListReference;
 using SOReferences.MatchReference;
 using UnityEngine;
 using Utils;
@@ -14,12 +16,6 @@ namespace Managers {
         public GameObject TankPrefab;
 
         [Header("References")] 
-        public GameObject SpinningCamera;
-        public GameObject WaypointPrefab;
-        public Transform WaypointContent;
-        public Transform BonusContent;
-        public Transform GridStart;
-        public Transform GridEnd;
         public List<Transform> TeamAPositions;
         public List<Transform> TeamBPositions;
         public List<Transform> TeamCPositions;
@@ -27,43 +23,40 @@ namespace Managers {
 
         [Header("SO References")] 
         public MatchReference CurrentMatchReference;
-
+        public GameObjectListReference BonusReference;
+        public GameObjectListReference TanksReference;
+        public GameObjectListReference WaypointsReference;
+        
         [Header("Parameters")] 
-        public int GridXGap;
-        public int GridZGap;
         public LayerMask CoverLayer;
 
-        public List<GameObject> TankEntities => _tankEntities.Where(go => go != null).ToList();
-        public List<GameObject> WaypointEntities => _waypointEntities.Where(go => go != null).ToList();
-        public List<GameObject> BonusEntities => _bonusEntities.Where(go => go != null).ToList();
+        public List<GameObject> TankEntities => TanksReference.Value.Where(go => go != null).ToList();
+        public List<GameObject> WaypointEntities => WaypointsReference.Value.Where(go => go != null).ToList();
+        public List<GameObject> BonusEntities => BonusReference.Value.Where(go => go != null).ToList();
         public List<GameObject> GameObjects => _gameObjects.Where(go => go != null).ToList();
 
-        private List<GameObject> _tankEntities = new List<GameObject>();
-        private List<GameObject> _waypointEntities = new List<GameObject>();
-        private List<GameObject> _bonusEntities = new List<GameObject>();
         private List<GameObject> _gameObjects = new List<GameObject>();
         private GameObject _tankCamera;
         private int _tankCameraIndex;
-        
-        private void Start() {
-            _tankEntities = FindObjectsOfType<TankEntity>().Select(entity => entity.gameObject).ToList();
-            _waypointEntities = FindObjectsOfType<WaypointEntity>().Select(entity => entity.gameObject).ToList();
-            _bonusEntities = FindObjectsOfType<BonusEntity>().Select(entity => entity.gameObject).ToList();
+
+        private void Awake() {
             _gameObjects = FindObjectsOfType<GameObject>().ToList();
-            GenerateWaypointGrid();
+        }
+
+        private void Start() {
             GenerateTanksForTeamFight();
         }
 
         private void Update() {
             if (Input.GetButtonDown("Fire1")) {
                 _tankCameraIndex++;
-                if (_tankCameraIndex >= TankEntities.Count) _tankCameraIndex = 0;
-                CameraSwitch(TankEntities[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
+                if (_tankCameraIndex >= TanksReference.Value.Count) _tankCameraIndex = 0;
+                CameraSwitch(TanksReference.Value[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
             }
             if (Input.GetButtonDown("Fire2")) {
                 _tankCameraIndex--;
-                if (_tankCameraIndex < 0) _tankCameraIndex = TankEntities.Count - 1;
-                CameraSwitch(TankEntities[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
+                if (_tankCameraIndex < 0) _tankCameraIndex = TanksReference.Value.Count - 1;
+                CameraSwitch(TanksReference.Value[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
             }
             if (Input.GetButtonDown("Fire3")) {
                 _tankCamera.SetActive(false);
@@ -77,41 +70,21 @@ namespace Managers {
             newCamera.SetActive(true);
         }
 
-        public void GenerateWaypointGrid() {
-            float positionX = GridEnd.position.x - GridStart.position.x;
-            float positionZ = GridEnd.position.z - GridStart.position.z;
-            int xSign = positionX < 0 ? -1 : 1;
-            int ySign = positionZ < 0 ? -1 : 1;
-            for (int i = 0; i < Mathf.Abs(positionX) / GridXGap; i++) {
-                for (int j = 0; j < Mathf.Abs(positionZ) / GridZGap; j++) {
-                    Vector3 position = new Vector3(GridStart.position.x + i * GridXGap * xSign, 
-                        0, GridStart.position.z + j * GridZGap * ySign);
-                    if (!position.IsPositionOnNavMesh()) continue;
-                    GameObject instantiate = Instantiate(WaypointPrefab, position, Quaternion.identity, WaypointContent);
-                    instantiate.name = (int) instantiate.transform.position.x + ", " + (int) instantiate.transform.position.z;
-                    _waypointEntities.Add(instantiate);
-                }
-            }
-        }
-    
-        public void AddBonus(GameObject bonusGameObject) {
-            _bonusEntities.Add(bonusGameObject);
-        }
-
         private void GenerateTanksForTeamFight() {
-            GenerateTanks(CurrentMatchReference.Value.Teams[0].TankSettings, TeamAPositions, 1, Color.red);
-            GenerateTanks(CurrentMatchReference.Value.Teams[1].TankSettings, TeamBPositions, 2, Color.green);
-            GenerateTanks(CurrentMatchReference.Value.Teams[2].TankSettings, TeamCPositions, 3, Color.blue);
-            GenerateTanks(CurrentMatchReference.Value.Teams[3].TankSettings, TeamDPositions, 4, Color.yellow);
+            TanksReference.Value = new List<GameObject>();
+            GenerateTanks(CurrentMatchReference.Value.Teams[0], TeamAPositions);
+            GenerateTanks(CurrentMatchReference.Value.Teams[1], TeamBPositions);
+            GenerateTanks(CurrentMatchReference.Value.Teams[2], TeamCPositions);
+            GenerateTanks(CurrentMatchReference.Value.Teams[3], TeamDPositions);
         }
 
-        private void GenerateTanks(List<TankSetting> tankSettings, List<Transform> positions, int teamNumber, Color factionColor) {
-            if (tankSettings.Count > positions.Count)
+        private void GenerateTanks(Team team, List<Transform> positions) {
+            if (team.TankSettings.Count > positions.Count)
                 throw new Exception("Need more positions for tanks");
-            for (int i = 0; i < tankSettings.Count; i++) {
+            for (int i = 0; i < team.TankSettings.Count; i++) {
                 GameObject instantiate = Instantiate(TankPrefab, positions[i].position, Quaternion.identity);
-                instantiate.GetComponent<TankEntity>().Init(tankSettings[i], teamNumber, factionColor);
-                _tankEntities.Add(instantiate);
+                instantiate.GetComponent<TankEntity>().Init(team.TankSettings[i], team);
+                TanksReference.Value.Add(instantiate);
             }
         }
 

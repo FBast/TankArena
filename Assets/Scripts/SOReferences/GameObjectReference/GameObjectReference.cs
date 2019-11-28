@@ -4,8 +4,5 @@ using UnityEngine;
 
 namespace SOReferences.GameObjectReference {
     [Serializable]
-    public class GameObjectReference : Reference<GameObject, GameObjectVariable> {
-        public GameObjectReference(GameObject Value) : base(Value) { }
-        public GameObjectReference() { }
-    }
+    public class GameObjectReference : Reference<GameObject, GameObjectVariable> {}
 }

@@ -4,7 +4,10 @@ using System.Linq;
 using AI;
 using Components;
 using Data;
+using Framework;
 using Managers;
+using SOReferences.GameObjectListReference;
+using SOReferences.MatchReference;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,8 +15,8 @@ using Utils;
 
 namespace Entities {
     public class TankEntity : MonoBehaviour {
-
-        [Header("References")] 
+        
+        [Header("Internal References")] 
         public Transform CanonOut;
         public Transform Turret;
         public AudioSource ShotFiring;
@@ -25,6 +28,11 @@ namespace Entities {
         public MeshRenderer LeftTrackMeshRender;
         public MeshRenderer FactionDisk;
         public GameObject TurretCamera;
+
+        [Header("SO References")] 
+        public MatchReference CurrentMatchReference;
+        public GameObjectListReference WaypointsReference;
+        public GameObjectListReference TanksReference;
         
         [Header("Prefabs")]
         public GameObject ShellPrefab;
@@ -37,9 +45,9 @@ namespace Entities {
         public int TurretSpeed { get; private set; }
         public int MaxHP { get; private set; }
         public int ReloadTime { get; private set; }
-        public int TeamNumber { get; private set; }
         public int CurrentHP { get; private set; }
         public bool IsShellLoaded = true;
+        public Team Team { get; private set; }
         public GameObject Target;
         public GameObject Destination;
 
@@ -47,8 +55,8 @@ namespace Entities {
         private NavMeshAgent _navMeshAgent;
         private TankAIComponent _tankAiComponent;
 
-        public List<GameObject> Aggressors => GameManager.Instance.TankEntities
-            .Where(go => go.GetComponent<TankEntity>().Target == gameObject).ToList();
+        public List<GameObject> Aggressors => TanksReference.Value
+            .Where(go => go != null && go.GetComponent<TankEntity>().Target == gameObject).ToList();
         
         private int _totalDamages => MaxHP - CurrentHP;
         private float _damagePercent => (float) _totalDamages / MaxHP;
@@ -68,16 +76,16 @@ namespace Entities {
             ReloadTime = PlayerPrefs.GetInt(Properties.PlayerPrefs.ReloadTime, Properties.PlayerPrefsDefault.ReloadTime);
         }
 
-        public void Init(TankSetting setting, int teamNumber, Color factionColor) {
+        public void Init(TankSetting setting, Team team) {
             if (!setting)
                 throw new Exception("Each tank need a tank setting to be set");
-            TeamNumber = teamNumber;
+            Team = team;
             TurretMeshRenderer.material.color = setting.TurretColor;
             HullMeshRenderer.material.color = setting.HullColor;
             RightTrackMeshRender.material.color = setting.TracksColor;
             LeftTrackMeshRender.material.color = setting.TracksColor;
             _tankAiComponent.UtilityAiBrains = setting.Brains;
-            FactionDisk.material.color = factionColor;
+            FactionDisk.material.color = team.Color;
         }
         
         private void OnDrawGizmos() {
@@ -121,11 +129,13 @@ namespace Entities {
 
         public void Damage(int damage) {
             CurrentHP -= damage;
+            CurrentMatchReference.Value.MatchStats[Team].DamageSuffered += damage;
             if (CurrentHP > 0) return;
             Die();
         }
 
         private void Die() {
+            CurrentMatchReference.Value.MatchStats[Team].LossCount++;
             Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
             if (PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, 
                 Properties.PlayerPrefsDefault.ExplosionCreateBustedTank))
@@ -143,7 +153,7 @@ namespace Entities {
         }
 
         public List<GameObject> SeekWaypointInRadius() {
-            return GameManager.Instance.WaypointEntities
+            return WaypointsReference.Value
                 .Where(go => Vector3.Distance(transform.position, go.transform.position) < _waypointRadius).ToList();
         } 
         

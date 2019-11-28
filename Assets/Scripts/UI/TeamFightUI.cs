@@ -70,25 +70,29 @@ namespace UI {
             {
                 TankSettings = (from playerDropdown in TeamADropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList()
+                    select _tankSettings[playerDropdown.value - 1]).ToList(),
+                Color = Color.red
             });
             match.Teams.Add(new Team
             {
                 TankSettings = (from playerDropdown in TeamBDropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList()
+                    select _tankSettings[playerDropdown.value - 1]).ToList(),
+                Color = Color.green
             });
             match.Teams.Add(new Team
             {
                 TankSettings = (from playerDropdown in TeamCDropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList()
+                    select _tankSettings[playerDropdown.value - 1]).ToList(),
+                Color = Color.blue
             });
             match.Teams.Add(new Team
             {
                 TankSettings = (from playerDropdown in TeamDDropdowns 
                     where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList()
+                    select _tankSettings[playerDropdown.value - 1]).ToList(),
+                Color = Color.yellow
             });
             CurrentMatchReference.Value = match;
             SceneManager.Instance.UnloadScene(Properties.Scenes.Menu);

@@ -1,18 +1,30 @@
-﻿using Managers;
+﻿using System;
+using System.Collections.Generic;
+using Managers;
+using SOReferences.GameObjectListReference;
 using UnityEngine;
 
-namespace Entities
-{
+namespace Entities {
     public class BonusSpawnerEntity : MonoBehaviour {
 
-        public string BonusName;
+        [Header("Prefabs")]
         public GameObject BonusPrefab;
+        
+        [Header("Parameters")]
+        public string BonusName;
         public int SpawnRate;
         public int SpawnNumber;
-    
+
+        [Header("SO References")] 
+        public GameObjectListReference BonusReference;
+        
         private GameObject _spawnedBonus;
         private float _timeSinceBonusUsed;
         private int _spawnedNumber;
+
+        private void Start() {
+            BonusReference.Value = new List<GameObject>();
+        }
 
         private void Update() {
             if (_spawnedBonus || _spawnedNumber >= SpawnNumber) return;
@@ -20,9 +32,9 @@ namespace Entities
             if (_timeSinceBonusUsed > SpawnRate) {
                 Vector3 spawnPosition = transform.position;
                 spawnPosition.y = BonusPrefab.transform.position.y;
-                _spawnedBonus = Instantiate(BonusPrefab, spawnPosition, Quaternion.identity, GameManager.Instance.BonusContent);
+                _spawnedBonus = Instantiate(BonusPrefab, spawnPosition, Quaternion.identity, transform);
                 _spawnedBonus.name = BonusName;
-                GameManager.Instance.AddBonus(_spawnedBonus);
+                BonusReference.Value.Add(_spawnedBonus);
                 _timeSinceBonusUsed = 0;
                 _spawnedNumber++;
             }

@@ -5,9 +5,6 @@ using Data.SOReferences;
 namespace SOReferences.DictionaryStringObjectReference {
     [Serializable]
     public class DictionaryStringObjectReference : Reference<Dictionary<string, object>, DictionaryStringObjectVariable> {
-        public DictionaryStringObjectReference(Dictionary<string, object> Value) : base(Value) { }
-        public DictionaryStringObjectReference() { }
-        
         public object GetParam(string paramKey) {
             if (Value == null) return null;
             return Value.ContainsKey(paramKey) ? Value[paramKey] : null;
