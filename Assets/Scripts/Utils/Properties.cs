@@ -2,27 +2,15 @@ namespace Utils {
     public static class Properties {
 
         public struct Inputs {
-            public const string Horizontal = "Horizontal1";
-            public const string Vertical = "Vertical1";
-            public const string Rotation = "Rotation";
-            public const string ScrollWheel = "MouseScrollWheel";
-            public const string MouseX = "MouseX";
-            public const string MouseY = "MouseY";
+            public const string LeftClick = "Fire1";
+            public const string RightClick = "Fire2";
+            public const string WheelClick = "Fire3";
         }
 
         public struct Scenes {
             public const string Shared = "Shared";
             public const string Menu = "Menu";
             public const string Game = "Game";
-        }
-
-        public struct Parameters {
-            public const string GameType = "GameType";
-        }
-
-        public struct GameTypes {
-            public const string TeamFight = "TeamFight";
-            public const string Tournament = "Tournament";
         }
 
         public struct PlayerPrefs {

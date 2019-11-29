@@ -1,5 +1,4 @@
-﻿using SOReferences.GameReference;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Entities {
     public class ShellEntity : MonoBehaviour {
@@ -7,9 +6,6 @@ namespace Entities {
         [Header("Prefabs")]
         public GameObject ExplosionPrefab;
 
-        [Header("SO References")] 
-        public GameReference CurrentGameReference;
-        
         [HideInInspector] public TankEntity TankEntityOwner;
         [HideInInspector] public int Damage;
 

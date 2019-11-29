@@ -13,6 +13,7 @@ namespace UI {
         public SliderWithLabelUI ReloadTime;
         public SliderWithLabelUI WaypointSeekRadius;
         public SliderWithLabelUI ExplosionDamage;
+        public SliderWithLabelUI ExplosionRadius;
         public Toggle ExplosionCreateBustedTank;
         public SliderWithLabelUI SecondsBetweenRefresh;
         public Toggle AlwaysPickBestChoice;
@@ -38,6 +39,9 @@ namespace UI {
             });
             ExplosionDamage.OnValueChanged.AddListener(delegate(float value) {
                 PlayerPrefs.SetInt(Properties.PlayerPrefs.ExplosionDamage, (int) value);
+            });
+            ExplosionRadius.OnValueChanged.AddListener(delegate(float value) {
+                PlayerPrefs.SetInt(Properties.PlayerPrefs.ExplosionRadius, (int) value);
             });
             ExplosionCreateBustedTank.onValueChanged.AddListener(delegate(bool value) {
                 PlayerPrefsUtils.SetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, value);
@@ -66,6 +70,8 @@ namespace UI {
                 Properties.PlayerPrefsDefault.WaypointSeekRadius);
             ExplosionDamage.Value = PlayerPrefs.GetInt(Properties.PlayerPrefs.ExplosionDamage,
                 Properties.PlayerPrefsDefault.ExplosionDamage);
+            ExplosionRadius.Value = PlayerPrefs.GetInt(Properties.PlayerPrefs.ExplosionRadius,
+                Properties.PlayerPrefsDefault.ExplosionRadius);
             ExplosionCreateBustedTank.isOn = PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank,
                 Properties.PlayerPrefsDefault.ExplosionCreateBustedTank);
             SecondsBetweenRefresh.Value = PlayerPrefs.GetFloat(Properties.PlayerPrefs.SecondsBetweenRefresh,

@@ -8,6 +8,7 @@ using Framework;
 using SOEvents.VoidEvents;
 using SOReferences.GameObjectListReference;
 using SOReferences.GameReference;
+using SOReferences.MatchReference;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils;
@@ -29,7 +30,7 @@ namespace Entities {
         public GameObject TurretCamera;
 
         [Header("SO References")] 
-        public GameReference CurrentGameReference;
+        public MatchReference CurrentMatchReference;
         public GameObjectListReference WaypointsReference;
         public GameObjectListReference TanksReference;
         
@@ -138,34 +139,36 @@ namespace Entities {
 
         public void DamageByShot(ShellEntity shell) {
             CurrentHP -= shell.Damage;
-            Stats teamStats = CurrentGameReference.Value.CurrentMatch.TeamStats[Team];
-            teamStats.DamageSuffered += shell.Damage;
+            CurrentMatchReference.Value.TeamStats[Team].DamageSuffered += shell.Damage;
             if (shell.TankEntityOwner.Team == Team)
-                teamStats.TeamDamage += shell.Damage;
+                CurrentMatchReference.Value.TeamStats[Team].TeamDamage += shell.Damage;
             else
-                CurrentGameReference.Value.CurrentMatch.TeamStats[shell.TankEntityOwner.Team].DamageDone += shell.Damage;
+                CurrentMatchReference.Value.TeamStats[shell.TankEntityOwner.Team].DamageDone += shell.Damage;
             if (CurrentHP > 0) return;
             Die(shell.TankEntityOwner);
         }
 
         public void DamageByExplosion(TankEntity tank) {
             CurrentHP -= tank.ExplosionDamage;
-            CurrentGameReference.Value.CurrentMatch.TeamStats[Team].DamageSuffered += tank.ExplosionDamage;
+            CurrentMatchReference.Value.TeamStats[Team].DamageSuffered += tank.ExplosionDamage;
             if (tank.Team == Team)
-                CurrentGameReference.Value.CurrentMatch.TeamStats[Team].TeamDamage += tank.ExplosionDamage;
+                CurrentMatchReference.Value.TeamStats[Team].TeamDamage += tank.ExplosionDamage;
             else
-                CurrentGameReference.Value.CurrentMatch.TeamStats[tank.Team].DamageDone += tank.ExplosionDamage;
+                CurrentMatchReference.Value.TeamStats[tank.Team].DamageDone += tank.ExplosionDamage;
             if (CurrentHP > 0) return;
             Die(tank);
         }
 
         private void Die(TankEntity killer) {
-            Stats stats = CurrentGameReference.Value.CurrentMatch.TeamStats[Team];
-            CurrentGameReference.Value.CurrentMatch.TeamStats[killer.Team].KillCount++;
-            stats.LossCount++;
-            stats.TankLeft--;
-            if (stats.TankLeft == 0) stats.IsDefeated = true;
-            if (CurrentGameReference.Value.CurrentMatch.TeamInMatch.Count() == 1)
+            if (killer.Team == Team)
+                CurrentMatchReference.Value.TeamStats[Team].TeamKill++;
+            else
+                CurrentMatchReference.Value.TeamStats[killer.Team].KillCount++;
+            CurrentMatchReference.Value.TeamStats[Team].LossCount++;
+            CurrentMatchReference.Value.TeamStats[Team].TankLeft--;
+            if (CurrentMatchReference.Value.TeamStats[Team].TankLeft == 0) 
+                CurrentMatchReference.Value.TeamStats[Team].IsDefeated = true;
+            if (CurrentMatchReference.Value.TeamInMatch.Count() == 1)
                 OnMatchFinished.Raise();
             Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
             if (PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, 

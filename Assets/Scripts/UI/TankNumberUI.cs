@@ -1,5 +1,6 @@
 ﻿using Framework;
 using SOReferences.GameReference;
+using SOReferences.MatchReference;
 using UnityEngine;
 
 namespace UI {
@@ -9,16 +10,16 @@ namespace UI {
         public GameObject TeamTankPrefab;
 
         [Header("SO References")] 
-        public GameReference CurrentGameReference;
+        public MatchReference CurrentMatchReference;
 
         private void Update() {
             ClearTeamTanks();
-            foreach (Team team in CurrentGameReference.Value.CurrentMatch.Teams) {
+            foreach (Team team in CurrentMatchReference.Value.Teams) {
                 GameObject instantiate = Instantiate(TeamTankPrefab, transform);
                 TeamTankUI teamTankUi = instantiate.GetComponent<TeamTankUI>();
                 teamTankUi.TeamNameText.text = team.TeamName;
                 teamTankUi.TeamNameText.color = team.Color;
-                for (int i = 0; i < CurrentGameReference.Value.CurrentMatch.TeamStats[team].TankLeft; i++) {
+                for (int i = 0; i < CurrentMatchReference.Value.TeamStats[team].TankLeft; i++) {
                     teamTankUi.AddTankImage();
                 }
             }

@@ -40,7 +40,6 @@ namespace UI {
             InitDropDowns(TeamBDropdowns, TeamBCompositeToggle);
             InitDropDowns(TeamCDropdowns, TeamCCompositeToggle);
             InitDropDowns(TeamDDropdowns, TeamDCompositeToggle);
-            SceneManager.Instance.SetParam(Properties.Parameters.GameType, Properties.GameTypes.TeamFight);
         }
 
         private void InitDropDowns(List<TMP_Dropdown> dropdowns, Toggle toggle) {
@@ -63,7 +62,7 @@ namespace UI {
             }
         }
 
-        public void LaunchGame() {
+        public void CreateGame() {
             Game game = new Game();
             if (TeamADropdowns.Sum(dropdown => dropdown.value) > 0) {
                 game.Teams.Add(new Team
@@ -100,8 +99,6 @@ namespace UI {
             }
             game.SetupTeamFight();
             CurrentGameReference.Value = game;
-            SceneManager.Instance.UnloadScene(Properties.Scenes.Menu);
-            SceneManager.Instance.LoadScene(Properties.Scenes.Game);
         }
         
     }

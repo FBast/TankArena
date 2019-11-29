@@ -30,7 +30,6 @@ namespace UI {
     
         private void Start() {
             _tankSettings = SceneManager.Instance.TankSettings;
-            SceneManager.Instance.SetParam(Properties.Parameters.GameType, Properties.GameTypes.Tournament);
         }
 
         public void AddTeam() {

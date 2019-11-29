@@ -69,5 +69,9 @@ namespace Managers {
 				_parameters.Remove(paramKey);
 		}
 
+		public void ExitGame() {
+			Application.Quit();
+		}
+
 	}
 }

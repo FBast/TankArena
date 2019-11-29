@@ -3,9 +3,9 @@ using System.Linq;
 using Data;
 using Entities;
 using Framework;
-using SOEvents.VoidEvents;
 using SOReferences.GameObjectListReference;
 using SOReferences.GameReference;
+using SOReferences.MatchReference;
 using UnityEngine;
 using Utils;
 
@@ -20,6 +20,7 @@ namespace Managers {
 
         [Header("SO References")] 
         public GameReference CurrentGameReference;
+        public MatchReference CurrentMatchReference;
         public GameObjectListReference BonusReference;
         public GameObjectListReference TanksReference;
         public GameObjectListReference WaypointsReference;
@@ -43,23 +44,24 @@ namespace Managers {
         private void Start() {
             TanksReference.Value = new List<GameObject>();
             CurrentGameReference.Value.NextMatch();
-            for (int i = 0; i < CurrentGameReference.Value.CurrentMatch.Teams.Count; i++) {
-                GenerateTankTeam(CurrentGameReference.Value.CurrentMatch.Teams[i], TeamPositions[i]);
+            CurrentMatchReference.Value = CurrentGameReference.Value.CurrentMatch;
+            for (int i = 0; i < CurrentMatchReference.Value.Teams.Count; i++) {
+                GenerateTankTeam(CurrentMatchReference.Value.Teams[i], TeamPositions[i]);
             }
         }
 
         private void Update() {
-            if (Input.GetButtonDown("Fire1")) {
+            if (Input.GetButtonDown(Properties.Inputs.LeftClick)) {
                 _tankCameraIndex++;
                 if (_tankCameraIndex >= TanksReference.Value.Count) _tankCameraIndex = 0;
                 CameraSwitch(TanksReference.Value[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
             }
-            if (Input.GetButtonDown("Fire2")) {
+            if (Input.GetButtonDown(Properties.Inputs.RightClick)) {
                 _tankCameraIndex--;
                 if (_tankCameraIndex < 0) _tankCameraIndex = TanksReference.Value.Count - 1;
                 CameraSwitch(TanksReference.Value[_tankCameraIndex].GetComponent<TankEntity>().TurretCamera);
             }
-            if (Input.GetButtonDown("Fire3")) {
+            if (Input.GetButtonDown(Properties.Inputs.WheelClick)) {
                 _tankCamera.SetActive(false);
             }
         }

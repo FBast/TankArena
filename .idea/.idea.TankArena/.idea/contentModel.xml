@@ -322,6 +322,10 @@
               <e p="IntReference.cs" t="Include" />
               <e p="IntVariable.cs" t="Include" />
             </e>
+            <e p="MatchReference" t="Include">
+              <e p="MatchReference.cs" t="Include" />
+              <e p="MatchVariable.cs" t="Include" />
+            </e>
             <e p="RectReference" t="Include">
               <e p="RectReference.cs" t="Include" />
               <e p="RectVariable.cs" t="Include" />
@@ -354,7 +358,6 @@
             </e>
           </e>
           <e p="UI" t="Include">
-            <e p="BoutonExitUI.cs" t="Include" />
             <e p="SettingsUI.cs" t="Include" />
             <e p="SliderWithLabelUI.cs" t="Include" />
             <e p="TankNumberUI.cs" t="Include" />
