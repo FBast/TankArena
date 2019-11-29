@@ -27,6 +27,7 @@ namespace Utils {
 
         public struct PlayerPrefs {
             public const string ExplosionDamage = "ExplosionDamage";
+            public const string ExplosionRadius = "ExplosionRadius";
             public const string ExplosionCreateBustedTank = "ExplosionCreateBustedTank";
             public const string CanonDamage = "CanonDamage";
             public const string CanonPower = "CanonPower";
@@ -40,6 +41,7 @@ namespace Utils {
         
         public struct PlayerPrefsDefault {
             public const int ExplosionDamage = 1;
+            public const int ExplosionRadius = 1;
             public const bool ExplosionCreateBustedTank = true;
             public const int CanonDamage = 1;
             public const int CanonPower = 50;

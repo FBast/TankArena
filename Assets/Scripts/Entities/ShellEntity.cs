@@ -17,12 +17,7 @@ namespace Entities {
             if (other.GetComponent<ShellEntity>()) return;
             TankEntity tankEntity = other.GetComponent<TankEntity>();
             if (tankEntity == TankEntityOwner) return;
-            if (tankEntity) {
-                if (tankEntity.CurrentHP - Damage < 0)
-                    CurrentGameReference.Value.CurrentMatch.TeamStats[TankEntityOwner.Team].KillCount++;
-                tankEntity.Damage(Damage);
-                CurrentGameReference.Value.CurrentMatch.TeamStats[TankEntityOwner.Team].DamageDone += Damage;
-            }
+            if (tankEntity) tankEntity.DamageByShot(this);
             Instantiate(ExplosionPrefab, transform.position, Quaternion.Inverse(ExplosionPrefab.transform.rotation));
             Destroy(gameObject);
         }

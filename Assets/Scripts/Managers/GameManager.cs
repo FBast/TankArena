@@ -3,6 +3,7 @@ using System.Linq;
 using Data;
 using Entities;
 using Framework;
+using SOEvents.VoidEvents;
 using SOReferences.GameObjectListReference;
 using SOReferences.GameReference;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Managers {
         public GameObjectListReference BonusReference;
         public GameObjectListReference TanksReference;
         public GameObjectListReference WaypointsReference;
-        
+
         [Header("Parameters")] 
         public LayerMask CoverLayer;
 
