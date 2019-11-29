@@ -2,21 +2,16 @@
 
 namespace Framework {
     public class Match {
-        
-        public List<Team> Teams = new List<Team>();
-        public Dictionary<Team, MatchStat> MatchStats = new Dictionary<Team, MatchStat>();
 
-        public void AddTeam(Team team) {
-            Teams.Add(team);
-            MatchStats.Add(team, new MatchStat());
-        }
+        public List<Team> Teams;
+        public Dictionary<Team, Stats> TeamStats = new Dictionary<Team, Stats>();
 
-        public void ClearStats() {
-            Dictionary<Team, MatchStat> matchStats = new Dictionary<Team, MatchStat>();
-            foreach (KeyValuePair<Team,MatchStat> matchStat in MatchStats) {
-                matchStats.Add(matchStat.Key, new MatchStat());
+        public Match(List<Team> teams) {
+            Teams = teams;
+            foreach (Team team in teams) {
+                Stats stats = new Stats {TankLeft = team.TankSettings.Count};
+                TeamStats.Add(team, stats);
             }
-            MatchStats = matchStats;
         }
         
     }

@@ -1,5 +1,4 @@
-﻿using Framework;
-using SOReferences.MatchReference;
+﻿using SOReferences.GameReference;
 using UnityEngine;
 
 namespace Entities {
@@ -9,7 +8,7 @@ namespace Entities {
         public GameObject ExplosionPrefab;
 
         [Header("SO References")] 
-        public MatchReference CurrentMatchReference;
+        public GameReference CurrentGameReference;
         
         [HideInInspector] public TankEntity TankEntityOwner;
         [HideInInspector] public int Damage;
@@ -20,9 +19,9 @@ namespace Entities {
             if (tankEntity == TankEntityOwner) return;
             if (tankEntity) {
                 if (tankEntity.CurrentHP - Damage < 0)
-                    CurrentMatchReference.Value.MatchStats[TankEntityOwner.Team].KillCount++;
+                    CurrentGameReference.Value.CurrentMatch.TeamStats[TankEntityOwner.Team].KillCount++;
                 tankEntity.Damage(Damage);
-                CurrentMatchReference.Value.MatchStats[TankEntityOwner.Team].DamageDone += Damage;
+                CurrentGameReference.Value.CurrentMatch.TeamStats[TankEntityOwner.Team].DamageDone += Damage;
             }
             Instantiate(ExplosionPrefab, transform.position, Quaternion.Inverse(ExplosionPrefab.transform.rotation));
             Destroy(gameObject);

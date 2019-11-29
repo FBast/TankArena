@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Data;
-using Entities;
 using Framework;
-using SOReferences.MatchReference;
+using SOReferences.GameReference;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,22 +12,22 @@ using SceneManager = Managers.SceneManager;
 namespace UI {
     public class TeamFightUI : MonoBehaviour {
 
-        [Header("SO References")] 
-        public MatchReference CurrentMatchReference;
+        [Header("SO References")]
+        public GameReference CurrentGameReference;
         
-        [Header("Team A References")] 
+        [Header("Team A References")]
         public Toggle TeamACompositeToggle;
         public List<TMP_Dropdown> TeamADropdowns;
         
-        [Header("Team B References")] 
+        [Header("Team B References")]
         public Toggle TeamBCompositeToggle;
         public List<TMP_Dropdown> TeamBDropdowns;
         
-        [Header("Team C References")] 
+        [Header("Team C References")]
         public Toggle TeamCCompositeToggle;
         public List<TMP_Dropdown> TeamCDropdowns;
         
-        [Header("Team D References")] 
+        [Header("Team D References")]
         public Toggle TeamDCompositeToggle;
         public List<TMP_Dropdown> TeamDDropdowns;
 
@@ -44,7 +43,7 @@ namespace UI {
             SceneManager.Instance.SetParam(Properties.Parameters.GameType, Properties.GameTypes.TeamFight);
         }
 
-        public void InitDropDowns(List<TMP_Dropdown> dropdowns, Toggle toggle) {
+        private void InitDropDowns(List<TMP_Dropdown> dropdowns, Toggle toggle) {
             foreach (TMP_Dropdown playerDropdown in dropdowns) {
                 playerDropdown.ClearOptions();
                 playerDropdown.AddOptions(new List<string> {"Empty"});
@@ -65,36 +64,42 @@ namespace UI {
         }
 
         public void LaunchGame() {
-            Match match = new Match();
-            match.Teams.Add(new Team
-            {
-                TankSettings = (from playerDropdown in TeamADropdowns 
-                    where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList(),
-                Color = Color.red
-            });
-            match.Teams.Add(new Team
-            {
-                TankSettings = (from playerDropdown in TeamBDropdowns 
-                    where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList(),
-                Color = Color.green
-            });
-            match.Teams.Add(new Team
-            {
-                TankSettings = (from playerDropdown in TeamCDropdowns 
-                    where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList(),
-                Color = Color.blue
-            });
-            match.Teams.Add(new Team
-            {
-                TankSettings = (from playerDropdown in TeamDDropdowns 
-                    where playerDropdown.value != 0 
-                    select _tankSettings[playerDropdown.value - 1]).ToList(),
-                Color = Color.yellow
-            });
-            CurrentMatchReference.Value = match;
+            Game game = new Game();
+            if (TeamADropdowns.Sum(dropdown => dropdown.value) > 0) {
+                game.Teams.Add(new Team
+                {
+                    TankSettings = (from playerDropdown in TeamADropdowns 
+                        where playerDropdown.value != 0 
+                        select _tankSettings[playerDropdown.value - 1]).ToList(),
+                    Color = Color.red
+                });
+            }
+            if (TeamBDropdowns.Sum(dropdown => dropdown.value) > 0) {
+                game.Teams.Add(new Team {
+                    TankSettings = (from playerDropdown in TeamBDropdowns
+                        where playerDropdown.value != 0
+                        select _tankSettings[playerDropdown.value - 1]).ToList(),
+                    Color = Color.green
+                });
+            }
+            if (TeamCDropdowns.Sum(dropdown => dropdown.value) > 0) {
+                game.Teams.Add(new Team {
+                    TankSettings = (from playerDropdown in TeamCDropdowns
+                        where playerDropdown.value != 0
+                        select _tankSettings[playerDropdown.value - 1]).ToList(),
+                    Color = Color.blue
+                });
+            }
+            if (TeamDDropdowns.Sum(dropdown => dropdown.value) > 0) {
+                game.Teams.Add(new Team {
+                    TankSettings = (from playerDropdown in TeamDDropdowns
+                        where playerDropdown.value != 0
+                        select _tankSettings[playerDropdown.value - 1]).ToList(),
+                    Color = Color.yellow
+                });
+            }
+            game.SetupTeamFight();
+            CurrentGameReference.Value = game;
             SceneManager.Instance.UnloadScene(Properties.Scenes.Menu);
             SceneManager.Instance.LoadScene(Properties.Scenes.Game);
         }

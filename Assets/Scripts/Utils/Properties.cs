@@ -2,53 +2,53 @@ namespace Utils {
     public static class Properties {
 
         public struct Inputs {
-            public static string Horizontal = "Horizontal1";
-            public static string Vertical = "Vertical1";
-            public static string Rotation = "Rotation";
-            public static string ScrollWheel = "MouseScrollWheel";
-            public static string MouseX = "MouseX";
-            public static string MouseY = "MouseY";
+            public const string Horizontal = "Horizontal1";
+            public const string Vertical = "Vertical1";
+            public const string Rotation = "Rotation";
+            public const string ScrollWheel = "MouseScrollWheel";
+            public const string MouseX = "MouseX";
+            public const string MouseY = "MouseY";
         }
 
         public struct Scenes {
-            public static string Shared = "Shared";
-            public static string Menu = "Menu";
-            public static string Game = "Game";
+            public const string Shared = "Shared";
+            public const string Menu = "Menu";
+            public const string Game = "Game";
         }
 
         public struct Parameters {
-            public static string GameType = "GameType";
+            public const string GameType = "GameType";
         }
 
         public struct GameTypes {
-            public static string TeamFight = "TeamFight";
-            public static string Tournament = "Tournament";
+            public const string TeamFight = "TeamFight";
+            public const string Tournament = "Tournament";
         }
 
         public struct PlayerPrefs {
-            public static string ExplosionDamage = "ExplosionDamage";
-            public static string ExplosionCreateBustedTank = "ExplosionCreateBustedTank";
-            public static string CanonDamage = "CanonDamage";
-            public static string CanonPower = "CanonPower";
-            public static string TurretSpeed = "TurretSpeed";
-            public static string HealthPoints = "MaxHp";
-            public static string ReloadTime = "ReloadTime";
-            public static string WaypointSeekRadius = "WaypointSeekRadius";
-            public static string AlwaysPickBestChoice = "AlwaysPickBestChoice";
-            public static string SecondsBetweenRefresh = "TimeBetweenRefresh";
+            public const string ExplosionDamage = "ExplosionDamage";
+            public const string ExplosionCreateBustedTank = "ExplosionCreateBustedTank";
+            public const string CanonDamage = "CanonDamage";
+            public const string CanonPower = "CanonPower";
+            public const string TurretSpeed = "TurretSpeed";
+            public const string HealthPoints = "MaxHp";
+            public const string ReloadTime = "ReloadTime";
+            public const string WaypointSeekRadius = "WaypointSeekRadius";
+            public const string AlwaysPickBestChoice = "AlwaysPickBestChoice";
+            public const string SecondsBetweenRefresh = "TimeBetweenRefresh";
         }
         
         public struct PlayerPrefsDefault {
-            public static int ExplosionDamage = 1;
-            public static bool ExplosionCreateBustedTank = true;
-            public static int CanonDamage = 1;
-            public static int CanonPower = 50;
-            public static int TurretSpeed = 10;
-            public static int HealthPoints = 5;
-            public static int ReloadTime = 5;
-            public static int WaypointSeekRadius = 15;
-            public static bool AlwaysPickBestChoice = true;
-            public static int SecondsBetweenRefresh = 1;
+            public const int ExplosionDamage = 1;
+            public const bool ExplosionCreateBustedTank = true;
+            public const int CanonDamage = 1;
+            public const int CanonPower = 50;
+            public const int TurretSpeed = 10;
+            public const int HealthPoints = 5;
+            public const int ReloadTime = 5;
+            public const int WaypointSeekRadius = 15;
+            public const bool AlwaysPickBestChoice = true;
+            public const int SecondsBetweenRefresh = 1;
         }
         
     }

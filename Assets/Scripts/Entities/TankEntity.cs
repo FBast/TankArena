@@ -5,10 +5,8 @@ using AI;
 using Components;
 using Data;
 using Framework;
-using Managers;
 using SOReferences.GameObjectListReference;
-using SOReferences.MatchReference;
-using TMPro;
+using SOReferences.GameReference;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils;
@@ -30,7 +28,7 @@ namespace Entities {
         public GameObject TurretCamera;
 
         [Header("SO References")] 
-        public MatchReference CurrentMatchReference;
+        public GameReference CurrentGameReference;
         public GameObjectListReference WaypointsReference;
         public GameObjectListReference TanksReference;
         
@@ -129,13 +127,14 @@ namespace Entities {
 
         public void Damage(int damage) {
             CurrentHP -= damage;
-            CurrentMatchReference.Value.MatchStats[Team].DamageSuffered += damage;
+            CurrentGameReference.Value.CurrentMatch.TeamStats[Team].DamageSuffered += damage;
             if (CurrentHP > 0) return;
             Die();
         }
 
         private void Die() {
-            CurrentMatchReference.Value.MatchStats[Team].LossCount++;
+            CurrentGameReference.Value.CurrentMatch.TeamStats[Team].LossCount++;
+            CurrentGameReference.Value.CurrentMatch.TeamStats[Team].TankLeft--;
             Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
             if (PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, 
                 Properties.PlayerPrefsDefault.ExplosionCreateBustedTank))

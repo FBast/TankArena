@@ -9,12 +9,12 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="ExplosionDamage.cs" t="Include" />
         <e p="Fonts" t="Include">
           <e p="Bowlby_One" t="Include">
             <e p="FontLicense.txt" t="Include" />
           </e>
         </e>
+        <e p="MatchEndUI.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="FullSerializer" t="Include">
             <e p="Aot" t="Include">
@@ -229,6 +229,7 @@
           </e>
           <e p="Components" t="Include">
             <e p="DestroyAfterTime.cs" t="Include" />
+            <e p="ExplosionDamage.cs" t="Include" />
             <e p="FreeLookCamera.cs" t="Include" />
             <e p="ParticleEmissionSetter.cs" t="Include" />
             <e p="Spinning.cs" t="Include" />
@@ -248,10 +249,10 @@
             <e p="WaypointEntity.cs" t="Include" />
           </e>
           <e p="Framework" t="Include">
+            <e p="Game.cs" t="Include" />
             <e p="Match.cs" t="Include" />
-            <e p="MatchStat.cs" t="Include" />
+            <e p="Stats.cs" t="Include" />
             <e p="Team.cs" t="Include" />
-            <e p="Tournament.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
@@ -314,13 +315,13 @@
               <e p="GameObjectReference.cs" t="Include" />
               <e p="GameObjectVariable.cs" t="Include" />
             </e>
+            <e p="GameReference" t="Include">
+              <e p="GameReference.cs" t="Include" />
+              <e p="GameVariable.cs" t="Include" />
+            </e>
             <e p="IntReference" t="Include">
               <e p="IntReference.cs" t="Include" />
               <e p="IntVariable.cs" t="Include" />
-            </e>
-            <e p="MatchReference" t="Include">
-              <e p="MatchReference.cs" t="Include" />
-              <e p="MatchVariable.cs" t="Include" />
             </e>
             <e p="RectReference" t="Include">
               <e p="RectReference.cs" t="Include" />
@@ -343,10 +344,6 @@
               <e p="Texture2DReference.cs" t="Include" />
               <e p="Texture2DVariable.cs" t="Include" />
             </e>
-            <e p="TournamentReference" t="Include">
-              <e p="TournamentReference.cs" t="Include" />
-              <e p="TournamentVariable.cs" t="Include" />
-            </e>
             <e p="TransformReference" t="Include">
               <e p="TransformReference.cs" t="Include" />
               <e p="TransformVariable.cs" t="Include" />
@@ -361,7 +358,10 @@
             <e p="BoutonExitUI.cs" t="Include" />
             <e p="SettingsUI.cs" t="Include" />
             <e p="SliderWithLabelUI.cs" t="Include" />
+            <e p="TankNumberUI.cs" t="Include" />
             <e p="TeamFightUI.cs" t="Include" />
+            <e p="TeamTankUI.cs" t="Include" />
+            <e p="TournamentUI.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="DataHandler.cs" t="Include" />

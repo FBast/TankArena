@@ -1,7 +1,7 @@
 using Framework;
 using UnityEngine;
 
-namespace SOReferences.TournamentReference {
+namespace SOReferences.GameReference {
     [CreateAssetMenu(fileName = "Tournament_Variable", menuName = "SOVariable/Tournament")]
-    public class TournamentVariable : Variable<Tournament> {}
+    public class GameVariable : Variable<Game> {}
 }

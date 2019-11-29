@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491e4a7247d140549830d28e18739496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TankEntityOwner: {fileID: 0}
   ExplosionPrefab: {fileID: 195792, guid: 1911d89758d97cc4898d240e9e2545f4, type: 3}
+  CurrentGameReference:
+    Variable: {fileID: 11400000, guid: 7667176be5195bb4a8b87f71efd9aa31, type: 2}
+  TankEntityOwner: {fileID: 0}
   Damage: 0

@@ -14850,6 +14850,8 @@ MonoBehaviour:
   LeftTrackMeshRender: {fileID: 2466928126321315093}
   FactionDisk: {fileID: 5254474895372124269}
   TurretCamera: {fileID: 7043326029204013415}
+  CurrentGameReference:
+    Variable: {fileID: 11400000, guid: 7667176be5195bb4a8b87f71efd9aa31, type: 2}
   WaypointsReference:
     Variable: {fileID: 11400000, guid: 974ecc25823053f4c8932762ee118b4b, type: 2}
   TanksReference:
