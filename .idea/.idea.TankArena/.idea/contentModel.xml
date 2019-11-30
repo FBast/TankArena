@@ -14,7 +14,6 @@
             <e p="FontLicense.txt" t="Include" />
           </e>
         </e>
-        <e p="MatchEndUI.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="FullSerializer" t="Include">
             <e p="Aot" t="Include">
@@ -238,24 +237,28 @@
           </e>
           <e p="Entities" t="Include">
             <e p="BonusEntity.cs" t="Include" />
-            <e p="BonusSpawnerEntity.cs" t="Include" />
             <e p="Editor" t="Include">
               <e p="TankDataEditor.cs" t="Include" />
             </e>
-            <e p="GridEntity.cs" t="Include" />
             <e p="ShellEntity.cs" t="Include" />
             <e p="TankEntity.cs" t="Include" />
             <e p="WaypointEntity.cs" t="Include" />
           </e>
           <e p="Framework" t="Include">
+            <e p="BonusSpawner.cs" t="Include" />
+            <e p="CameraSwitch.cs" t="Include" />
+            <e p="DataHandler.cs" t="Include" />
             <e p="Game.cs" t="Include" />
             <e p="Match.cs" t="Include" />
+            <e p="Properties.cs" t="Include" />
             <e p="Stats.cs" t="Include" />
+            <e p="TankSpawner.cs" t="Include" />
             <e p="Team.cs" t="Include" />
+            <e p="WaypointSpawner.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
-            <e p="SceneManager.cs" t="Include" />
+            <e p="Manager.cs" t="Include" />
           </e>
           <e p="SOEvents" t="Include">
             <e p="BaseGameEvent.cs" t="Include" />
@@ -358,6 +361,7 @@
             </e>
           </e>
           <e p="UI" t="Include">
+            <e p="MatchEndUI.cs" t="Include" />
             <e p="SettingsUI.cs" t="Include" />
             <e p="SliderWithLabelUI.cs" t="Include" />
             <e p="TankNumberUI.cs" t="Include" />
@@ -366,12 +370,15 @@
             <e p="TournamentUI.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
-            <e p="DataHandler.cs" t="Include" />
-            <e p="ExtensionMethods.cs" t="Include" />
+            <e p="DoubleExtension.cs" t="Include" />
+            <e p="FormationUtils.cs" t="Include" />
             <e p="FullSerializerApi.cs" t="Include" />
             <e p="PlayerPrefsExtension.cs" t="Include" />
-            <e p="Properties.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
+            <e p="TransformExtension.cs" t="Include" />
+            <e p="Vector2Extension.cs" t="Include" />
+            <e p="Vector3Extension.cs" t="Include" />
+            <e p="Vector3Utils.cs" t="Include" />
           </e>
         </e>
       </e>

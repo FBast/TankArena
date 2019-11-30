@@ -1,4 +1,4 @@
-namespace Utils {
+namespace Framework {
     public static class Properties {
 
         public struct Inputs {

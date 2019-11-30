@@ -7,7 +7,6 @@ using Data;
 using Framework;
 using SOEvents.VoidEvents;
 using SOReferences.GameObjectListReference;
-using SOReferences.GameReference;
 using SOReferences.MatchReference;
 using UnityEngine;
 using UnityEngine.AI;
@@ -170,7 +169,14 @@ namespace Entities {
                 CurrentMatchReference.Value.TeamStats[Team].IsDefeated = true;
             if (CurrentMatchReference.Value.TeamInMatch.Count() == 1)
                 OnMatchFinished.Raise();
+            // Explosion
             Instantiate(TankExplosionPrefab, transform.position, TankExplosionPrefab.transform.rotation);
+            int size = Physics.OverlapSphereNonAlloc(transform.position, ExplosionRadius, _hitColliders);
+            for (int i = 0; i < size; i++) {
+                TankEntity tankEntity = _hitColliders[i].GetComponent<TankEntity>();
+                if (tankEntity && tankEntity != this) tankEntity.DamageByExplosion(this);
+            }
+            // Wreck
             if (PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, 
                 Properties.PlayerPrefsDefault.ExplosionCreateBustedTank))
                 Instantiate(BustedTankPrefab, transform.position, transform.rotation);
@@ -199,13 +205,5 @@ namespace Entities {
             return null;
         }
 
-        private void OnDestroy() {
-            int size = Physics.OverlapSphereNonAlloc(transform.position, ExplosionRadius, _hitColliders);
-            for (int i = 0; i < size; i++) {
-                TankEntity tankEntity = _hitColliders[i].GetComponent<TankEntity>();
-                if (tankEntity) tankEntity.DamageByExplosion(this);
-            }
-        }
-        
     }
 }

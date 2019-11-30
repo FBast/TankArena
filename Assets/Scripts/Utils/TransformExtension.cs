@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Utils {
-    public static class ExtensionMethods {
+    public static class TransformExtension {
 
         public static List<Transform> InLineOfView(this Transform trans, Transform Hider, List<Transform> Seekers, LayerMask layerMask) {
             List<Transform> inLineOfView = new List<Transform>();
@@ -20,12 +19,6 @@ namespace Utils {
                 distance = trans.GetComponent<Collider>().bounds.center - trans.position;
             return distance;
         }
-        
-        public static bool IsPositionOnNavMesh(this Vector3 position) {
-            const float onMeshThreshold = 1;
-            // Check for nearest point on navmesh to agent, within onMeshThreshold
-            return NavMesh.SamplePosition(position, out _, onMeshThreshold, NavMesh.AllAreas);
-        }
-        
+
     }
 }

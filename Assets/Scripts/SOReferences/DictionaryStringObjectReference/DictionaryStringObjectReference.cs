@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.SOReferences;
 
 namespace SOReferences.DictionaryStringObjectReference {
     [Serializable]

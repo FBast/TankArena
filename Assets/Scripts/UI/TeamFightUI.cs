@@ -2,18 +2,19 @@
 using System.Linq;
 using Data;
 using Framework;
+using Managers;
 using SOReferences.GameReference;
+using SOReferences.MatchReference;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Utils;
-using SceneManager = Managers.SceneManager;
 
 namespace UI {
     public class TeamFightUI : MonoBehaviour {
 
         [Header("SO References")]
         public GameReference CurrentGameReference;
+        public MatchReference CurrentMatchReference;
         
         [Header("Team A References")]
         public Toggle TeamACompositeToggle;
@@ -35,7 +36,7 @@ namespace UI {
         
         private void Start() {
 //            _settings = DataHandler.GetTankData();
-            _tankSettings = SceneManager.Instance.TankSettings;
+            _tankSettings = Manager.Instance.TankSettings;
             InitDropDowns(TeamADropdowns, TeamACompositeToggle);
             InitDropDowns(TeamBDropdowns, TeamBCompositeToggle);
             InitDropDowns(TeamCDropdowns, TeamCCompositeToggle);
@@ -98,7 +99,9 @@ namespace UI {
                 });
             }
             game.SetupTeamFight();
+            game.NextMatch();
             CurrentGameReference.Value = game;
+            CurrentMatchReference.Value = CurrentGameReference.Value.CurrentMatch;
         }
         
     }

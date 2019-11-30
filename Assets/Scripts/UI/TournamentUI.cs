@@ -29,7 +29,7 @@ namespace UI {
         private List<TankSetting> _tankSettings = new List<TankSetting>();
     
         private void Start() {
-            _tankSettings = SceneManager.Instance.TankSettings;
+            _tankSettings = Manager.Instance.TankSettings;
         }
 
         public void AddTeam() {
@@ -92,8 +92,8 @@ namespace UI {
             CurrentGameReference.Value = new Game {
                 Teams = _teams
             };
-            SceneManager.Instance.UnloadScene(Properties.Scenes.Menu);
-            SceneManager.Instance.LoadScene(Properties.Scenes.Game);
+            Manager.Instance.UnloadScene(Properties.Scenes.Menu);
+            Manager.Instance.LoadScene(Properties.Scenes.Game);
         }
 
     }

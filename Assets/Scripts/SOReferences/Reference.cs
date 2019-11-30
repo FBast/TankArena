@@ -1,7 +1,6 @@
 ﻿using System;
-using SOReferences;
 
-namespace Data.SOReferences {
+namespace SOReferences {
     /// <summary>
     /// Reference Class.
     /// </summary>

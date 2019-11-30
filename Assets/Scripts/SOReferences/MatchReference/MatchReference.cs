@@ -1,5 +1,4 @@
 using System;
-using Data.SOReferences;
 using Framework;
 
 namespace SOReferences.MatchReference {

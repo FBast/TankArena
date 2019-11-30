@@ -1,5 +1,4 @@
 using System;
-using Data.SOReferences;
 using UnityEngine;
 
 namespace SOReferences.CameraReference {

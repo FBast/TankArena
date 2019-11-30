@@ -3,11 +3,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
-using Entities;
 using NodeUtilityAi;
 using UnityEngine;
+using Utils;
 
-namespace Utils {
+namespace Framework {
     public static class DataHandler {
 
         private static string[] TankDirectories => Directory.GetDirectories(_directoryPath);

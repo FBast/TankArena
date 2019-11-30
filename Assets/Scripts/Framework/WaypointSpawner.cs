@@ -3,8 +3,8 @@ using SOReferences.GameObjectListReference;
 using UnityEngine;
 using Utils;
 
-namespace Entities {
-    public class GridEntity : MonoBehaviour {
+namespace Framework {
+    public class WaypointSpawner : MonoBehaviour {
 
         [Header("Prefabs")] 
         public GameObject WaypointPrefab;
@@ -23,10 +23,10 @@ namespace Entities {
         
         private void Start() {
             WaypointsReference.Value = new List<GameObject>();
-            GenerateWaypointGrid();
+            GenerateWaypoints();
         }
 
-        private void GenerateWaypointGrid() {
+        private void GenerateWaypoints() {
 
             float positionX = GridEnd.position.x - GridStart.position.x;
             float positionZ = GridEnd.position.z - GridStart.position.z;

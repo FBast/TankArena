@@ -1,5 +1,4 @@
 ﻿using System;
-using Data.SOReferences;
 
 namespace SOReferences.FloatReference {
     [Serializable]

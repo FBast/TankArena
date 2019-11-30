@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Managers;
+﻿using System.Collections.Generic;
 using SOReferences.GameObjectListReference;
 using UnityEngine;
 
-namespace Entities {
-    public class BonusSpawnerEntity : MonoBehaviour {
+namespace Framework {
+    public class BonusSpawner : MonoBehaviour {
 
         [Header("Prefabs")]
         public GameObject BonusPrefab;
@@ -22,7 +20,7 @@ namespace Entities {
         private float _timeSinceBonusUsed;
         private int _spawnedNumber;
 
-        private void Start() {
+        private void Awake() {
             BonusReference.Value = new List<GameObject>();
         }
 

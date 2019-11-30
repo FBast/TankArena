@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Data;
-using Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils;
 
 namespace Managers {
-	public class SceneManager : Singleton<SceneManager> {
+	public class Manager : Singleton<Manager> {
 
 		public List<TankSetting> TankSettings = new List<TankSetting>();
 		
@@ -18,12 +17,12 @@ namespace Managers {
 		private Dictionary<string, object> _parameters;
 		
 		public void UnloadScene(string scene) {
-			if (!UnityEngine.SceneManagement.SceneManager.GetSceneByName(scene).isLoaded) return;
+			if (!SceneManager.GetSceneByName(scene).isLoaded) return;
 			StartCoroutine(UnloadSceneAsync(scene));
 		}
 		
 		public void LoadScene(string scene) {
-			if (UnityEngine.SceneManagement.SceneManager.GetSceneByName(scene).isLoaded) return;
+			if (SceneManager.GetSceneByName(scene).isLoaded) return;
 			StartCoroutine(LoadSceneAsync(scene));
 		}
 
@@ -31,13 +30,13 @@ namespace Managers {
 			StartCoroutine(ReloadSceneAsync(scene));
 		}
 
-		public IEnumerator ReloadSceneAsync(string scene) {
+		private IEnumerator ReloadSceneAsync(string scene) {
 			yield return UnloadSceneAsync(scene);
 			yield return LoadSceneAsync(scene);
 		}
 		
 		private IEnumerator UnloadSceneAsync(string scene) {
-			AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(scene);
+			AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(scene);
 			//Wait until the last operation fully loads to return anything
 			while (!asyncLoad.isDone) {
 				yield return null;
@@ -45,11 +44,12 @@ namespace Managers {
 		}
 
 		private IEnumerator LoadSceneAsync(string scene) {
-			AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 			//Wait until the last operation fully loads to return anything
 			while (!asyncLoad.isDone) {
 				yield return null;
 			}
+			SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 		}
 		
 		public object GetParam(string paramKey) {
