@@ -14757,12 +14757,17 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 974ecc25823053f4c8932762ee118b4b, type: 2}
   TanksReference:
     Variable: {fileID: 11400000, guid: 7ce8d9e744c345148a51d33382a30b07, type: 2}
+  BonusReference:
+    Variable: {fileID: 11400000, guid: 1372dae88434f9344bdb2febe79e150d, type: 2}
   OnMatchFinished: {fileID: 11400000, guid: 2d347244babde3744912d94602a0695a, type: 2}
   ShellPrefab: {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 3}
   CanonShotPrefab: {fileID: 195792, guid: 284bae83e39190c459a86d91f74bc6e1, type: 3}
   TankExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
   BustedTankPrefab: {fileID: 4861750321285810470, guid: dd621673aba1ab44a8166073db520d65,
     type: 3}
+  CoverLayer:
+    serializedVersion: 2
+    m_Bits: 1335
   IsShellLoaded: 1
   Target: {fileID: 0}
   Destination: {fileID: 0}
@@ -14941,6 +14946,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2466928126323561731}
     m_Modifications:
+    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14984,14 +14997,6 @@ PrefabInstance:
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
-      propertyPath: m_Name
-      value: Fire
-      objectReference: {fileID: 0}
-    - target: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_Layer

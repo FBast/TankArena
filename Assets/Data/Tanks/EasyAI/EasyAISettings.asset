@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e59cc3b0c7467e8a9284f412777f1e, type: 3}
   m_Name: EasyAISettings
   m_EditorClassIdentifier: 
-  PlayerName: Fred
-  TankName: Easy
+  PlayerName: EasyAI
+  TankName: Tank
   TurretColor: {r: 0, g: 1, b: 0, a: 1}
   HullColor: {r: 0, g: 1, b: 0, a: 1}
   TracksColor: {r: 0, g: 1, b: 0, a: 1}

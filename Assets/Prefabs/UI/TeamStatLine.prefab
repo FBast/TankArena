@@ -292,7 +292,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 6542831914522231282}
   - component: {fileID: 3383702033645236241}
   m_Layer: 5
-  m_Name: Team
+  m_Name: TeamName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,7 +509,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6485207304808343678}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!114 &3383702033645236241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1250,6 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 833099301913093757}
   - component: {fileID: 1898381659364248304}
+  - component: {fileID: 5232152219761070953}
   m_Layer: 5
   m_Name: TeamStatLine
   m_TagString: Untagged
@@ -1279,8 +1280,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1292,3 +1293,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8375002932801918851}
   m_CullTransparentMesh: 0
+--- !u!114 &5232152219761070953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375002932801918851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b826c40295a6c945b133a5f7ff5d400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TeamNameText: {fileID: 3383702033645236241}
+  TankLeftText: {fileID: 3487785864506123613}
+  KillCountText: {fileID: 8987532625532768469}
+  LossCountText: {fileID: 138083326301170078}
+  TeamKillText: {fileID: 3931348334508146741}
+  DamageDoneText: {fileID: 7280609865377154088}
+  DamageSufferedText: {fileID: 6345554321903339979}
+  TeamDamageText: {fileID: 4737952438144688378}

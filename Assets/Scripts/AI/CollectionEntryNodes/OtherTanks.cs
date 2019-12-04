@@ -21,7 +21,7 @@ namespace AI.CollectionEntryNodes {
         
         protected override List<Object> CollectionProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            List<GameObject> tanks = GameManager.Instance.TankEntities;
+            List<GameObject> tanks = tankAiComponent.TankEntity.TanksReference.Value.ToList();
             tanks.Remove(tankAiComponent.gameObject);
             switch (Faction) {
                 case FactionType.Ally:

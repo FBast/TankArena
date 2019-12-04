@@ -12,7 +12,7 @@ namespace AI.DataEntryNodes {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
             GameObject data = GetData<GameObject>();
             return data.transform.InLineOfView(tankAiComponent.transform, tankAiComponent.TankEntity.Aggressors
-                       .Select(go => go.transform).ToList(), GameManager.Instance.CoverLayer).Count;
+                       .Select(go => go.transform).ToList(), tankAiComponent.TankEntity.CoverLayer).Count;
         }
         
     }

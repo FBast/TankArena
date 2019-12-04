@@ -10,7 +10,7 @@ namespace AI.SimpleEntryNodes {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
-            List<GameObject> tankEntities = GameManager.Instance.TankEntities;
+            List<GameObject> tankEntities = tankAiComponent.TankEntity.TanksReference.Value.ToList();
             tankEntities.Remove(tankAiComponent.gameObject);
             float distanceFromNearestTank = Mathf.Infinity;
             if (tankEntities.Count == 0) return (int) distanceFromNearestTank;

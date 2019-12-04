@@ -690,6 +690,7 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
+  _context: {fileID: 0}
   Value: 0
 --- !u!114 &-2953659528868384838
 MonoBehaviour:
@@ -721,6 +722,7 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
+  _context: {fileID: 0}
   Value: 0
 --- !u!114 &-2471950524212353368
 MonoBehaviour:
@@ -1067,7 +1069,7 @@ MonoBehaviour:
   - {fileID: -4877047426153418460}
   - {fileID: -666610060746541781}
   - {fileID: -5454583808840098247}
-  - {fileID: -3821168206784083687}
+  - {fileID: 0}
   - {fileID: 8812021701308854197}
   - {fileID: 4623358348314504939}
   - {fileID: 3084038963465333744}
@@ -1080,12 +1082,12 @@ MonoBehaviour:
   - {fileID: -7214421708940948329}
   - {fileID: 6607770313524958616}
   - {fileID: 7368571005304137469}
-  - {fileID: 5791981156358511819}
+  - {fileID: 0}
   - {fileID: 1991900924687757609}
   - {fileID: 0}
   - {fileID: 2760845509535288887}
   - {fileID: 7386761860645778315}
-  - {fileID: -2953659528868384838}
+  - {fileID: 0}
   - {fileID: 1286392669338573961}
 --- !u!114 &299701472732908585
 MonoBehaviour:
@@ -1123,7 +1125,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Value
-        node: {fileID: -3821168206784083687}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 1
@@ -1180,7 +1182,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.78345263
+  UtilityY: 0.107630886
 --- !u!114 &1286392669338573961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2017,6 +2019,7 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
+  _context: {fileID: 0}
   Value: 0
 --- !u!114 &6607770313524958616
 MonoBehaviour:
@@ -2128,10 +2131,7 @@ MonoBehaviour:
       _node: {fileID: 7368571005304137469}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Value
-        node: {fileID: 5791981156358511819}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 0
@@ -2161,7 +2161,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   MinX: 0
-  MaxX: 0
+  MaxX: 60
   X: 10
   Function:
     serializedVersion: 2
@@ -2187,7 +2187,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0
+  UtilityY: 0.05366892
 --- !u!114 &7386761860645778315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2222,10 +2222,7 @@ MonoBehaviour:
       _node: {fileID: 7386761860645778315}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Value
-        node: {fileID: -2953659528868384838}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 0
@@ -2255,7 +2252,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   MinX: 0
-  MaxX: 0
+  MaxX: 60
   X: 10
   Function:
     serializedVersion: 2
@@ -2281,7 +2278,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0
+  UtilityY: 0.05366892
 --- !u!114 &7451867004774385315
 MonoBehaviour:
   m_ObjectHideFlags: 0

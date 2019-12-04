@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 746430904}
   - component: {fileID: 746430906}
   - component: {fileID: 746430905}
+  - component: {fileID: 746430908}
   - component: {fileID: 746430907}
   m_Layer: 0
   m_Name: SceneManager
@@ -243,6 +244,33 @@ MonoBehaviour:
       - m_Target: {fileID: 746430904}
         m_MethodName: ExitGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &746430908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746430902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2e3d0096dc42e4a94cfa789e109159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: f0231fbd441683b4791564e34a05a1f0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 746430904}
+        m_MethodName: ReloadScene
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

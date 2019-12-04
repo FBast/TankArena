@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace Framework {
+    [Serializable]
     public class Game {
 
         public Match CurrentMatch;
@@ -15,7 +16,7 @@ namespace Framework {
         public void SetupTournament() {
             throw new NotImplementedException();
         }
-        
+
         public Match NextMatch() {
             if (Matches.Count == 0)
                 throw new Exception("No Matches found in Game");
@@ -29,6 +30,6 @@ namespace Framework {
             }
             return CurrentMatch;
         }
-        
+
     }
 }

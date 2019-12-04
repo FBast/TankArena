@@ -32,6 +32,7 @@ namespace Entities {
         public MatchReference CurrentMatchReference;
         public GameObjectListReference WaypointsReference;
         public GameObjectListReference TanksReference;
+        public GameObjectListReference BonusReference;
         
         [Header("SO Events")] 
         public VoidEvent OnMatchFinished;
@@ -42,6 +43,9 @@ namespace Entities {
         public GameObject TankExplosionPrefab;
         public GameObject BustedTankPrefab;
 
+        [Header	("Parameters")]
+        public LayerMask CoverLayer;
+        
         public int CanonDamage { get; private set; }
         public int CanonPower { get; private set; }
         public int TurretSpeed { get; private set; }
@@ -180,6 +184,9 @@ namespace Entities {
             if (PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.ExplosionCreateBustedTank, 
                 Properties.PlayerPrefsDefault.ExplosionCreateBustedTank))
                 Instantiate(BustedTankPrefab, transform.position, transform.rotation);
+            // Remove from list
+            TanksReference.Value.Remove(gameObject);
+            // Destroy
             Destroy(gameObject);
         }
         

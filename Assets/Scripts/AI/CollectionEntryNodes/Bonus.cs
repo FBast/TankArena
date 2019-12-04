@@ -10,7 +10,9 @@ namespace AI.CollectionEntryNodes {
     public class Bonus : CollectionEntryNode {
 
         protected override List<Object> CollectionProvider(AbstractAIComponent context) {
-            return new List<Object>(GameManager.Instance.BonusEntities.Select(entity => entity.gameObject));
+            TankAIComponent tankAiComponent = (TankAIComponent) context;
+            return new List<Object>(tankAiComponent.TankEntity.BonusReference.Value
+                .Select(entity => entity.gameObject));
         }
         
     }

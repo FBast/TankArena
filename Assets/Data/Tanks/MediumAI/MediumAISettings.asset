@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e59cc3b0c7467e8a9284f412777f1e, type: 3}
   m_Name: MediumAISettings
   m_EditorClassIdentifier: 
-  PlayerName: Fred
-  TankName: Medium
+  PlayerName: MediumAI
+  TankName: Tank
   TurretColor: {r: 1, g: 0.99862754, b: 0, a: 1}
   HullColor: {r: 1, g: 0.99862754, b: 0, a: 1}
   TracksColor: {r: 1, g: 0.99862754, b: 0, a: 1}

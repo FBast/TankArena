@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NodeUtilityAi.Framework;
+using UnityEngine;
 using XNode;
 using Object = UnityEngine.Object;
 
@@ -9,7 +10,7 @@ namespace NodeUtilityAi.Nodes {
         [Output] public CollectionEntryNode LinkedOption;
         [Output] public TaggedData DataOut;
         public string DataTag = "Data";
-        public int Index;
+        [HideInInspector] public int Index;
 
         public int CollectionCount => CollectionProvider(_context)?.Count ?? 0;
 

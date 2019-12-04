@@ -141,6 +141,7 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
+  _context: {fileID: 0}
   Value: 0
 --- !u!114 &-5283941621806557256
 MonoBehaviour:
@@ -303,10 +304,7 @@ MonoBehaviour:
       _node: {fileID: -2926545287486993830}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Value
-        node: {fileID: -5343816142024252526}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 0
@@ -336,7 +334,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   MinX: 0
-  MaxX: 100
+  MaxX: 60
   X: 10
   Function:
     serializedVersion: 2
@@ -362,7 +360,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.48051947
+  UtilityY: 0.027777778
 --- !u!114 &-431299842432448598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +460,7 @@ MonoBehaviour:
   - {fileID: 1585590846828763168}
   - {fileID: -8700507663786430366}
   - {fileID: 6529744489219897804}
-  - {fileID: -5343816142024252526}
+  - {fileID: 0}
   - {fileID: -431299842432448598}
   - {fileID: -3236302355394788701}
   - {fileID: -7420719097611563291}
@@ -667,6 +665,7 @@ MonoBehaviour:
     Data: {fileID: 0}
   DataTag: Tanks
   Index: 0
+  Faction: 1
 --- !u!114 &2830500752546835809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +804,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 1
+  UtilityY: 0.2
 --- !u!114 &6529744489219897804
 MonoBehaviour:
   m_ObjectHideFlags: 0

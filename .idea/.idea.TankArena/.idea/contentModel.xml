@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Dizy\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dizy\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.469938171.00" t="ExcludeRecursive" />
-    <e p="D:\Local Repository\TankArena" t="IncludeRecursive">
+    <e p="C:\Users\frederic.bast\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\frederic.bast\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.-1304077868.00" t="ExcludeRecursive" />
+    <e p="U:\UnityProjects\TankArena" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -211,7 +211,6 @@
               <e p="AliveTank.cs" t="Include" />
               <e p="CurrentHp.cs" t="Include" />
               <e p="DistanceFromFarthestBonus.cs" t="Include" />
-              <e p="DistanceFromFarthestGameObject.cs" t="Include" />
               <e p="DistanceFromFarthestTank.cs" t="Include" />
               <e p="DistanceFromFarthestWaypoint.cs" t="Include" />
               <e p="DistanceFromNearestBonus.cs" t="Include" />
@@ -235,11 +234,11 @@
           <e p="Data" t="Include">
             <e p="TankSetting.cs" t="Include" />
           </e>
+          <e p="Editor" t="Include">
+            <e p="TankDataEditor.cs" t="Include" />
+          </e>
           <e p="Entities" t="Include">
             <e p="BonusEntity.cs" t="Include" />
-            <e p="Editor" t="Include">
-              <e p="TankDataEditor.cs" t="Include" />
-            </e>
             <e p="ShellEntity.cs" t="Include" />
             <e p="TankEntity.cs" t="Include" />
             <e p="WaypointEntity.cs" t="Include" />
@@ -257,7 +256,6 @@
             <e p="WaypointSpawner.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
-            <e p="GameManager.cs" t="Include" />
             <e p="Manager.cs" t="Include" />
           </e>
           <e p="SOEvents" t="Include">
@@ -366,6 +364,7 @@
             <e p="SliderWithLabelUI.cs" t="Include" />
             <e p="TankNumberUI.cs" t="Include" />
             <e p="TeamFightUI.cs" t="Include" />
+            <e p="TeamStatLineUI.cs" t="Include" />
             <e p="TeamTankUI.cs" t="Include" />
             <e p="TournamentUI.cs" t="Include" />
           </e>

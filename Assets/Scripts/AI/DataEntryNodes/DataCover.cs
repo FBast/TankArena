@@ -1,4 +1,5 @@
 using System.Linq;
+using Entities;
 using Managers;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
@@ -12,9 +13,10 @@ namespace AI.DataEntryNodes {
             TankAIComponent tankAiComponent = (TankAIComponent) context;
             GameObject data = GetData<GameObject>();
             return data.transform.InLineOfView(tankAiComponent.transform,
-                GameManager.Instance.TankEntities
+                tankAiComponent.TankEntity.TanksReference.Value
+                    .Select(o => o.GetComponent<TankEntity>())
                     .Where(entity => entity != tankAiComponent.TankEntity)
-                    .Select(entity => entity.transform).ToList(), GameManager.Instance.CoverLayer).Count;
+                    .Select(entity => entity.transform).ToList(), tankAiComponent.TankEntity.CoverLayer).Count;
         }
         
     }
