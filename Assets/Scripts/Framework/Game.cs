@@ -14,7 +14,18 @@ namespace Framework {
         }
 
         public void SetupTournament() {
-            throw new NotImplementedException();
+            // Starting with FFA
+            Matches.Add(new Match(Teams));
+            // Round Robin
+            List<Match> RRMatches = new List<Match>();
+            foreach (Team FirstTeam in Teams) {
+                foreach (Team SecondTeam in Teams) {
+                    if (FirstTeam == SecondTeam) continue;
+                    if (RRMatches.Exists(match => match.Teams.Contains(FirstTeam) && match.Teams.Contains(SecondTeam))) continue;
+                    RRMatches.Add(new Match(new List<Team> {FirstTeam, SecondTeam}));
+                }
+            }
+            Matches.AddRange(RRMatches);
         }
 
         public Match NextMatch() {

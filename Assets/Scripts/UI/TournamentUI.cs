@@ -4,30 +4,33 @@ using Data;
 using Framework;
 using Managers;
 using SOReferences.GameReference;
+using SOReferences.MatchReference;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Utils;
 
 namespace UI {
     public class TournamentUI : MonoBehaviour {
 
         [Header("Prefabs")] 
         public GameObject TeamTogglePrefab;
+        public Sprite ColorSprite;
 
         [Header("Internal References")] 
         public Transform TeamButtonContent;
-        public Transform TeamComposition;
+        public Transform TeamSettings;
         public List<TMP_Dropdown> TankSettingsDropdowns;
+        public ColorPicker ColorPicker;
 
         [Header("SO References")] 
         public GameReference CurrentGameReference;
+        public MatchReference CurrentMatchReference;
     
         private List<Team> _teams = new List<Team>();
         private Dictionary<Team, GameObject> _teamToggles = new Dictionary<Team, GameObject>();
         private Team _currentTeam;
         private List<TankSetting> _tankSettings = new List<TankSetting>();
-    
+
         private void Start() {
             _tankSettings = Manager.Instance.TankSettings;
         }
@@ -48,7 +51,7 @@ namespace UI {
             _currentTeam = team;
             _teamToggles.Add(team, instantiate);
             UpdateTeamComposition();
-            TeamComposition.gameObject.SetActive(true);
+            TeamSettings.gameObject.SetActive(true);
         }
 
         public void RemoveTeam() {
@@ -61,7 +64,7 @@ namespace UI {
                 UpdateTeamComposition();
             }
             else {
-                TeamComposition.gameObject.SetActive(false);
+                TeamSettings.gameObject.SetActive(false);
             }
         }
 
@@ -83,17 +86,21 @@ namespace UI {
                         if (tmpDropdown.value > 0) _currentTeam.TankSettings.Add(_tankSettings[tmpDropdown.value - 1]);
                     }
                     _teamToggles[_currentTeam].GetComponentInChildren<TextMeshProUGUI>().text = _currentTeam.TeamName;
-                    TeamComposition.gameObject.SetActive(true);
+                    TeamSettings.gameObject.SetActive(true);
                 });
             }
+            ColorPicker.AssignColor(_currentTeam.Color);
+            ColorPicker.onValueChanged.AddListener(delegate(Color color) { _currentTeam.Color = color; });
         }
     
-        public void LaunchGame() {
-            CurrentGameReference.Value = new Game {
+        public void CreateGame() {
+            Game game = new Game {
                 Teams = _teams
             };
-            Manager.Instance.UnloadScene(Properties.Scenes.Menu);
-            Manager.Instance.LoadScene(Properties.Scenes.Game);
+            game.SetupTournament();
+            game.NextMatch();
+            CurrentGameReference.Value = game;
+            CurrentMatchReference.Value = CurrentGameReference.Value.CurrentMatch;
         }
 
     }

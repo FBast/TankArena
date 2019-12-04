@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Framework {
     public class Team {
 
-        public Color Color;
+        public Color Color = Color.black;
         public List<TankSetting> TankSettings = new List<TankSetting>();
         
         public string TeamName => TankSettings

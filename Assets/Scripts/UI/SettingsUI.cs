@@ -7,6 +7,7 @@ namespace UI {
     public class SettingsUI : MonoBehaviour {
 
         [Header("Internal References")] 
+        public SliderWithLabelUI MatchDuration;
         public SliderWithLabelUI HealthPoints;
         public SliderWithLabelUI CanonDamage;
         public SliderWithLabelUI CanonPower;
@@ -20,6 +21,9 @@ namespace UI {
         public Toggle AlwaysPickBestChoice;
 
         private void Start() {
+            MatchDuration.OnValueChanged.AddListener(delegate(float value) {
+                PlayerPrefs.SetInt(Properties.PlayerPrefs.MatchDuration, (int) value);
+            });
             HealthPoints.OnValueChanged.AddListener(delegate(float value) {
                 PlayerPrefs.SetInt(Properties.PlayerPrefs.HealthPoints, (int) value);
             });
@@ -57,6 +61,8 @@ namespace UI {
         }
 
         private void UpdateSettings() {
+            MatchDuration.Value = PlayerPrefs.GetInt(Properties.PlayerPrefs.MatchDuration,
+                Properties.PlayerPrefsDefault.MatchDuration);
             HealthPoints.Value = PlayerPrefs.GetInt(Properties.PlayerPrefs.HealthPoints,
                 Properties.PlayerPrefsDefault.HealthPoints);
             CanonDamage.Value = PlayerPrefs.GetInt(Properties.PlayerPrefs.CanonDamage,

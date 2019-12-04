@@ -14,6 +14,7 @@ namespace Framework {
         }
 
         public struct PlayerPrefs {
+            public const string MatchDuration = "MatchTime";
             public const string ExplosionDamage = "ExplosionDamage";
             public const string ExplosionRadius = "ExplosionRadius";
             public const string ExplosionCreateBustedTank = "ExplosionCreateBustedTank";
@@ -28,6 +29,7 @@ namespace Framework {
         }
         
         public struct PlayerPrefsDefault {
+            public const int MatchDuration = 120;
             public const int ExplosionDamage = 1;
             public const int ExplosionRadius = 1;
             public const bool ExplosionCreateBustedTank = true;
