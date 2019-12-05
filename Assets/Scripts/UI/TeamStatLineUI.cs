@@ -4,6 +4,7 @@ using UnityEngine;
 namespace UI {
     public class TeamStatLineUI : MonoBehaviour {
 
+        public TextMeshProUGUI VictoryPointText;
         public TextMeshProUGUI TeamNameText;
         public TextMeshProUGUI TankLeftText;
         public TextMeshProUGUI KillCountText;

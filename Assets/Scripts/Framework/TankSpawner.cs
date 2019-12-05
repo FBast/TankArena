@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Data;
 using Entities;
 using SOReferences.GameObjectListReference;
+using SOReferences.GameObjectReference;
 using SOReferences.MatchReference;
 using UnityEngine;
 using Utils;
@@ -19,7 +22,13 @@ namespace Framework {
         [Header("SO References")] 
         public MatchReference CurrentMatchReference;
         public GameObjectListReference TanksReference;
-    
+        public GameObjectReference CameraReference;
+
+        [Header("Parameters")] 
+        public int LookAtSpeed;
+        
+        private Transform _targetLookAt;
+        
         private void Start() {
             TanksReference.Value = new List<GameObject>();
             for (int i = 0; i < CurrentMatchReference.Value.Teams.Count; i++) {

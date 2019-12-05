@@ -91,10 +91,10 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1271530971044151163}
   - component: {fileID: 7340645292905816502}
   m_Layer: 5
-  m_Name: TeamTankFrame
+  m_Name: TeamTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

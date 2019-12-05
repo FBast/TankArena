@@ -8,7 +8,6 @@ namespace Framework {
 
         public List<Team> Teams;
         public Dictionary<Team, Stats> TeamStats = new Dictionary<Team, Stats>();
-        public Team Winner;
  
         public IEnumerable<Team> TeamInMatch => TeamStats
             .Where(pair => !pair.Value.IsDefeated)

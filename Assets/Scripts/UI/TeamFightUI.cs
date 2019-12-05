@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Data;
 using Framework;
@@ -15,7 +16,7 @@ namespace UI {
         [Header("SO References")]
         public GameReference CurrentGameReference;
         public MatchReference CurrentMatchReference;
-        
+
         [Header("Team A References")]
         public Toggle TeamACompositeToggle;
         public List<TMP_Dropdown> TeamADropdowns;
@@ -99,9 +100,9 @@ namespace UI {
                 });
             }
             game.SetupTeamFight();
-            game.NextMatch();
+            game.CurrentMatch = game.NextMatch();
             CurrentGameReference.Value = game;
-            CurrentMatchReference.Value = CurrentGameReference.Value.CurrentMatch;
+            CurrentMatchReference.Value = game.CurrentMatch;
         }
         
     }

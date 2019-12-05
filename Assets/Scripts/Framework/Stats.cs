@@ -1,6 +1,7 @@
 namespace Framework {
     public class Stats {
 
+        public int VictoryPoint;
         public int TankLeft;
         public int KillCount;
         public int LossCount;

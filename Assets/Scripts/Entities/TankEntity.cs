@@ -107,6 +107,7 @@ namespace Entities {
         }
         
         private void Update() {
+            
             Debug.DrawRay(CanonOut.position, CanonOut.forward * 100, Color.red);
             if (Target) {
                 Vector3 newDir = Vector3.RotateTowards(Turret.forward, Target.transform.position - Turret.position, TurretSpeed * Time.deltaTime, 0.0f);

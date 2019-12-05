@@ -52,11 +52,12 @@ MonoBehaviour:
   - {fileID: 5362113247463993020}
   - {fileID: 5362113248161950962}
   - {fileID: 5362113248462909691}
-  TankContent: {fileID: 6955548349992710487}
+  TankContent: {fileID: 5084331088701174664}
   CurrentMatchReference:
     Variable: {fileID: 11400000, guid: 5405124dea616db4eb2bce7fa8bcc5e6, type: 2}
   TanksReference:
     Variable: {fileID: 11400000, guid: 7ce8d9e744c345148a51d33382a30b07, type: 2}
+  OnTankSpawned: {fileID: 11400000, guid: 21d45461a767aca4a9c57a202d12a88d, type: 2}
 --- !u!1 &3142871746461422196
 GameObject:
   m_ObjectHideFlags: 0

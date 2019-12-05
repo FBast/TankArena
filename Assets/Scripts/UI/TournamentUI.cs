@@ -14,9 +14,11 @@ namespace UI {
 
         [Header("Prefabs")] 
         public GameObject TeamTogglePrefab;
-        public Sprite ColorSprite;
 
         [Header("Internal References")] 
+        public Button AddTeamButton;
+        public Button RemoveTeamButton;
+        public Button LaunchButton;
         public Transform TeamButtonContent;
         public Transform TeamSettings;
         public List<TMP_Dropdown> TankSettingsDropdowns;
@@ -52,6 +54,12 @@ namespace UI {
             _teamToggles.Add(team, instantiate);
             UpdateTeamComposition();
             TeamSettings.gameObject.SetActive(true);
+            if (_teams.Count > 0)
+                RemoveTeamButton.interactable = true;
+            if (_teams.Count > 1)
+                LaunchButton.interactable = true;
+            if (_teams.Count > 7)
+                AddTeamButton.interactable = false;
         }
 
         public void RemoveTeam() {
@@ -66,6 +74,12 @@ namespace UI {
             else {
                 TeamSettings.gameObject.SetActive(false);
             }
+            if (_teams.Count < 2)
+                LaunchButton.interactable = false;
+            if (_teams.Count == 0)
+                RemoveTeamButton.interactable = false;
+            if (_teams.Count < 8)
+                AddTeamButton.interactable = true;
         }
 
         private void UpdateTeamComposition() {
@@ -90,7 +104,10 @@ namespace UI {
                 });
             }
             ColorPicker.AssignColor(_currentTeam.Color);
-            ColorPicker.onValueChanged.AddListener(delegate(Color color) { _currentTeam.Color = color; });
+            ColorPicker.onValueChanged.AddListener(delegate(Color color) {
+                _currentTeam.Color = color;
+                _teamToggles[_currentTeam].GetComponentInChildren<TextMeshProUGUI>().color = color;
+            });
         }
     
         public void CreateGame() {
@@ -98,9 +115,9 @@ namespace UI {
                 Teams = _teams
             };
             game.SetupTournament();
-            game.NextMatch();
+            game.CurrentMatch = game.NextMatch();
             CurrentGameReference.Value = game;
-            CurrentMatchReference.Value = CurrentGameReference.Value.CurrentMatch;
+            CurrentMatchReference.Value = game.CurrentMatch;
         }
 
     }

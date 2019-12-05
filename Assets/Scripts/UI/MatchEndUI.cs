@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Framework;
 using SOEvents.StringEvents;
-using SOReferences.GameReference;
 using SOReferences.MatchReference;
 using UnityEngine;
 
@@ -17,19 +15,28 @@ namespace UI {
         public Transform StatsContent;
         
         [Header("SO References")] 
-        public GameReference CurrentGameReference;
         public MatchReference CurrentMatchReference;
 
         [Header("SO Events")] 
         public StringEvent OnReloadScene;
-        public StringEvent OnUnloadScene;
-        public StringEvent OnLoadScene;
 
         private void OnEnable() {
+            // Calculate victory points
+            int maxTank = CurrentMatchReference.Value.TeamStats.Max(pair => pair.Value.TankLeft);
+            int maxDamage = CurrentMatchReference.Value.TeamStats.Max(pair => pair.Value.DamageDone - pair.Value.TeamDamage);
+            int maxKill = CurrentMatchReference.Value.TeamStats.Max(pair => pair.Value.KillCount - pair.Value.TeamKill);
             foreach (KeyValuePair<Team,Stats> teamStat in CurrentMatchReference.Value.TeamStats) {
+                teamStat.Value.VictoryPoint += teamStat.Value.TankLeft == maxTank ? 1 : 0;
+                teamStat.Value.VictoryPoint += teamStat.Value.DamageDone - teamStat.Value.TeamDamage == maxDamage ? 1 : 0;
+                teamStat.Value.VictoryPoint += teamStat.Value.KillCount - teamStat.Value.TeamKill == maxKill ? 1 : 0;
+            }
+            // Display stats
+            foreach (KeyValuePair<Team,Stats> teamStat in CurrentMatchReference.Value.TeamStats.OrderByDescending(pair => pair.Value.VictoryPoint)) {
                 TeamStatLineUI teamStatLineUi = Instantiate(TeamStatLine, StatsContent.transform)
                     .GetComponent<TeamStatLineUI>();
+                teamStatLineUi.VictoryPointText.text = teamStat.Value.VictoryPoint.ToString();
                 teamStatLineUi.TeamNameText.text = teamStat.Key.TeamName;
+                teamStatLineUi.TeamNameText.color = teamStat.Key.Color;
                 teamStatLineUi.TankLeftText.text = teamStat.Value.TankLeft.ToString();
                 teamStatLineUi.KillCountText.text = teamStat.Value.KillCount.ToString();
                 teamStatLineUi.LossCountText.text = teamStat.Value.LossCount.ToString();
@@ -43,17 +50,6 @@ namespace UI {
         private void OnDisable() {
             foreach (Transform child in StatsContent.transform) {
                 Destroy(child.gameObject);
-            }
-        }
-
-        public void NextMatch() {
-            if (CurrentGameReference.Value.NextMatch() != null) {
-                CurrentMatchReference.Value = CurrentGameReference.Value.CurrentMatch;
-                OnReloadScene.Raise(Properties.Scenes.Game);
-            }
-            else {
-                OnUnloadScene.Raise(Properties.Scenes.Game);
-                OnLoadScene.Raise(Properties.Scenes.Menu);
             }
         }
 

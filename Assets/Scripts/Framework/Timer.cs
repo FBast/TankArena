@@ -1,4 +1,6 @@
-﻿using SOEvents.VoidEvents;
+﻿using System;
+using SOEvents.VoidEvents;
+using SOReferences.FloatReference;
 using UnityEngine;
 
 namespace Framework {
@@ -7,21 +9,32 @@ namespace Framework {
         [Header("SO Events")] 
         public VoidEvent OnTimerFinished;
 
-        private float _timer;
-        private float _currentTime;
+        [Header("SO References")] 
+        public FloatReference MaxTimeReference;
+        public FloatReference CurrentTimeReference;
 
+        private bool _isTimeOut;
+        
         private void Start() {
-            _timer = PlayerPrefs.GetInt(Properties.PlayerPrefs.MatchDuration,
+            MaxTimeReference.Value = PlayerPrefs.GetInt(Properties.PlayerPrefs.MatchDuration,
                 Properties.PlayerPrefsDefault.MatchDuration);
             Time.timeScale = 1;
         }
 
         private void Update() {
-            _currentTime += Time.deltaTime;
-            if (_currentTime < _timer) return;
+            if (_isTimeOut) return;
+            CurrentTimeReference.Value += Time.deltaTime;
+            if (CurrentTimeReference.Value < MaxTimeReference.Value) return;
+            _isTimeOut = true;
             OnTimerFinished.Raise();
-            Time.timeScale = 0;
         }
 
+        public void PauseTime(bool pause) {
+            Time.timeScale = pause ? 0 : 1;
+        }
+        
+        private void OnDestroy() {
+            CurrentTimeReference.Value = 0;
+        }
     }
 }
