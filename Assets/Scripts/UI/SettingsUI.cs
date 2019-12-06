@@ -19,7 +19,10 @@ namespace UI {
         public Toggle ExplosionCreateBustedTank;
         public SliderWithLabelUI SecondsBetweenRefresh;
         public Toggle AlwaysPickBestChoice;
-
+        public SliderWithLabelUI GridGap;
+        public SliderWithLabelUI BonusPerSpawnNumber;
+        public SliderWithLabelUI BonusPerSpawnFrequency;
+        
         private void Start() {
             MatchDuration.OnValueChanged.AddListener(delegate(float value) {
                 PlayerPrefs.SetInt(Properties.PlayerPrefs.MatchDuration, (int) value);
@@ -57,6 +60,15 @@ namespace UI {
             AlwaysPickBestChoice.onValueChanged.AddListener(delegate(bool value) {
                 PlayerPrefsUtils.SetBool(Properties.PlayerPrefs.AlwaysPickBestChoice, value);
             });
+            GridGap.OnValueChanged.AddListener(delegate(float value) {
+                PlayerPrefs.SetInt(Properties.PlayerPrefs.GridGap, (int) value);
+            });
+            BonusPerSpawnNumber.OnValueChanged.AddListener(delegate(float value) {
+                PlayerPrefs.SetInt(Properties.PlayerPrefs.BonusPerSpawnNumber, (int) value);
+            });
+            BonusPerSpawnFrequency.OnValueChanged.AddListener(delegate(float value) {
+                PlayerPrefs.SetInt(Properties.PlayerPrefs.BonusPerSpawnFrequency, (int) value);
+            });
             UpdateSettings();
         }
 
@@ -85,6 +97,12 @@ namespace UI {
                 Properties.PlayerPrefsDefault.SecondsBetweenRefresh);
             AlwaysPickBestChoice.isOn = PlayerPrefsUtils.GetBool(Properties.PlayerPrefs.AlwaysPickBestChoice,
                 Properties.PlayerPrefsDefault.AlwaysPickBestChoice);
+            GridGap.Value = PlayerPrefs.GetFloat(Properties.PlayerPrefs.GridGap,
+                Properties.PlayerPrefsDefault.GridGap);
+            BonusPerSpawnNumber.Value = PlayerPrefs.GetFloat(Properties.PlayerPrefs.BonusPerSpawnNumber,
+                Properties.PlayerPrefsDefault.BonusPerSpawnNumber);
+            BonusPerSpawnFrequency.Value = PlayerPrefs.GetFloat(Properties.PlayerPrefs.BonusPerSpawnFrequency,
+                Properties.PlayerPrefsDefault.BonusPerSpawnFrequency);
         }
         
         public void ResetDefault() {

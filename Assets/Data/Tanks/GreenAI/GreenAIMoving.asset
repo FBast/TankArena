@@ -1,52 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9081343588404294240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de88023917834d649ccddd210c08c0d1, type: 3}
-  m_Name: Data Is Target Observer
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -712, y: -376}
-  ports:
-    keys:
-    - Data
-    - Value
-    values:
-    - _fieldName: Data
-      _node: {fileID: -9081343588404294240}
-      _typeQualifiedName: NodeUtilityAi.Framework.TaggedData, Assembly-CSharp-firstpass,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: DataOut
-        node: {fileID: 5276734303690849383}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Value
-      _node: {fileID: -9081343588404294240}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Multiplier
-        node: {fileID: -6185036124515093602}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  Value: 0
-  Data:
-    DataTag: 
-    Data: {fileID: 0}
 --- !u!114 &-8028501355549436478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,96 +133,6 @@ MonoBehaviour:
   Data:
     DataTag: 
     Data: {fileID: 0}
---- !u!114 &-7056105111747214724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dabbca4d164928b87aa9c95ab20f8e, type: 3}
-  m_Name: Utility Inverter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 248, y: -1560}
-  ports:
-    keys:
-    - UtilityIn
-    - UtilityOut
-    values:
-    - _fieldName: UtilityIn
-      _node: {fileID: -7056105111747214724}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UtilityY
-        node: {fileID: 299701472732908585}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: UtilityOut
-      _node: {fileID: -7056105111747214724}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Utilities
-        node: {fileID: -2471950524212353368}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  UtilityIn: 0
-  UtilityOut: 0
---- !u!114 &-7041008942504414524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dabbca4d164928b87aa9c95ab20f8e, type: 3}
-  m_Name: Utility Inverter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 248, y: -1688}
-  ports:
-    keys:
-    - UtilityIn
-    - UtilityOut
-    values:
-    - _fieldName: UtilityIn
-      _node: {fileID: -7041008942504414524}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UtilityY
-        node: {fileID: -770360451660256974}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: UtilityOut
-      _node: {fileID: -7041008942504414524}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Utilities
-        node: {fileID: -2471950524212353368}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  UtilityIn: 0
-  UtilityOut: 0
 --- !u!114 &-6646655335398489583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +226,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0
+  UtilityY: 1
 --- !u!114 &-6185036124515093602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,14 +266,14 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityOut
-        node: {fileID: -4566796072908663882}
-        reroutePoints: []
       - fieldName: UtilityY
         node: {fileID: 4812286684174235666}
         reroutePoints: []
-      - fieldName: UtilityOut
-        node: {fileID: 1286392669338573961}
+      - fieldName: UtilityY
+        node: {fileID: 7386761860645778315}
+        reroutePoints: []
+      - fieldName: UtilityY
+        node: {fileID: 2348021597700313879}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -423,9 +286,6 @@ MonoBehaviour:
       connections:
       - fieldName: Value
         node: {fileID: 8812021701308854197}
-        reroutePoints: []
-      - fieldName: Value
-        node: {fileID: -9081343588404294240}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -455,7 +315,7 @@ MonoBehaviour:
   Collection: {fileID: 0}
   Description: Select Destination for Attack
   Utilities: 1
-  UtilityMerge: 0
+  UtilityMerge: 1
   Multiplier: 1
   Bonus: 0
   Actions: {fileID: 0}
@@ -618,51 +478,6 @@ MonoBehaviour:
       _dynamic: 0
   Value: 0
   FactionType: 1
---- !u!114 &-4566796072908663882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dabbca4d164928b87aa9c95ab20f8e, type: 3}
-  m_Name: Utility Inverter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 248, y: -808}
-  ports:
-    keys:
-    - UtilityIn
-    - UtilityOut
-    values:
-    - _fieldName: UtilityIn
-      _node: {fileID: -4566796072908663882}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UtilityY
-        node: {fileID: 2348021597700313879}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: UtilityOut
-      _node: {fileID: -4566796072908663882}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Utilities
-        node: {fileID: -6185036124515093602}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  UtilityIn: 0
-  UtilityOut: 0
 --- !u!114 &-4537961665407969514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,11 +629,11 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityOut
-        node: {fileID: -7056105111747214724}
+      - fieldName: UtilityY
+        node: {fileID: -770360451660256974}
         reroutePoints: []
-      - fieldName: UtilityOut
-        node: {fileID: -7041008942504414524}
+      - fieldName: UtilityY
+        node: {fileID: 299701472732908585}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -860,7 +675,7 @@ MonoBehaviour:
   Collection: {fileID: 0}
   Description: Select Destination for Bonus
   Utilities: 1
-  UtilityMerge: 0
+  UtilityMerge: 1
   Multiplier: 1
   Bonus: 0
   Actions: {fileID: 0}
@@ -970,8 +785,8 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityIn
-        node: {fileID: -7041008942504414524}
+      - fieldName: Utilities
+        node: {fileID: -2471950524212353368}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -985,21 +800,21 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: -1.8853725
+      outSlope: -1.8853725
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.06266318
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      value: 0
+      inSlope: -0.023420187
+      outSlope: -0.023420187
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.09284158
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1103,13 +918,10 @@ MonoBehaviour:
   - {fileID: 5690315875895242784}
   - {fileID: 2348021597700313879}
   - {fileID: -6646655335398489583}
-  - {fileID: -4566796072908663882}
   - {fileID: -770360451660256974}
   - {fileID: -2471950524212353368}
   - {fileID: 299701472732908585}
-  - {fileID: -7056105111747214724}
   - {fileID: 8396163623229825504}
-  - {fileID: -7041008942504414524}
   - {fileID: 3319118025934761276}
   - {fileID: 7451867004774385315}
   - {fileID: 3938213205943967868}
@@ -1129,15 +941,12 @@ MonoBehaviour:
   - {fileID: -7214421708940948329}
   - {fileID: 6607770313524958616}
   - {fileID: 7368571005304137469}
-  - {fileID: 1991900924687757609}
   - {fileID: 2760845509535288887}
   - {fileID: 7386761860645778315}
-  - {fileID: 1286392669338573961}
   - {fileID: 3804270798724208400}
   - {fileID: 3344780244034549594}
   - {fileID: -924912245188780478}
   - {fileID: -5174186175588886469}
-  - {fileID: -9081343588404294240}
   - {fileID: 0}
 --- !u!114 &299701472732908585
 MonoBehaviour:
@@ -1195,8 +1004,8 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityIn
-        node: {fileID: -7056105111747214724}
+      - fieldName: Utilities
+        node: {fileID: -2471950524212353368}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -1210,71 +1019,26 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
+      value: 1
+      inSlope: -0.027943304
+      outSlope: -0.027943304
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.07470432
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -1.7033864
+      outSlope: -1.7033864
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.04830289
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.6156
---- !u!114 &1286392669338573961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dabbca4d164928b87aa9c95ab20f8e, type: 3}
-  m_Name: Utility Inverter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 184, y: -584}
-  ports:
-    keys:
-    - UtilityIn
-    - UtilityOut
-    values:
-    - _fieldName: UtilityIn
-      _node: {fileID: 1286392669338573961}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UtilityY
-        node: {fileID: 7386761860645778315}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: UtilityOut
-      _node: {fileID: 1286392669338573961}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Utilities
-        node: {fileID: -6185036124515093602}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  UtilityIn: 0
-  UtilityOut: 0
+  UtilityY: 1
 --- !u!114 &1726790253496150111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,51 +1087,6 @@ MonoBehaviour:
   Data:
     DataTag: 
     Data: {fileID: 0}
---- !u!114 &1991900924687757609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dabbca4d164928b87aa9c95ab20f8e, type: 3}
-  m_Name: Utility Inverter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 200, y: 264}
-  ports:
-    keys:
-    - UtilityIn
-    - UtilityOut
-    values:
-    - _fieldName: UtilityIn
-      _node: {fileID: 1991900924687757609}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UtilityY
-        node: {fileID: 7368571005304137469}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: UtilityOut
-      _node: {fileID: 1991900924687757609}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Utilities
-        node: {fileID: 5690315875895242784}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  UtilityIn: 0
-  UtilityOut: 0
 --- !u!114 &2348021597700313879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,8 +1146,8 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityIn
-        node: {fileID: -4566796072908663882}
+      - fieldName: Utilities
+        node: {fileID: -6185036124515093602}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -1442,26 +1161,26 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
+      value: 1.0003611
+      inSlope: -1.000628
+      outSlope: -1.000628
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      value: -0.00026696362
+      inSlope: -1.000628
+      outSlope: -1.000628
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0
+  UtilityY: 1.0003611
 --- !u!114 &2760845509535288887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,9 +1656,6 @@ MonoBehaviour:
       - fieldName: Data
         node: {fileID: -924912245188780478}
         reroutePoints: []
-      - fieldName: Data
-        node: {fileID: -9081343588404294240}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1995,8 +1711,8 @@ MonoBehaviour:
       - fieldName: UtilityY
         node: {fileID: 3319118025934761276}
         reroutePoints: []
-      - fieldName: UtilityOut
-        node: {fileID: 1991900924687757609}
+      - fieldName: UtilityY
+        node: {fileID: 7368571005304137469}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2038,7 +1754,7 @@ MonoBehaviour:
   Collection: {fileID: 0}
   Description: Select Destination for Cover
   Utilities: 1
-  UtilityMerge: 0
+  UtilityMerge: 1
   Multiplier: 1
   Bonus: 0
   Actions: {fileID: 0}
@@ -2207,8 +1923,8 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityIn
-        node: {fileID: 1991900924687757609}
+      - fieldName: Utilities
+        node: {fileID: 5690315875895242784}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -2222,26 +1938,26 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
+      value: 1
+      inSlope: -0.027943304
+      outSlope: -0.027943304
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.07470432
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -1.7033864
+      outSlope: -1.7033864
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.04830289
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.6156
+  UtilityY: 1
 --- !u!114 &7386761860645778315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,8 +2014,8 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UtilityIn
-        node: {fileID: 1286392669338573961}
+      - fieldName: Utilities
+        node: {fileID: -6185036124515093602}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -2313,26 +2029,26 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
+      value: 1
+      inSlope: -0.027943304
+      outSlope: -0.027943304
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.07470432
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -1.7033864
+      outSlope: -1.7033864
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.04830289
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.6156
+  UtilityY: 1
 --- !u!114 &7451867004774385315
 MonoBehaviour:
   m_ObjectHideFlags: 0

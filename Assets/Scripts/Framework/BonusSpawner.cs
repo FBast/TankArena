@@ -10,8 +10,6 @@ namespace Framework {
         
         [Header("Parameters")]
         public string BonusName;
-        public int SpawnRate;
-        public int SpawnNumber;
 
         [Header("SO References")] 
         public GameObjectListReference BonusReference;
@@ -19,15 +17,19 @@ namespace Framework {
         private GameObject _spawnedBonus;
         private float _timeSinceBonusUsed;
         private int _spawnedNumber;
-
+        private int _spawnRate;
+        private int _spawnNumber;
+        
         private void Awake() {
             BonusReference.Value = new List<GameObject>();
+            _spawnNumber = PlayerPrefs.GetInt(Properties.PlayerPrefs.BonusPerSpawnNumber, Properties.PlayerPrefsDefault.BonusPerSpawnNumber);
+            _spawnRate = PlayerPrefs.GetInt(Properties.PlayerPrefs.BonusPerSpawnFrequency, Properties.PlayerPrefsDefault.BonusPerSpawnFrequency);
         }
 
         private void Update() {
-            if (_spawnedBonus || _spawnedNumber >= SpawnNumber) return;
+            if (_spawnedBonus || _spawnedNumber >= _spawnNumber) return;
             _timeSinceBonusUsed += Time.deltaTime;
-            if (_timeSinceBonusUsed > SpawnRate) {
+            if (_timeSinceBonusUsed > _spawnRate) {
                 Vector3 spawnPosition = transform.position;
                 spawnPosition.y = BonusPrefab.transform.position.y;
                 _spawnedBonus = Instantiate(BonusPrefab, spawnPosition, Quaternion.identity, transform);

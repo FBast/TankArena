@@ -26,6 +26,9 @@ namespace Framework {
             public const string WaypointSeekRadius = "WaypointSeekRadius";
             public const string AlwaysPickBestChoice = "AlwaysPickBestChoice";
             public const string SecondsBetweenRefresh = "TimeBetweenRefresh";
+            public const string GridGap = "GridGap";
+            public const string BonusPerSpawnNumber = "BonusPerSpawnNumber";
+            public const string BonusPerSpawnFrequency = "BonusPerSpawnFrequency";
         }
         
         public struct PlayerPrefsDefault {
@@ -38,9 +41,12 @@ namespace Framework {
             public const int TurretSpeed = 10;
             public const int HealthPoints = 5;
             public const int ReloadTime = 5;
-            public const int WaypointSeekRadius = 15;
+            public const int WaypointSeekRadius = 70;
             public const bool AlwaysPickBestChoice = true;
             public const int SecondsBetweenRefresh = 1;
+            public const int GridGap = 15;
+            public const int BonusPerSpawnNumber = 3;
+            public const int BonusPerSpawnFrequency = 10;
         }
         
     }
