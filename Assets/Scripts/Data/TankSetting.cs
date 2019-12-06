@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Framework;
 using NodeUtilityAi;
 using UnityEngine;
-using Utils;
 
 namespace Data {
     [CreateAssetMenu(fileName = "NewTankSetting", menuName = "TankSetting")]

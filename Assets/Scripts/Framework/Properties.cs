@@ -41,10 +41,10 @@ namespace Framework {
             public const int TurretSpeed = 10;
             public const int HealthPoints = 5;
             public const int ReloadTime = 5;
-            public const int WaypointSeekRadius = 70;
+            public const int WaypointSeekRadius = 50;
             public const bool AlwaysPickBestChoice = true;
             public const int SecondsBetweenRefresh = 1;
-            public const int GridGap = 15;
+            public const int GridGap = 20;
             public const int BonusPerSpawnNumber = 3;
             public const int BonusPerSpawnFrequency = 10;
         }
