@@ -22,7 +22,6 @@ namespace Framework {
         [Header("SO References")] 
         public MatchReference CurrentMatchReference;
         public GameObjectListReference TanksReference;
-        public GameObjectReference CameraReference;
 
         [Header("Parameters")] 
         public int LookAtSpeed;
