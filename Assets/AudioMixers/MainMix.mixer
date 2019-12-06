@@ -60,7 +60,6 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24461918}
-  - {fileID: 24438064}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -80,7 +79,6 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24404316}
-  - {fileID: 24408874}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -113,48 +111,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &24408874
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: ae436f4bbdad34121866b80566c8120a
-  m_EffectName: Duck Volume
-  m_MixLevel: 10568d2e9df294cd2b10e1e3e539992d
-  m_Parameters:
-  - m_ParameterName: Threshold
-    m_GUID: ba3cf072024a24329b117e4b7731be11
-  - m_ParameterName: Ratio
-    m_GUID: 08473e984487c474f9abde7a3301cfed
-  - m_ParameterName: Attack Time
-    m_GUID: fdd90cff72bc4400bb70581069eb2979
-  - m_ParameterName: Release Time
-    m_GUID: 43fbdfef65e044a5290531550ea79fd7
-  - m_ParameterName: Make-up Gain
-    m_GUID: 0be1c80004e514a828df548d70ca49db
-  - m_ParameterName: Knee
-    m_GUID: 49f5706bae1fd4c9b91415150f9ee924
-  - m_ParameterName: Sidechain Mix
-    m_GUID: 71041a16456084fc896c84fed1f77e33
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &24438064
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 578911788d0614622ac49160deb16eeb
-  m_EffectName: Send
-  m_MixLevel: 922d1a6273ce0479b9d9f3fe90459aa6
-  m_Parameters: []
-  m_SendTarget: {fileID: 24408874}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &24461918
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -179,12 +135,16 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: e8437f1cdbde946ea9a7f6e7f7462c2d
   m_FloatValues:
-    12b87a22f80c640c4878bc4db160c002: -12
+    fe6b04f1956793241a75b8d39fc80ced: 2000
+    12b87a22f80c640c4878bc4db160c002: 0
     922d1a6273ce0479b9d9f3fe90459aa6: 0
     ba3cf072024a24329b117e4b7731be11: -46
+    388e28720ef7a1a42bee9bab06627c1d: 1000
+    3a21c958bd61b5f4cad1707594f6f2c7: 3000
     08473e984487c474f9abde7a3301cfed: 2.5
     c5da2ac9be67a41218ed1a496dff2e9f: -28
     b3232ae98fdaf654980460028ddea9fe: 0
+    0ba3fe7a08ef23e4ea178bdaf1ad2dbe: 1
     43fbdfef65e044a5290531550ea79fd7: 0.1
     fdd90cff72bc4400bb70581069eb2979: 0
   m_TransitionOverrides: {}
