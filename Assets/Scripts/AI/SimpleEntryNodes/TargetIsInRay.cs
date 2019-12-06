@@ -1,8 +1,8 @@
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 
-namespace AI.DataEntryNodes {
-    public class DataInRayIsTarget : SimpleEntryNode {
+namespace AI.SimpleEntryNodes {
+    public class TargetIsInRay : SimpleEntryNode {
 
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;

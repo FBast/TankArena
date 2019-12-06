@@ -31,7 +31,7 @@ namespace Framework {
         public struct PlayerPrefsDefault {
             public const int MatchDuration = 120;
             public const int ExplosionDamage = 1;
-            public const int ExplosionRadius = 1;
+            public const int ExplosionRadius = 5;
             public const bool ExplosionCreateBustedTank = true;
             public const int CanonDamage = 1;
             public const int CanonPower = 50;

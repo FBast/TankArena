@@ -213,5 +213,9 @@ namespace Entities {
             return null;
         }
 
+        public FactionType GetFaction(TankEntity otherTank) {
+            return Team == otherTank.Team ? FactionType.Ally : FactionType.Enemy;
+        }
+
     }
 }

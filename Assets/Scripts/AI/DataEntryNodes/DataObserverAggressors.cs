@@ -1,12 +1,11 @@
 using System.Linq;
-using Managers;
 using NodeUtilityAi;
 using NodeUtilityAi.Nodes;
 using UnityEngine;
 using Utils;
 
 namespace AI.DataEntryNodes {
-    public class DataCoverCountFromAgressors : DataEntryNode {
+    public class DataObserverAggressors : DataEntryNode {
         
         protected override int ValueProvider(AbstractAIComponent context) {
             TankAIComponent tankAiComponent = (TankAIComponent) context;

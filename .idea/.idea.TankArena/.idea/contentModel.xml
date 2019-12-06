@@ -231,15 +231,18 @@
               <e p="Waypoints.cs" t="Include" />
             </e>
             <e p="DataEntryNodes" t="Include">
-              <e p="DataCover.cs" t="Include" />
-              <e p="DataCoverCountFromAgressors.cs" t="Include" />
               <e p="DataCurrentHp.cs" t="Include" />
               <e p="DataDistance.cs" t="Include" />
-              <e p="DataInRayIsTarget.cs" t="Include" />
+              <e p="DataDistanceFromTarget.cs" t="Include" />
               <e p="DataIsAgressor.cs" t="Include" />
-              <e p="DataIsCoverFromTarget.cs" t="Include" />
               <e p="DataIsTarget.cs" t="Include" />
+              <e p="DataIsTargetObserver.cs" t="Include" />
               <e p="DataMaxHp.cs" t="Include" />
+              <e p="DataObserver.cs" t="Include" />
+              <e p="DataObserverAggressors.cs" t="Include" />
+            </e>
+            <e p="Framework" t="Include">
+              <e p="DistanceSorter.cs" t="Include" />
             </e>
             <e p="SimpleActionNodes" t="Include">
               <e p="Fire.cs" t="Include" />
@@ -250,17 +253,16 @@
               <e p="AgressorsCount.cs" t="Include" />
               <e p="AliveTank.cs" t="Include" />
               <e p="CurrentHp.cs" t="Include" />
-              <e p="DistanceFromFarthestBonus.cs" t="Include" />
-              <e p="DistanceFromFarthestTank.cs" t="Include" />
-              <e p="DistanceFromFarthestWaypoint.cs" t="Include" />
-              <e p="DistanceFromNearestBonus.cs" t="Include" />
-              <e p="DistanceFromNearestTank.cs" t="Include" />
+              <e p="DistanceFromBonus.cs" t="Include" />
+              <e p="DistanceFromTank.cs" t="Include" />
+              <e p="DistanceFromWaypoint.cs" t="Include" />
               <e p="HasTarget.cs" t="Include" />
               <e p="IsBonusAvailable.cs" t="Include" />
               <e p="IsDestinationSet.cs" t="Include" />
               <e p="IsShellLoaded.cs" t="Include" />
               <e p="IsTankInRay.cs" t="Include" />
               <e p="MaxHp.cs" t="Include" />
+              <e p="TargetIsInRay.cs" t="Include" />
             </e>
             <e p="TankAIBrain.cs" t="Include" />
             <e p="TankAIComponent.cs" t="Include" />
@@ -293,6 +295,7 @@
           <e p="Framework" t="Include">
             <e p="BonusSpawner.cs" t="Include" />
             <e p="DataHandler.cs" t="Include" />
+            <e p="FactionType.cs" t="Include" />
             <e p="Game.cs" t="Include" />
             <e p="Match.cs" t="Include" />
             <e p="Properties.cs" t="Include" />

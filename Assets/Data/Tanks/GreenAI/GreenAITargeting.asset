@@ -111,6 +111,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   Value: 0
+  FactionType: 1
 --- !u!114 &-5343816142024252526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   MinX: 0
-  MaxX: 60
+  MaxX: 100
   X: 10
   Function:
     serializedVersion: 2
@@ -360,7 +361,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.027777778
+  UtilityY: 0.37
 --- !u!114 &-431299842432448598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_Name: Has Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: -488}
+  position: {x: -696, y: -472}
   ports:
     keys:
     - Value
@@ -447,7 +448,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd72d567b36181e4c8200953598994c4, type: 3}
-  m_Name: HardAITargeting
+  m_Name: GreenAITargeting
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 8205783135855297639}
@@ -460,14 +461,13 @@ MonoBehaviour:
   - {fileID: 1585590846828763168}
   - {fileID: -8700507663786430366}
   - {fileID: 6529744489219897804}
-  - {fileID: 0}
   - {fileID: -431299842432448598}
   - {fileID: -3236302355394788701}
   - {fileID: -7420719097611563291}
   - {fileID: -8325911310086805612}
   - {fileID: 8825261721724851528}
-  - {fileID: 0}
   - {fileID: -3393850683580644267}
+  - {fileID: 0}
 --- !u!114 &680909097015725868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,7 +804,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  UtilityY: 0.2
+  UtilityY: 1
 --- !u!114 &6529744489219897804
 MonoBehaviour:
   m_ObjectHideFlags: 0

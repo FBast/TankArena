@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1e59cc3b0c7467e8a9284f412777f1e, type: 3}
-  m_Name: HardAISettings
+  m_Name: YellowAISettings
   m_EditorClassIdentifier: 
-  PlayerName: HardAI
-  TankName: Tank
-  TurretColor: {r: 1, g: 0, b: 0, a: 1}
-  HullColor: {r: 1, g: 0, b: 0, a: 1}
-  TracksColor: {r: 1, g: 0, b: 0, a: 1}
+  PlayerName: Yellow
+  TankName: AI
+  TurretColor: {r: 1, g: 0.99862754, b: 0, a: 1}
+  HullColor: {r: 1, g: 0.99862754, b: 0, a: 1}
+  TracksColor: {r: 1, g: 0.99862754, b: 0, a: 1}
   Brains:
-  - {fileID: 11400000, guid: 4eb51848bd1215b42a777750cd4e8081, type: 2}
-  - {fileID: 11400000, guid: 858ca534925cd24458cbebc08cdc2a10, type: 2}
+  - {fileID: 11400000, guid: 8a4bf70538810134189ecc4686f98cfc, type: 2}
+  - {fileID: 11400000, guid: 23b63dacbb2414e4c8fbaaab140551cf, type: 2}
