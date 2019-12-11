@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e59cc3b0c7467e8a9284f412777f1e, type: 3}
+  m_Name: NathanBalanced
+  m_EditorClassIdentifier: 
+  PlayerName: Nathan
+  TankName: JO-JO
+  TurretColor: {r: 0.8786873, g: 0.9339623, b: 0.039649326, a: 0}
+  HullColor: {r: 0.9339623, g: 0.6086346, b: 0.004405493, a: 0}
+  TracksColor: {r: 0.7924528, g: 0.48023123, b: 0, a: 0}
+  Brains:
+  - {fileID: 11400000, guid: fa6cf7a926eecdf46bcd2a8d9f3c60d4, type: 2}
+  - {fileID: 11400000, guid: 5fb335876f3b7774aa2d6d06778c3653, type: 2}
