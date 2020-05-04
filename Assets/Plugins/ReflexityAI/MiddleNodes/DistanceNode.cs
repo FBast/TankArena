@@ -5,7 +5,7 @@ using XNode;
 namespace Plugins.ReflexityAI.MiddleNodes {
     public class DistanceNode : MiddleNode {
         
-        [Input(ShowBackingValue.Never)] public Vector3 FirstValueIn;
+        [Input(ShowBackingValue.Never, ConnectionType.Override)] public Vector3 FirstValueIn;
         [Input(ShowBackingValue.Never)] public Vector3 SecondValueIn;
         [Output] public float ValueOut;
         

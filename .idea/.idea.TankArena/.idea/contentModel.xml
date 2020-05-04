@@ -183,6 +183,7 @@
               <e p="DistanceNode.cs" t="Include" />
               <e p="IsEqualNode.cs" t="Include" />
               <e p="IsNullNode.cs" t="Include" />
+              <e p="LengthNode.cs" t="Include" />
               <e p="NotNode.cs" t="Include" />
               <e p="OrNode.cs" t="Include" />
             </e>

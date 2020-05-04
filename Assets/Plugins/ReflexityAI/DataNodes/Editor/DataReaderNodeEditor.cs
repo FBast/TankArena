@@ -13,14 +13,14 @@ namespace Plugins.ReflexityAI.DataNodes.Editor {
         public override void OnBodyGUI() {
             if (_dataReaderNode == null) _dataReaderNode = (DataReaderNode) target;
             serializedObject.Update();
-            EditorGUILayout.LabelField("Iterated Data", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Array Data", EditorStyles.boldLabel);
             foreach (KeyValuePair<string,SerializableInfo> valuePair in _dataReaderNode.InfoDictionary.OrderBy(pair => pair.Value.Order)) {
-                if (!valuePair.Value.IsIteratable) continue;
+                if (!valuePair.Value.IsArray) continue;
                 NodeEditorGUILayout.PortField(_dataReaderNode.GetOutputPort(valuePair.Value.PortName));
             }
             EditorGUILayout.LabelField("Simple Data", EditorStyles.boldLabel);
             foreach (KeyValuePair<string,SerializableInfo> valuePair in _dataReaderNode.InfoDictionary.OrderBy(pair => pair.Value.Order)) {
-                if (valuePair.Value.IsIteratable) continue;
+                if (valuePair.Value.IsArray) continue;
                 NodeEditorGUILayout.PortField(_dataReaderNode.GetOutputPort(valuePair.Value.PortName));
             }
             serializedObject.ApplyModifiedProperties();

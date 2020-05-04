@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -15,7 +16,7 @@ namespace Plugins.ReflexityAI.Framework {
         public string TypeName;
         public string PortName;
         public int Order;
-        public bool IsIteratable;
+        public bool IsArray;
         public bool IsPrimitive;
         public List<Parameter> Parameters = new List<Parameter>();
         public readonly bool IsShortCache;
@@ -52,8 +53,8 @@ namespace Plugins.ReflexityAI.Framework {
             PortName = fieldInfo.Name + " (" + fieldInfo.MemberType + ")";
             Order = fieldInfo.MetadataToken;
             IsPrimitive = fieldType.IsPrimitive;
-            if (fieldType.IsGenericType && fieldType.GetInterface(typeof(IEnumerable<>).FullName) != null) {
-                IsIteratable = true;
+            if (fieldType.IsArray) {
+                IsArray = true;
             }
             IsShortCache = isShortCache;
         }
@@ -67,8 +68,8 @@ namespace Plugins.ReflexityAI.Framework {
             PortName = propertyInfo.Name + " (" + propertyInfo.MemberType + ")";
             Order = propertyInfo.MetadataToken;
             IsPrimitive = propertyType.IsPrimitive;
-            if (propertyType.IsGenericType && propertyType.GetInterface(typeof(IEnumerable<>).FullName) != null) {
-                IsIteratable = true;
+            if (propertyType.IsArray) {
+                IsArray = true;
             }
             IsShortCache = isShortCache;
         }

@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 namespace Plugins.ReflexityAI.DataNodes {
     public class DataIteratorNode : DataNode, ICacheable {
 
-        [Input(ShowBackingValue.Never, ConnectionType.Override)] public List<Object> Enumerable;
+        [Input(ShowBackingValue.Never, ConnectionType.Override)] public Object[] Array;
         [Output(ShowBackingValue.Never, ConnectionType.Multiple, TypeConstraint.Inherited)] public DataIteratorNode LinkedOption;
 
         public int Index { get; set; }
@@ -39,21 +39,22 @@ namespace Plugins.ReflexityAI.DataNodes {
         
         public override void OnCreateConnection(NodePort from, NodePort to) {
             base.OnCreateConnection(from, to);
-            if (to.fieldName == nameof(Enumerable) && to.node == this) {
-                ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Enumerable));
-                if (reflectionData.Type.IsGenericType && reflectionData.Type.GetGenericTypeDefinition().GetInterface(typeof(IEnumerable<>).FullName) != null) {
-                    Type type = reflectionData.Type.GetGenericArguments()[0];
+            if (to.fieldName == nameof(Array) && to.node == this) {
+                ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Array));
+                Type type = reflectionData.Type.GetElementType();
+                if (reflectionData.Type.IsArray && type != null) {
                     _typeArgumentName = type.AssemblyQualifiedName;
                     AddDynamicOutput(type, ConnectionType.Multiple, TypeConstraint.Inherited, type.Name);
-                } else {
-                    Debug.LogError("Enumerable need to be a generic type (List or Array for example)");
+                } 
+                else {
+                    Debug.LogError("Iterator can only iterate on array");
                 }
             }
         }
         
         public override void OnRemoveConnection(NodePort port) {
             base.OnRemoveConnection(port);
-            if (port.fieldName == nameof(Enumerable) && port.node == this) {
+            if (port.fieldName == nameof(Array) && port.node == this) {
                 ClearDynamicPorts();
             }
         }
@@ -70,7 +71,7 @@ namespace Plugins.ReflexityAI.DataNodes {
         
         private object[] GetCollection() {
             if (_cachedCollection == null)
-                _cachedCollection = ((IEnumerable<object>) GetInputValue<ReflectionData>(nameof(Enumerable)).Value).ToArray();
+                _cachedCollection = ((IEnumerable<object>) GetInputValue<ReflectionData>(nameof(Array)).Value).ToArray();
             return _cachedCollection;
         }
 

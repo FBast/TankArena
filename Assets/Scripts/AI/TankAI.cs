@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 using Entities;
+using Framework;
 using Plugins.ReflexityAI.Framework;
 using UnityEngine;
 
@@ -8,13 +8,23 @@ namespace AI {
     public class TankAI : ReflexityAI {
 
         // Your custom references here
-        public List<BonusEntity> BonusEntities => GetComponent<TankEntity>().BonusReference.Value
-            .Select(o => o.GetComponent<BonusEntity>()).ToList();
-        public List<TankEntity> TankEntities => GetComponent<TankEntity>().TanksReference.Value
-            .Select(o => o.GetComponent<TankEntity>()).ToList();
-        public List<WaypointEntity> WaypointEntities => GetComponent<TankEntity>().WaypointsReference.Value
-            .Select(o => o.GetComponent<WaypointEntity>()).ToList();
         [HideInInspector] public TankEntity TankEntity;
+        
+        public BonusEntity[] BonusEntities => GetComponent<TankEntity>().BonusReference.Value
+            .Select(o => o.GetComponent<BonusEntity>())
+            .ToArray();
+        public TankEntity[] TankEntities => GetComponent<TankEntity>().TanksReference.Value
+            .Select(o => o.GetComponent<TankEntity>())
+            .ToArray();
+        public TankEntity[] EnnemyTankEntities => TankEntities
+            .Where(entity => entity.GetFaction(TankEntity) == FactionType.Enemy)
+            .ToArray();
+        public TankEntity[] AllyTankEntities => TankEntities
+            .Where(entity => entity.GetFaction(TankEntity) == FactionType.Ally)
+            .ToArray();
+        public WaypointEntity[] WaypointEntities => GetComponent<TankEntity>().WaypointsReference.Value
+            .Select(o => o.GetComponent<WaypointEntity>())
+            .ToArray();
         // End of custom references
 
         private void Awake() {
