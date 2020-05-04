@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Framework;
-using NodeUtilityAi;
+using Plugins.ReflexityAI.Framework;
 using UnityEngine;
 
 namespace Data {
@@ -13,7 +13,7 @@ namespace Data {
         public Color TurretColor;
         public Color HullColor;
         public Color TracksColor;
-        public List<AbstractAIBrain> Brains = new List<AbstractAIBrain>();
+        public List<AIBrainGraph> Brains = new List<AIBrainGraph>();
 
         public async Task Save() {
             await DataHandler.Save(this);

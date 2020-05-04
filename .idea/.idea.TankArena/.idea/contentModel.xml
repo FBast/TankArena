@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\frederic.bast\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\frederic.bast\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.-1304077868.00" t="ExcludeRecursive" />
-    <e p="U:\UnityProjects\TankArena" t="IncludeRecursive">
+    <e p="C:\Users\Dizy\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Dizy\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TankArena.469938171.00" t="ExcludeRecursive" />
+    <e p="D:\Local Repository\TankArena" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -125,38 +125,79 @@
               <e p="HSVUtil.cs" t="Include" />
             </e>
           </e>
-          <e p="NodeUtilityAi" t="Include">
-            <e p="AbstractAIBrain.cs" t="Include" />
-            <e p="AbstractAIComponent.cs" t="Include" />
-            <e p="Editor" t="Include">
-              <e p="AiDebuggerEditor.cs" t="Include" />
+          <e p="ReflexityAI" t="Include">
+            <e p="ActionNodes" t="Include">
+              <e p="ActionLauncherNode.cs" t="Include" />
+              <e p="ActionSetterNode.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="ActionLauncherNodeEditor.cs" t="Include" />
+                <e p="ActionSetterNodeEditor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="DataNodes" t="Include">
+              <e p="DataIteratorNode.cs" t="Include" />
+              <e p="DataReaderNode.cs" t="Include" />
+              <e p="DataSelectorNode.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="DataIteratorNodeEditor.cs" t="Include" />
+                <e p="DataReaderNodeEditor.cs" t="Include" />
+                <e p="DataSelectorNodeEditor.cs" t="Include" />
+              </e>
             </e>
             <e p="Framework" t="Include">
-              <e p="AIAction.cs" t="Include" />
-              <e p="AIData.cs" t="Include" />
-              <e p="AIOption.cs" t="Include" />
-              <e p="TaggedData.cs" t="Include" />
-            </e>
-            <e p="Nodes" t="Include">
               <e p="ActionNode.cs" t="Include" />
-              <e p="CollectionEntryNode.cs" t="Include" />
-              <e p="DataActionNode.cs" t="Include" />
-              <e p="DataEntryNode.cs" t="Include" />
+              <e p="AIAction.cs" t="Include" />
+              <e p="AIBrainGraph.cs" t="Include" />
+              <e p="AIOption.cs" t="Include" />
+              <e p="DataNode.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="AIBrainGraphEditor.cs" t="Include" />
+                <e p="AiDebuggerEditorWindow.cs" t="Include" />
+              </e>
               <e p="EntryNode.cs" t="Include" />
-              <e p="MemoryAccessNode.cs" t="Include" />
+              <e p="ICacheable.cs" t="Include" />
+              <e p="IContextual.cs" t="Include" />
+              <e p="MiddleNode.cs" t="Include" />
+              <e p="ReflexityAI.cs" t="Include" />
+              <e p="ReflexityManager.cs" t="Include" />
+              <e p="SerializableDictionary.cs" t="Include" />
+              <e p="SerializableInfo.cs" t="Include" />
+              <e p="SimpleDataNode.cs" t="Include" />
+            </e>
+            <e p="MainNodes" t="Include">
+              <e p="ConverterNode.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="UtilityNodeEditor.cs" t="Include" />
+              </e>
+              <e p="OptionNode.cs" t="Include" />
+              <e p="UtilityNode.cs" t="Include" />
+            </e>
+            <e p="MemoryNodes" t="Include">
               <e p="MemoryCheckNode.cs" t="Include" />
               <e p="MemoryClearNode.cs" t="Include" />
-              <e p="MiddleNode.cs" t="Include" />
-              <e p="OptionNode.cs" t="Include" />
-              <e p="RankAndNode.cs" t="Include" />
-              <e p="RankFlattenNode.cs" t="Include" />
-              <e p="RankNotNode.cs" t="Include" />
-              <e p="RankOrNode.cs" t="Include" />
-              <e p="SimpleActionNode.cs" t="Include" />
-              <e p="SimpleEntryNode.cs" t="Include" />
-              <e p="UtilityFunctionNode.cs" t="Include" />
-              <e p="UtilityInverterNode.cs" t="Include" />
-              <e p="ValueFilterNode.cs" t="Include" />
+              <e p="MemoryLoadNode.cs" t="Include" />
+              <e p="MemorySaveNode.cs" t="Include" />
+            </e>
+            <e p="MiddleNodes" t="Include">
+              <e p="AndNode.cs" t="Include" />
+              <e p="DistanceNode.cs" t="Include" />
+              <e p="IsEqualNode.cs" t="Include" />
+              <e p="IsNullNode.cs" t="Include" />
+              <e p="NotNode.cs" t="Include" />
+              <e p="OrNode.cs" t="Include" />
+            </e>
+            <e p="PatternNodes" t="Include">
+              <e p="InCooldownNode.cs" t="Include" />
+              <e p="SaveHistoricNode.cs" t="Include" />
+            </e>
+            <e p="Utils" t="Include">
+              <e p="TagList" t="Include">
+                <e p="DropdownList.cs" t="Include" />
+                <e p="Editor" t="Include">
+                  <e p="DropdownListDrawer.cs" t="Include" />
+                </e>
+                <e p="TagListHelper.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="TextMesh Pro" t="Include">
@@ -195,6 +236,16 @@
               <e p="Editor" t="Include">
                 <e p="Drawers" t="Include">
                   <e p="NodeEnumDrawer.cs" t="Include" />
+                  <e p="Odin" t="Include">
+                    <e p="InNodeEditorAttributeProcessor.cs" t="Include" />
+                    <e p="InputAttributeDrawer.cs" t="Include" />
+                    <e p="OutputAttributeDrawer.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="GraphAndNodeEditor.cs" t="Include" />
+                <e p="GraphRenameFixAssetProcessor.cs" t="Include" />
+                <e p="Internal" t="Include">
+                  <e p="RerouteReference.cs" t="Include" />
                 </e>
                 <e p="NodeEditor.cs" t="Include" />
                 <e p="NodeEditorAction.cs" t="Include" />
@@ -215,57 +266,22 @@
                     <e p="xNode_NodeTemplate.cs.txt" t="Include" />
                   </e>
                 </e>
+                <e p="SceneGraphEditor.cs" t="Include" />
+                <e p="XNodeEditor.asmdef" t="Include" />
               </e>
               <e p="Node.cs" t="Include" />
               <e p="NodeDataCache.cs" t="Include" />
               <e p="NodeGraph.cs" t="Include" />
               <e p="NodePort.cs" t="Include" />
+              <e p="SceneGraph.cs" t="Include" />
+              <e p="XNode.asmdef" t="Include" />
             </e>
           </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
-            <e p="CollectionEntryNodes" t="Include">
-              <e p="Bonus.cs" t="Include" />
-              <e p="OtherTanks.cs" t="Include" />
-              <e p="Waypoints.cs" t="Include" />
-            </e>
-            <e p="DataEntryNodes" t="Include">
-              <e p="DataCurrentHp.cs" t="Include" />
-              <e p="DataDistance.cs" t="Include" />
-              <e p="DataDistanceFromTarget.cs" t="Include" />
-              <e p="DataIsAgressor.cs" t="Include" />
-              <e p="DataIsTarget.cs" t="Include" />
-              <e p="DataIsTargetObserver.cs" t="Include" />
-              <e p="DataMaxHp.cs" t="Include" />
-              <e p="DataObserver.cs" t="Include" />
-              <e p="DataObserverAggressors.cs" t="Include" />
-            </e>
-            <e p="Framework" t="Include">
-              <e p="DistanceSorter.cs" t="Include" />
-            </e>
-            <e p="SimpleActionNodes" t="Include">
-              <e p="Fire.cs" t="Include" />
-              <e p="SetDestination.cs" t="Include" />
-              <e p="SetTarget.cs" t="Include" />
-            </e>
-            <e p="SimpleEntryNodes" t="Include">
-              <e p="AgressorsCount.cs" t="Include" />
-              <e p="AliveTank.cs" t="Include" />
-              <e p="CurrentHp.cs" t="Include" />
-              <e p="DistanceFromBonus.cs" t="Include" />
-              <e p="DistanceFromTank.cs" t="Include" />
-              <e p="DistanceFromWaypoint.cs" t="Include" />
-              <e p="HasTarget.cs" t="Include" />
-              <e p="IsBonusAvailable.cs" t="Include" />
-              <e p="IsDestinationSet.cs" t="Include" />
-              <e p="IsShellLoaded.cs" t="Include" />
-              <e p="IsTankInRay.cs" t="Include" />
-              <e p="MaxHp.cs" t="Include" />
-              <e p="TargetIsInRay.cs" t="Include" />
-            </e>
+            <e p="TankAI.cs" t="Include" />
             <e p="TankAIBrain.cs" t="Include" />
-            <e p="TankAIComponent.cs" t="Include" />
           </e>
           <e p="Components" t="Include">
             <e p="DestroyAfterTime.cs" t="Include" />
@@ -418,6 +434,7 @@
             <e p="TeamFightUI.cs" t="Include" />
             <e p="TeamStatLineUI.cs" t="Include" />
             <e p="TeamTankUI.cs" t="Include" />
+            <e p="TimeChronoUI.cs" t="Include" />
             <e p="TournamentUI.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
@@ -427,12 +444,13 @@
             <e p="Vector3Utils.cs" t="Include" />
           </e>
         </e>
-        <e p="TimeChronoUI.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="TankArena.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="XNode.csproj" t="IncludeRecursive" />
+      <e p="XNodeEditor.csproj" t="IncludeRecursive" />
     </e>
   </component>
 </project>

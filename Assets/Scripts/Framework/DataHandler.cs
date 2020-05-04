@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
-using NodeUtilityAi;
+using Plugins.ReflexityAI.Framework;
 using UnityEngine;
 using Utils;
 
@@ -29,7 +29,7 @@ namespace Framework {
 
         public static TankSetting Load(string tankDirectory) {
             TankSetting tankSetting = ScriptableObject.CreateInstance<TankSetting>();
-            List<AbstractAIBrain> abstractAiBrains = new List<AbstractAIBrain>();
+            List<AIBrainGraph> aiBrainGraphs = new List<AIBrainGraph>();
             foreach (string file in FilesInDirectory(tankDirectory)) {
                 switch (Path.GetExtension(file)) {
                     case ".set": {
@@ -40,14 +40,14 @@ namespace Framework {
                     }
                     case ".bra": {
                         using (StreamReader sr = new StreamReader(file)) {
-                            AbstractAIBrain abstractAiBrain = (AbstractAIBrain) FullSerializerApi.Deserialize(typeof(AbstractAIBrain), sr.ReadToEnd());
-                            abstractAiBrains.Add(abstractAiBrain);
+                            AIBrainGraph aiBrainGraph = (AIBrainGraph) FullSerializerApi.Deserialize(typeof(AIBrainGraph), sr.ReadToEnd());
+                            aiBrainGraphs.Add(aiBrainGraph);
                         }
                         break;
                     }
                 }
             }
-            tankSetting.Brains = abstractAiBrains;
+            tankSetting.Brains = aiBrainGraphs;
             return tankSetting;
         }
 
@@ -58,9 +58,9 @@ namespace Framework {
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(tankDirectory, tankSetting.name + ".set"))) {
                 await outputFile.WriteAsync(FullSerializerApi.Serialize(typeof(TankSetting), tankSetting));
             }
-            foreach (AbstractAIBrain abstractAiBrain in tankSetting.Brains) {
-                using (StreamWriter outputFile = new StreamWriter(Path.Combine(tankDirectory, abstractAiBrain.name + ".bra"))) {
-                    await outputFile.WriteAsync(FullSerializerApi.Serialize(typeof(AbstractAIBrain), abstractAiBrain));
+            foreach (AIBrainGraph aiBrainGraph in tankSetting.Brains) {
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(tankDirectory, aiBrainGraph.name + ".bra"))) {
+                    await outputFile.WriteAsync(FullSerializerApi.Serialize(typeof(AIBrainGraph), aiBrainGraph));
                 }
             }
             Debug.Log("Tank settings saved in " + tankDirectory);

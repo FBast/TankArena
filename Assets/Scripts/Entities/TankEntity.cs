@@ -45,7 +45,8 @@ namespace Entities {
 
         [Header	("Parameters")]
         public LayerMask CoverLayer;
-        
+
+        public Transform Transform => transform;
         public int CanonDamage { get; private set; }
         public int CanonPower { get; private set; }
         public int TurretSpeed { get; private set; }
@@ -58,10 +59,10 @@ namespace Entities {
         public bool IsShellLoaded = true;
         public Team Team { get; private set; }
         public GameObject Target;
-        public GameObject Destination;
+        public Transform Destination;
 
         private NavMeshAgent _navMeshAgent;
-        private TankAIComponent _tankAiComponent;
+        private TankAI _tankAi;
 
         public List<GameObject> Aggressors => TanksReference.Value
             .Where(go => go != null && go.GetComponent<TankEntity>().Target == gameObject).ToList();
@@ -75,7 +76,7 @@ namespace Entities {
 
         private void Awake() {
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            _tankAiComponent = GetComponent<TankAIComponent>();
+            _tankAi = GetComponent<TankAI>();
             MaxHP = PlayerPrefs.GetInt(Properties.PlayerPrefs.HealthPoints, Properties.PlayerPrefsDefault.HealthPoints);
             CurrentHP = MaxHP;
             CanonDamage = PlayerPrefs.GetInt(Properties.PlayerPrefs.CanonDamage, Properties.PlayerPrefsDefault.CanonDamage);
@@ -95,8 +96,10 @@ namespace Entities {
             HullMeshRenderer.material.color = setting.HullColor;
             RightTrackMeshRender.material.color = setting.TracksColor;
             LeftTrackMeshRender.material.color = setting.TracksColor;
-            _tankAiComponent.UtilityAiBrains = setting.Brains;
             FactionDisk.material.color = team.Color;
+            _tankAi.AIBrains = setting.Brains;
+            _tankAi.InitBrains();
+            _tankAi.EnqueueAI();
         }
         
         private void OnDrawGizmos() {
@@ -122,7 +125,7 @@ namespace Entities {
                         Debug.DrawLine(pathCorners[i - 1], pathCorners[i], Color.green);
                     }
                 }
-                _navMeshAgent.SetDestination(Destination.transform.position);
+                _navMeshAgent.SetDestination(Destination.position);
                 if (_isAtDestination) Destination = null;
             }
             SmokeSetter.SetEmissionPercent(_damagePercent);

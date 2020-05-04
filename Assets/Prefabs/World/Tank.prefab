@@ -14783,9 +14783,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3147ecddd5e464db033509a9a7e4c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBetweenRefresh: 1
-  AlwaysPickBestChoice: 1
-  UtilityAiBrains: []
+  AIBrains: []
+  InitBrainOnStart: 0
+  OnEnableQueuing: 0
+  QueuingLoop: 1
+  OptionsResolution: 0
+  MultiBrainInteraction: 0
+  LocalAIBrains: []
   TankEntity: {fileID: 0}
 --- !u!1 &7043326029204013415
 GameObject:
@@ -14998,11 +15002,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1911683160194432, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+    - target: {fileID: 1911683160194432, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}

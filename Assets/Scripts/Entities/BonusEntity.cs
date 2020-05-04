@@ -12,6 +12,8 @@ namespace Entities {
         
         [Header("Parameters")]
         public int Healing;
+
+        public Transform Transform => transform;
         
         private void OnTriggerEnter(Collider other) {
             Instantiate(BonusExplosionPrefab, transform.position, Quaternion.identity);

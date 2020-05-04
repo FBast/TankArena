@@ -1,9 +1,8 @@
 ﻿using System;
-using NodeUtilityAi;
+using Plugins.ReflexityAI.Framework;
 using UnityEngine;
 
-namespace AI
-{
+namespace AI {
     [Serializable, CreateAssetMenu(fileName = "TankAIBrain", menuName = "TankAIBrain")]
-    public class TankAIBrain : AbstractAIBrain {}
+    public class TankAIBrain : AIBrainGraph<TankAI> {}
 }
