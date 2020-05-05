@@ -15,6 +15,9 @@ namespace Plugins.ReflexityAI.DataNodes {
         [HideInInspector] public List<SerializableInfo> SerializableInfos = new List<SerializableInfo>();
         [HideInInspector] public int ChoiceIndex;
 
+        public List<object> Parameters = new List<object>();
+        public ObjectDictionary ObjectDictionary = new ObjectDictionary();
+        
         public void UpdateData() {
             SerializableInfos.Clear();
             ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Data));
@@ -23,6 +26,9 @@ namespace Plugins.ReflexityAI.DataNodes {
                 .Select(info => new SerializableInfo(info, reflectionData.FromIteration)));
             SerializableInfos.AddRange(reflectionData.Type
                 .GetProperties(SerializableInfo.DefaultBindingFlags)
+                .Select(info => new SerializableInfo(info, reflectionData.FromIteration)));
+            SerializableInfos.AddRange(reflectionData.Type
+                .GetMethods(SerializableInfo.DefaultBindingFlags)
                 .Select(info => new SerializableInfo(info, reflectionData.FromIteration)));
         }
         
@@ -40,9 +46,16 @@ namespace Plugins.ReflexityAI.DataNodes {
         
         public override object GetValue(NodePort port) {
             if (port.fieldName == nameof(Output)) {
+                List<object> parameters = new List<object>();
+                if (SelectedSerializableInfo.Parameters.Count > 0) {
+                    foreach (Parameter parameter in SelectedSerializableInfo.Parameters) {
+                        NodePort inputPort = GetInputPort(nameof(parameter.Name));
+                        parameters.Add(inputPort.IsConnected ? inputPort.GetInputValue() : ObjectDictionary[parameter.Name]);
+                    }
+                }
                 ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Data));
                 return Application.isPlaying
-                    ? SelectedSerializableInfo.GetRuntimeValue(reflectionData.Value)
+                    ? SelectedSerializableInfo.GetRuntimeValue(reflectionData.Value, parameters.ToArray())
                     : SelectedSerializableInfo.GetEditorValue();
             }
             return null;

@@ -29,7 +29,7 @@ namespace Plugins.ReflexityAI.Framework {
         public readonly Dictionary<AIBrainGraph, List<AIOption>> BestWeightedOptions = new Dictionary<AIBrainGraph, List<AIOption>>();
         public readonly Dictionary<AIBrainGraph, AIOption> SelectedOptions = new Dictionary<AIBrainGraph, AIOption>();
 
-        [Tooltip("Brains used by the AI"), SerializeField] private List<AIBrainGraph> LocalAIBrains;
+        [Tooltip("Brains used by the AI"), SerializeField] private List<AIBrainGraph> LocalAIBrains = new List<AIBrainGraph>();
         
         private bool _isInQueue;
         private readonly Dictionary<string, object> _memory = new Dictionary<string, object>();

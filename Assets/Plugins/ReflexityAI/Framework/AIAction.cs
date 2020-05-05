@@ -9,7 +9,6 @@ namespace Plugins.ReflexityAI.Framework {
         public int Order;
 
         public AIAction(ActionNode actionNode) {
-            Action += delegate(object o, object[] objects) { actionNode.Execute(o, objects); };
             Action = actionNode.Execute;
             Context = actionNode.GetContext();
             Data = actionNode.GetParameters();

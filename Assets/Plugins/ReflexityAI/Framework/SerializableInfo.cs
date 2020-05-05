@@ -96,9 +96,9 @@ namespace Plugins.ReflexityAI.Framework {
             return IsPrimitive ? (object) null : new ReflectionData(Type, null);
         }
         
-        public object GetRuntimeValue(object context) {
+        public object GetRuntimeValue(object context, object[] parameters = null) {
             if (context == null) return GetEditorValue();
-            if (_cachedValue == null) _cachedValue = GetValue(context);
+            if (_cachedValue == null) _cachedValue = GetValue(context, parameters);
             return IsPrimitive ? _cachedValue : new ReflectionData(Type, _cachedValue);
         }
 
@@ -125,12 +125,14 @@ namespace Plugins.ReflexityAI.Framework {
             }
         }
         
-        private object GetValue(object context) {
+        private object GetValue(object context, object[] parameters = null) {
             switch (MemberInfo) {
                 case FieldInfo fieldInfo:
                     return fieldInfo.GetValue(context);
                 case PropertyInfo propertyInfo:
                     return propertyInfo.GetValue(context);
+                case MethodInfo methodInfo:
+                    return methodInfo.Invoke(context, parameters);
                 default:
                     throw new Exception("GetValue only available for FieldInfo or PropertyInfo, not " + MemberInfo.MemberType);
             }

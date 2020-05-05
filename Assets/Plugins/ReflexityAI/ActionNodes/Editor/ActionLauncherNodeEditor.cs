@@ -15,6 +15,8 @@ namespace Plugins.ReflexityAI.ActionNodes.Editor {
             if (_actionLauncherNode == null) _actionLauncherNode = (ActionLauncherNode) target;
             serializedObject.Update();
             if (_actionLauncherNode.SerializableInfos.Count > 0) {
+                if (_actionLauncherNode.ChoiceIndex >= _actionLauncherNode.SerializableInfos.Count)
+                    _actionLauncherNode.ChoiceIndex = 0;
                 foreach (NodePort dynamicInput in _actionLauncherNode.DynamicInputs) {
                     NodeEditorGUILayout.PortField(dynamicInput);
                 }

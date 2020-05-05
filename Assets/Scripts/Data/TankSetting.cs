@@ -14,10 +14,6 @@ namespace Data {
         public Color HullColor;
         public Color TracksColor;
         public List<AIBrainGraph> Brains = new List<AIBrainGraph>();
-
-        public async Task Save() {
-            await DataHandler.Save(this);
-        }
         
     }
 }

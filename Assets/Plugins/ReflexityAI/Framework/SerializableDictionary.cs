@@ -27,6 +27,7 @@ namespace Plugins.ReflexityAI.Framework {
         }
         
     }
+    [Serializable] public class ObjectDictionary : SerializableDictionary<string, object>{}
     [Serializable] public class PortDictionary : SerializableDictionary<string,string>{}
     [Serializable] public class InfoDictionary : SerializableDictionary<string,SerializableInfo>{}
 }
