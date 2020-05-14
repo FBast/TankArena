@@ -10,7 +10,11 @@ namespace Plugins.ReflexityAI.MiddleNodes {
         
         public override object GetValue(NodePort port) {
             if (port.fieldName == nameof(ValueOut)) {
-                return GetInputValue<object[]>(nameof(ValueIn)).Length;
+                object o = GetInputValue<object>(nameof(ValueIn));
+                if (o is BoxedData data) {
+                    o = data.Value;
+                }
+                return ((object[]) o).Length;
             }
             return null;
         }

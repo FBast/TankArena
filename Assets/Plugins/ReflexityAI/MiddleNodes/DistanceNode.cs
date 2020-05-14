@@ -11,7 +11,10 @@ namespace Plugins.ReflexityAI.MiddleNodes {
         
         public override object GetValue(NodePort port) {
             if (port.fieldName == nameof(ValueOut)) {
-                return Vector3.Distance(GetInputValue<Vector3>(nameof(FirstValueIn)), GetInputValue<Vector3>(nameof(SecondValueIn)));
+                FirstValueIn = (Vector3) GetInputValue<BoxedData>(nameof(FirstValueIn)).Value;
+                SecondValueIn = (Vector3) GetInputValue<BoxedData>(nameof(SecondValueIn)).Value;
+                float distance = Vector3.Distance(FirstValueIn, SecondValueIn);
+                return distance;
             }
             return null;
         }

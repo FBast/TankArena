@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Framework;
 using SOReferences.GameObjectListReference;
 using UnityEngine;
@@ -17,18 +18,23 @@ namespace Entities {
         
         public int ObserverCount(TankEntity hider, FactionType seekersFaction) {
             if (seekersFaction == FactionType.All) {
-                return transform.InLineOfView(transform,
+                return transform.InLineOfView(hider.transform,
                     TanksReference.Value
                         .Select(o => o.GetComponent<TankEntity>())
                         .Where(entity => entity != hider)
                         .Select(entity => entity.transform).ToList(), CoverLayer).Count;
             }
-            return transform.InLineOfView(transform,
+            return transform.InLineOfView(hider.transform,
                 TanksReference.Value
                     .Select(o => o.GetComponent<TankEntity>())
                     .Where(entity => entity != hider && hider.GetFaction(entity) == seekersFaction)
                     .Select(entity => entity.transform).ToList(), CoverLayer).Count;
-        } 
+        }
+
+        public bool IsTargetObserver(TankEntity hider, TankEntity seeker) {
+            if (seeker == null) return false;
+            return transform.InLineOfView(hider.transform, new List<Transform> {seeker.transform}, CoverLayer).Count == 0;
+        }
         
     }
 }

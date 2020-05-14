@@ -14791,6 +14791,9 @@ MonoBehaviour:
   MultiBrainInteraction: 0
   LocalAIBrains: []
   TankEntity: {fileID: 0}
+  AllyFactionType: 0
+  EnemyFactionType: 1
+  AllFactionType: 2
 --- !u!1 &7043326029204013415
 GameObject:
   m_ObjectHideFlags: 0
@@ -15002,11 +15005,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+    - target: {fileID: 1911683160194432, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1911683160194432, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}

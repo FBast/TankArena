@@ -11,7 +11,7 @@ namespace Plugins.ReflexityAI.MiddleNodes {
         
         public override object GetValue(NodePort port) {
             if (port.fieldName == nameof(ValueOut)) {
-                ReflectionData[] list = GetInputValues<ReflectionData>(nameof(ValuesIn));
+                BoxedData[] list = GetInputValues<BoxedData>(nameof(ValuesIn));
                 if (list.Length > 0) return list.All(tuple => tuple.Value == list[0].Value);
             }
             return null;

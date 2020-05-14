@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Plugins.ReflexityAI.Framework;
 using UnityEditor;
-using UnityEngine;
 using XNode;
 using XNodeEditor;
 
@@ -19,6 +18,7 @@ namespace Plugins.ReflexityAI.DataNodes.Editor {
                 if (_dataSelectorNode.ChoiceIndex >= _dataSelectorNode.SerializableInfos.Count)
                     _dataSelectorNode.ChoiceIndex = 0;
                 
+                //TODO-fred Add parameters backing field
 //                SerializedProperty property = serializedObject.FindProperty(nameof(_dataSelectorNode.Parameters));
 //                for (int i = 0; i < property.arraySize; i++) {
 //                    NodePort port = _dataSelectorNode.DynamicInputs.ElementAt(i);
@@ -30,6 +30,10 @@ namespace Plugins.ReflexityAI.DataNodes.Editor {
 //                        NodeEditorGUILayout.AddPortField(port);
 //                    }
 //                }
+
+                foreach (NodePort dynamicInput in _dataSelectorNode.DynamicInputs) {
+                    NodeEditorGUILayout.PortField(dynamicInput);
+                }
                 
                 string[] choices = _dataSelectorNode.SerializableInfos.Select(info => info.Name).ToArray();
                 //BUG-fred ArgumentException: Getting control 2's position in a group with only 2 controls when doing mouseUp
@@ -57,8 +61,8 @@ namespace Plugins.ReflexityAI.DataNodes.Editor {
             _dataSelectorNode.Parameters.Clear();
             foreach (Parameter parameter in _dataSelectorNode.SelectedSerializableInfo.Parameters) {
                 Type parameterType = Type.GetType(parameter.TypeName);
-//                _dataSelectorNode.Parameters.Add("MesCouilles");
-                _dataSelectorNode.AddDynamicInput(parameterType, Node.ConnectionType.Override, Node.TypeConstraint.InheritedInverse, parameter.Name);
+                _dataSelectorNode.AddDynamicInput(parameterType, Node.ConnectionType.Override, 
+                    Node.TypeConstraint.InheritedInverse, parameter.Name);
             }
         }
         

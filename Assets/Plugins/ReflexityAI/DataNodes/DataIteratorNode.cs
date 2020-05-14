@@ -40,9 +40,9 @@ namespace Plugins.ReflexityAI.DataNodes {
         public override void OnCreateConnection(NodePort from, NodePort to) {
             base.OnCreateConnection(from, to);
             if (to.fieldName == nameof(Array) && to.node == this) {
-                ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Array));
-                Type type = reflectionData.Type.GetElementType();
-                if (reflectionData.Type.IsArray && type != null) {
+                BoxedData boxedData = GetInputValue<BoxedData>(nameof(Array));
+                Type type = boxedData.Type.GetElementType();
+                if (boxedData.Type.IsArray && type != null) {
                     _typeArgumentName = type.AssemblyQualifiedName;
                     AddDynamicOutput(type, ConnectionType.Multiple, TypeConstraint.Inherited, type.Name);
                 } 
@@ -64,14 +64,14 @@ namespace Plugins.ReflexityAI.DataNodes {
                 return this;
             } else {
                 if (!Application.isPlaying) 
-                    return new ReflectionData(ArgumentType, null, true);
-                return new ReflectionData(ArgumentType, CurrentValue, true);
+                    return new BoxedData(ArgumentType, null, true);
+                return new BoxedData(ArgumentType, CurrentValue, true);
             }
         }
         
         private object[] GetCollection() {
             if (_cachedCollection == null)
-                _cachedCollection = ((IEnumerable<object>) GetInputValue<ReflectionData>(nameof(Array)).Value).ToArray();
+                _cachedCollection = ((IEnumerable<object>) GetInputValue<BoxedData>(nameof(Array)).Value).ToArray();
             return _cachedCollection;
         }
 

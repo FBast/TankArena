@@ -58,14 +58,14 @@ namespace Entities {
         public int WaypointRadius { get; private set; }
         public bool IsShellLoaded = true;
         public Team Team { get; private set; }
-        public GameObject Target;
+        public TankEntity Target;
         public Transform Destination;
 
         private NavMeshAgent _navMeshAgent;
         private TankAI _tankAi;
 
         public List<GameObject> Aggressors => TanksReference.Value
-            .Where(go => go != null && go.GetComponent<TankEntity>().Target == gameObject).ToList();
+            .Where(go => go != null && go.GetComponent<TankEntity>().Target == this).ToList();
         
         private readonly Collider[] _hitColliders = new Collider[10];
         private int _totalDamages => MaxHP - CurrentHP;

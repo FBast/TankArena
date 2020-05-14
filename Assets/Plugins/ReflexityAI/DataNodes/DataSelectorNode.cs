@@ -11,7 +11,7 @@ namespace Plugins.ReflexityAI.DataNodes {
         [Input(ShowBackingValue.Never, ConnectionType.Override, TypeConstraint.Inherited)] public Object Data;
         [Output(ShowBackingValue.Never, ConnectionType.Multiple, TypeConstraint.Inherited)] public Object Output;
 
-        [HideInInspector] public SerializableInfo SelectedSerializableInfo;
+        public SerializableInfo SelectedSerializableInfo;
         [HideInInspector] public List<SerializableInfo> SerializableInfos = new List<SerializableInfo>();
         [HideInInspector] public int ChoiceIndex;
 
@@ -20,16 +20,16 @@ namespace Plugins.ReflexityAI.DataNodes {
         
         public void UpdateData() {
             SerializableInfos.Clear();
-            ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Data));
-            SerializableInfos.AddRange(reflectionData.Type
+            BoxedData boxedData = GetInputValue<BoxedData>(nameof(Data));
+            SerializableInfos.AddRange(boxedData.Type
                 .GetFields(SerializableInfo.DefaultBindingFlags)
-                .Select(info => new SerializableInfo(info, reflectionData.FromIteration)));
-            SerializableInfos.AddRange(reflectionData.Type
+                .Select(info => new SerializableInfo(info, boxedData.FromIteration)));
+            SerializableInfos.AddRange(boxedData.Type
                 .GetProperties(SerializableInfo.DefaultBindingFlags)
-                .Select(info => new SerializableInfo(info, reflectionData.FromIteration)));
-            SerializableInfos.AddRange(reflectionData.Type
+                .Select(info => new SerializableInfo(info, boxedData.FromIteration)));
+            SerializableInfos.AddRange(boxedData.Type
                 .GetMethods(SerializableInfo.DefaultBindingFlags)
-                .Select(info => new SerializableInfo(info, reflectionData.FromIteration)));
+                .Select(info => new SerializableInfo(info, boxedData.FromIteration)));
         }
         
         public override void OnCreateConnection(NodePort from, NodePort to) {
@@ -49,13 +49,16 @@ namespace Plugins.ReflexityAI.DataNodes {
                 List<object> parameters = new List<object>();
                 if (SelectedSerializableInfo.Parameters.Count > 0) {
                     foreach (Parameter parameter in SelectedSerializableInfo.Parameters) {
-                        NodePort inputPort = GetInputPort(nameof(parameter.Name));
-                        parameters.Add(inputPort.IsConnected ? inputPort.GetInputValue() : ObjectDictionary[parameter.Name]);
+                        NodePort inputPort = GetInputPort(parameter.Name);
+                        object inputValue = inputPort.GetInputValue();
+                        if (inputValue is BoxedData data) inputValue = data.Value;
+                        parameters.Add(inputValue);
+//                        parameters.Add(inputPort.IsConnected ? inputPort.GetInputValue() : ObjectDictionary[parameter.Name]);
                     }
                 }
-                ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Data));
+                BoxedData boxedData = GetInputValue<BoxedData>(nameof(Data));
                 return Application.isPlaying
-                    ? SelectedSerializableInfo.GetRuntimeValue(reflectionData.Value, parameters.ToArray())
+                    ? SelectedSerializableInfo.GetRuntimeValue(boxedData.Value, parameters.ToArray())
                     : SelectedSerializableInfo.GetEditorValue();
             }
             return null;

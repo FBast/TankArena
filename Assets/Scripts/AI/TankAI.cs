@@ -9,7 +9,9 @@ namespace AI {
 
         // Your custom references here
         [HideInInspector] public TankEntity TankEntity;
-        
+        public FactionType AllyFactionType = FactionType.Ally;
+        public FactionType EnemyFactionType = FactionType.Enemy;
+        public FactionType AllFactionType = FactionType.All;
         public BonusEntity[] BonusEntities => GetComponent<TankEntity>().BonusReference.Value
             .Select(o => o.GetComponent<BonusEntity>())
             .ToArray();

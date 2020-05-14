@@ -14,8 +14,8 @@ namespace Plugins.ReflexityAI.ActionNodes {
         public override void OnCreateConnection(NodePort from, NodePort to) {
             base.OnCreateConnection(from, to);
             if (to.fieldName == nameof(Data) && to.node == this) {
-                ReflectionData reflectionData = GetInputValue<ReflectionData>(nameof(Data));
-                SerializableInfos.AddRange(reflectionData.Type
+                BoxedData boxedData = GetInputValue<BoxedData>(nameof(Data));
+                SerializableInfos.AddRange(boxedData.Type
                     .GetMethods(SerializableInfo.DefaultBindingFlags)
                     .Select(info => new SerializableInfo(info)));
             }
@@ -29,14 +29,14 @@ namespace Plugins.ReflexityAI.ActionNodes {
         }
 
         public override object GetContext() {
-            return GetInputValue<ReflectionData>(nameof(Data)).Value;
+            return GetInputValue<BoxedData>(nameof(Data)).Value;
         }
         
         public override object[] GetParameters() {
             object[] parameters = null;
             if (SelectedSerializableInfo.Parameters.Count > 0) {
                 parameters = SelectedSerializableInfo.Parameters
-                    .Select(parameter => GetInputValue<ReflectionData>(nameof(parameter.Name)).Value)
+                    .Select(parameter => GetInputValue<BoxedData>(nameof(parameter.Name)).Value)
                     .ToArray();
             }
             return parameters;

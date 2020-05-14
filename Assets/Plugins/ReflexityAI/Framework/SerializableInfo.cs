@@ -93,13 +93,13 @@ namespace Plugins.ReflexityAI.Framework {
         }
 
         public object GetEditorValue() {
-            return IsPrimitive ? (object) null : new ReflectionData(Type, null);
+            return IsPrimitive ? (object) null : new BoxedData(Type, null);
         }
         
         public object GetRuntimeValue(object context, object[] parameters = null) {
             if (context == null) return GetEditorValue();
             if (_cachedValue == null) _cachedValue = GetValue(context, parameters);
-            return IsPrimitive ? _cachedValue : new ReflectionData(Type, _cachedValue);
+            return IsPrimitive ? _cachedValue : new BoxedData(Type, _cachedValue);
         }
 
         public void SetValue(object context, object value) {
@@ -153,13 +153,13 @@ namespace Plugins.ReflexityAI.Framework {
 
     }
 
-    public struct ReflectionData {
+    public struct BoxedData {
 
         public Type Type;
         public object Value;
         public bool FromIteration;
         
-        public ReflectionData(Type type, object value, bool fromIteration = false) {
+        public BoxedData(Type type, object value, bool fromIteration = false) {
             Type = type;
             Value = value;
             FromIteration = fromIteration;

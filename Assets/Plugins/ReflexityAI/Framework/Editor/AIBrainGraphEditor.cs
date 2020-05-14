@@ -75,8 +75,8 @@ namespace Plugins.ReflexityAI.Framework.Editor {
                 string tooltip = portType.PrettyName();
                 if (!Application.isPlaying || port.IsInput) return tooltip;
                 object obj = port.node.GetValue(port);
-                if (obj is ReflectionData reflectionData)
-                    tooltip += " = " + (reflectionData.Value ?? "null");
+                if (obj is BoxedData boxedData)
+                    tooltip += " = " + (boxedData.Value ?? "null");
                 else
                     tooltip += " = " + (obj != null ? obj.ToString() : "null");
                 return tooltip;
